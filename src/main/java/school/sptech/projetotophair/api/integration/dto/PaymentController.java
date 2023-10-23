@@ -1,4 +1,6 @@
-public class PagamentoDTO {
+package school.sptech.projetotophair.api.integration.dto;
+
+public class PaymentController {
     private String nome;
     private String cpfCnpj;
 
@@ -19,3 +21,4 @@ public class PagamentoDTO {
         this.cpfCnpj = cpfCnpj;
     }
 }
+

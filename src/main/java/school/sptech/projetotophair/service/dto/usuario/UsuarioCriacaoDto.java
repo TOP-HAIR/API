@@ -21,7 +21,6 @@ public class UsuarioCriacaoDto {
     private String nomeCompleto;
     @Email
     @NotBlank
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
     private String email;
     @Size(min = 6, max = 100)
     @NotBlank

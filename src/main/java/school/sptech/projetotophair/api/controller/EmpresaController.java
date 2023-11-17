@@ -5,7 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.service.EmpresaService;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
+import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +35,22 @@ public class EmpresaController {
     public ResponseEntity<List<Empresa>> listarPorEstado(@RequestParam String estado) {
         List<Empresa> empresasPorEstado = empresaService.listarEmpresasPorEstado(estado);
         return ResponseEntity.ok(empresasPorEstado);
+    }
+
+    @GetMapping("/top5-avaliadas-por-estado")
+    public ResponseEntity<List<EmpresaAvaliacaoDto>> findTop5EmpresasMelhorAvaliadasPorEstado(@RequestParam String estado) {
+        List<Empresa> empresas = empresaService.listarEmpresasTop5AvaliacoesPorEstado(estado);
+        if (empresas.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<EmpresaAvaliacaoDto> dtos = new ArrayList<>();
+
+        for (Empresa empresaDaVez: empresas) {
+            dtos.add(EmpresaMapper.toEmpresaAvaliacaoDto(empresaDaVez));
+        }
+
+        return ResponseEntity.ok(dtos);
     }
 
     @PutMapping("/{id}")

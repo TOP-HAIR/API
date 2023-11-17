@@ -41,6 +41,14 @@ public class EmpresaService {
         return empresas;
     }
 
+    public List<Empresa> listarEmpresasTop5AvaliacoesPorEstado(String estado) {
+        List<Empresa> empresas = empresaRepository.findTop5EmpresasMelhorAvaliadasPorEstado(estado);
+        if (empresas.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
+        }
+        return empresas;
+    }
+
     public Optional<Empresa> atualizarEmpresa(Long id, Empresa empresa) {
         if (!empresaRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada com o ID: " + id);

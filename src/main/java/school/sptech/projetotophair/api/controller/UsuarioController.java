@@ -22,7 +22,7 @@ public class UsuarioController {
 
     @PostMapping("/cadastrar")
     @SecurityRequirement(name = "Bearer")
-    public ResponseEntity<Void> criar(@RequestBody @Valid UsuarioCriacaoDto usuarioCriacaoDto) {
+    public ResponseEntity<Void> criar(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
         this.usuarioService.criar(usuarioCriacaoDto);
         return ResponseEntity.status(201).build();
     }

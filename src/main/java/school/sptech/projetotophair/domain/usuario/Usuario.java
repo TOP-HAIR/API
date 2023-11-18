@@ -18,17 +18,11 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
-    @NotBlank
+
     private String cpf;
-    @Size(min = 8, max = 80)
-    @NotBlank
     private String nomeCompleto;
-    @Email
-    @NotBlank
-    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
+
     private String email;
-    @Size(min = 6, max = 100)
-    @NotBlank
     private String senha;
     private String telefone;
     private Boolean isProfissional;
@@ -45,11 +39,13 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
+
     @Nullable
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
 
+    @Nullable
     @OneToMany(mappedBy = "usuario")
     List<Avaliacao> avaliacoes;
 

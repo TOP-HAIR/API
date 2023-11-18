@@ -49,6 +49,10 @@ public class EmpresaService {
         return empresas;
     }
 
+    public Optional<Empresa> findEmpresaByUsuarioId(Long idUsuario) {
+        return empresaRepository.findEmpresaByUsuarioId(idUsuario);
+    }
+
     public Optional<Empresa> atualizarEmpresa(Long id, Empresa empresa) {
         if (!empresaRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada com o ID: " + id);

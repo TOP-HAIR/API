@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.service.EmpresaService;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<Empresa> cadastrar(@RequestBody Empresa empresa) {
         Empresa empresaCadastrada = empresaService.cadastrarEmpresa(empresa);
         return ResponseEntity.status(201).body(empresaCadastrada);
@@ -35,6 +36,20 @@ public class EmpresaController {
     public ResponseEntity<List<Empresa>> listarPorEstado(@RequestParam String estado) {
         List<Empresa> empresasPorEstado = empresaService.listarEmpresasPorEstado(estado);
         return ResponseEntity.ok(empresasPorEstado);
+    }
+
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<EmpresaDto> findEmpresaByUsuarioId(@PathVariable Long id) {
+
+        Optional<Empresa> empresaByUsuarioId = this.empresaService.findEmpresaByUsuarioId(id);
+
+        if (empresaByUsuarioId.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        EmpresaDto empresaDto = EmpresaMapper.toEmpresaDto(empresaByUsuarioId.get());
+
+        return ResponseEntity.ok(empresaDto);
     }
 
     @GetMapping("/top5-avaliadas-por-estado")

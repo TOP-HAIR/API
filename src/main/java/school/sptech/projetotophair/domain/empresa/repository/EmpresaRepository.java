@@ -7,9 +7,14 @@ import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
+
+    @Query("SELECT e FROM Empresa e JOIN e.usuarios u WHERE u.idUsuario = :idUsuario")
+    Optional<Empresa> findEmpresaByUsuarioId(@Param("idUsuario") Long idUsuario);
+
     List<Empresa> findByEnderecoEstado(String estado);
 
     @Query("SELECT e FROM Empresa e " +

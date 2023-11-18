@@ -13,17 +13,17 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEndereco;
-    @Size(min = 3, max = 50)
+
     private String logradouro;
 
     private Integer numero;
-    @Size(min = 3, max = 30)
+
     private String estado;
-    @Size(min = 3, max = 30)
+
     private String complemento;
-    @Size(min = 3, max = 30)
+
     private String cidade;
-    @Size(min = 9, max = 9)
+
     private String cep;
 
     public Endereco(Long idEndereco, String logradouro, Integer numero, String estado, String complemento, String cidade, String cep) {

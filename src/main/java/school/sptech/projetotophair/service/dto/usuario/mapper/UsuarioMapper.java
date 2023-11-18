@@ -2,6 +2,7 @@ package school.sptech.projetotophair.service.dto.usuario.mapper;
 
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
@@ -29,6 +30,7 @@ public class UsuarioMapper {
         usuario.setNomeCompleto(usuarioCriacaoDto.getNomeCompleto());
         usuario.setSenha(usuarioCriacaoDto.getSenha());
         usuario.setProfissional(usuarioCriacaoDto.getProfissional());
+        usuario.setEmpresa(usuarioCriacaoDto.getEmpresa());
 
         return usuario;
     }

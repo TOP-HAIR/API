@@ -19,16 +19,18 @@ public class Empresa {
 
     private String razaoSocial;
 
-    @CNPJ
     private String cnpj;
 
+    @Nullable
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
     private Endereco endereco;
 
+    @Nullable
     @OneToMany(mappedBy = "empresa")
     List<Usuario> usuarios;
 
+    @Nullable
     @OneToMany(mappedBy = "empresa")
     List<Avaliacao> avaliacoes;
 

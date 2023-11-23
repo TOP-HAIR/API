@@ -11,6 +11,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.api.configuration.security.jwt.GerenciadorTokenJwt;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.domain.endereco.Endereco;
+import school.sptech.projetotophair.domain.endereco.repository.EnderecoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
@@ -19,6 +23,7 @@ import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -30,6 +35,12 @@ public class UsuarioService {
     private GerenciadorTokenJwt gerenciadorTokenJwt;
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
 
     public void criar(UsuarioCriacaoDto usuarioCriacaoDto) {
         if (usuarioRepository.existsByEmail(usuarioCriacaoDto.getEmail())) {
@@ -85,6 +96,26 @@ public class UsuarioService {
         usuarioExistente.setTelefone(novoUsuario.getTelefone());
 
         return usuarioRepository.save(usuarioExistente);
+    }
+
+    public Usuario vincularFkEmpresa(Long idEmpresa, Long idUsuario){
+        if (empresaRepository.existsById(idEmpresa) && usuarioRepository.existsById(idUsuario)) {
+            Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+            Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+            usuarioById.get().setEmpresa(empresaById.get());
+            return usuarioRepository.save(usuarioById.get());
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa ou usuário não encontrados");
+    }
+
+    public Usuario vincularEndereco(Long idEndereco, Long idUsuario){
+        if (enderecoRepository.existsById(idEndereco) && usuarioRepository.existsById(idUsuario)) {
+            Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+            Optional<Endereco> enderecoById = enderecoRepository.findById(idEndereco);
+            usuarioById.get().setEndereco(enderecoById.get());
+            return usuarioRepository.save(usuarioById.get());
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço ou usuário não encontrados");
     }
 
     public void deletarUsuario(Long id) {

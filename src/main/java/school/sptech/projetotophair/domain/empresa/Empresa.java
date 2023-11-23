@@ -19,6 +19,7 @@ public class Empresa {
 
     private String razaoSocial;
 
+    @CNPJ
     private String cnpj;
 
     @OneToOne
@@ -28,7 +29,6 @@ public class Empresa {
     @OneToMany(mappedBy = "empresa")
     List<Usuario> usuarios;
 
-    @Nullable
     @OneToMany(mappedBy = "empresa")
     List<Avaliacao> avaliacoes;
 

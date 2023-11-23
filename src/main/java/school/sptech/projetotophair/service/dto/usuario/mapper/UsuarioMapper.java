@@ -1,10 +1,14 @@
 package school.sptech.projetotophair.service.dto.usuario.mapper;
 
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
+import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
 
 public class UsuarioMapper {
@@ -54,6 +58,35 @@ public class UsuarioMapper {
         dto.setEmail(entity.getEmail());
         dto.setCpf(entity.getCpf());
         dto.setTelefone(entity.getTelefone());
+
+        return dto;
+    }
+
+    public static UsuarioEmpresaVinculadaDto toUsuarioEmpresaVinculadaDto(Usuario usuarioEntity, Empresa empresaEntity){
+        UsuarioEmpresaVinculadaDto dto = new UsuarioEmpresaVinculadaDto();
+
+        dto.setIdUsuario(usuarioEntity.getIdUsuario());
+        dto.setEmail(usuarioEntity.getEmail());
+        dto.setNomeCompleto(usuarioEntity.getNomeCompleto());
+        dto.setCpf(usuarioEntity.getCpf());
+        dto.setIsProfissional(usuarioEntity.getProfissional());
+        dto.setTelefone(usuarioEntity.getTelefone());
+        dto.setEmpresa(EmpresaMapper.toEmpresaDto(empresaEntity));
+        dto.setEndereco(usuarioEntity.getEndereco());
+
+        return dto;
+    }
+
+    public static UsuarioEnderecoVinculadoDto toUsuarioEnderecoVinculadoDto(Usuario usuarioEntity, Endereco enderecoEntity){
+        UsuarioEnderecoVinculadoDto dto = new UsuarioEnderecoVinculadoDto();
+
+        dto.setIdUsuario(usuarioEntity.getIdUsuario());
+        dto.setEmail(usuarioEntity.getEmail());
+        dto.setNomeCompleto(usuarioEntity.getNomeCompleto());
+        dto.setCpf(usuarioEntity.getCpf());
+        dto.setTelefone(usuarioEntity.getTelefone());
+        dto.setIsProfissional(usuarioEntity.getProfissional());
+        dto.setEndereco(enderecoEntity);
 
         return dto;
     }

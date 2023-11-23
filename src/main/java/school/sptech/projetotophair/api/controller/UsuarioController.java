@@ -5,12 +5,16 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.UsuarioService;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
+import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 @RestController
@@ -56,6 +60,22 @@ public class UsuarioController {
     public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario novoUsuario) {
         Usuario usuarioAtualizado = usuarioService.atualizarUsuario(id, novoUsuario);
         return ResponseEntity.ok(usuarioAtualizado);
+    }
+
+    @PutMapping("/vincular-empresa/{idUsuario}/{idEmpresa}")
+    public ResponseEntity<UsuarioEmpresaVinculadaDto> vincularEmpresa(@PathVariable Long idUsuario, @PathVariable Long idEmpresa){
+        Usuario usuario = usuarioService.vincularFkEmpresa(idEmpresa, idUsuario);
+        Empresa empresa = usuario.getEmpresa();
+        UsuarioEmpresaVinculadaDto usuarioEmpresaVinculadaDto = UsuarioMapper.toUsuarioEmpresaVinculadaDto(usuario, empresa);
+        return ResponseEntity.ok(usuarioEmpresaVinculadaDto);
+    }
+
+    @PutMapping("/vincular-endereco/{idEndereco}/{idEmpresa}")
+    public ResponseEntity<UsuarioEnderecoVinculadoDto> vincularEndereco(@PathVariable Long idUsuario, @PathVariable Long idEndereco){
+        Usuario usuario = usuarioService.vincularEndereco(idEndereco, idUsuario);
+        Endereco endereco = usuario.getEndereco();
+        UsuarioEnderecoVinculadoDto usuarioEnderecoVinculadoDto = UsuarioMapper.toUsuarioEnderecoVinculadoDto(usuario, endereco);
+        return ResponseEntity.ok(usuarioEnderecoVinculadoDto);
     }
 
     @DeleteMapping("/{id}")

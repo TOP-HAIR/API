@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.endereco.Endereco;
+import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,9 @@ public class EmpresaService {
 
     @Autowired
     private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public Empresa cadastrarEmpresa(Empresa empresa) {
         if (empresa == null) {
@@ -44,20 +48,26 @@ public class EmpresaService {
     public List<Empresa> listarEmpresasTop5AvaliacoesPorEstado(String estado) {
         List<Empresa> empresas = empresaRepository.findTop5EmpresasMelhorAvaliadasPorEstado(estado);
         if (empresas.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
         }
         return empresas;
     }
 
     public Optional<Empresa> findEmpresaByUsuarioId(Long idUsuario) {
-        return empresaRepository.findEmpresaByUsuarioId(idUsuario);
+        if (usuarioRepository.existsById(idUsuario)) {
+            Optional<Empresa> empresaByUsuarioId = empresaRepository.findEmpresaByUsuarioId(idUsuario);
+            if (empresaByUsuarioId.isPresent()) {
+                return empresaByUsuarioId;
+            }
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Este usuário não tem uma empresa");
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado");
     }
 
     public Optional<Empresa> atualizarEmpresa(Long id, Empresa empresa) {
         if (!empresaRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada com o ID: " + id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
         }
-
         empresa.setIdEmpresa(id);
         Empresa empresaAtualizada = empresaRepository.save(empresa);
         return Optional.of(empresaAtualizada);

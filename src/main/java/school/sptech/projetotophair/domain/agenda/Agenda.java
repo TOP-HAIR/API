@@ -4,11 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
 import school.sptech.projetotophair.domain.servico.Servico;
+import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Agenda {
@@ -24,6 +27,10 @@ public class Agenda {
     @NotBlank
     private String status;
 
+    @OneToMany(mappedBy = "agenda")
+    List<Usuario> usuarios;
+
+
     public Agenda(Long idAgenda, LocalDate data, String hora, String status) {
         this.idAgenda = idAgenda;
         this.data = data;
@@ -32,6 +39,14 @@ public class Agenda {
     }
 
     public Agenda() {
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public Long getIdAgenda() {

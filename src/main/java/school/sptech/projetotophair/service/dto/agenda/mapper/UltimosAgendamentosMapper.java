@@ -6,21 +6,21 @@ import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 
 public class UltimosAgendamentosMapper {
 
-    public static UltimosAgendamentosDto toDto(Usuario usuario) {
-
-        if (usuario == null) {
+    public static UltimosAgendamentosDto toDto(Agenda agenda) {
+        if (agenda == null || agenda.getUsuarios() == null || agenda.getUsuarios().isEmpty()) {
             return null;
         }
 
-        UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
-        dto.setNomeCompleto(usuario.getNomeCompleto());
+        // Assuming you want the first user in the list
+        // You might want to adjust this based on your specific logic
+        Usuario primeiroUsuario = agenda.getUsuarios().get(0);
 
-        if (usuario.getServico().getAgenda() != null) {
-            Agenda agenda = usuario.getServico().getAgenda();
-            dto.setHora(agenda.getHora());
-            dto.setData(agenda.getData());
-            dto.setStatus(agenda.getStatus());
-        }
+        UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
+        dto.setNomeCompleto(primeiroUsuario.getNomeCompleto());
+        dto.setData(agenda.getData());
+        dto.setHora(agenda.getHora());
+        dto.setStatus(agenda.getStatus());
+
         return dto;
     }
 }

@@ -20,7 +20,6 @@ public class Usuario {
     private Long idUsuario;
 
     @Nullable
-    @CPF
     private String cpf;
     private String nomeCompleto;
 
@@ -40,6 +39,7 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    @NotNull
     private Empresa empresa;
 
 

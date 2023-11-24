@@ -11,8 +11,10 @@ import school.sptech.projetotophair.service.AgendaService;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.UltimosAgendamentosMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/agendas")
@@ -58,20 +60,25 @@ public class AgendaController {
 //        return ResponseEntity.ok(dto);
 //    }
 
-    @GetMapping("/ultimos-agendamentos/{id}")
-    public ResponseEntity<PilhaObj<Agenda>> ultimosAgendamentos(@PathVariable Long id){
-        Optional<Usuario> all = u.findById(id);
+    @GetMapping("/ultimos-agendamentos")
+    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos() {
+        // Assuming you have a service instance called agendaService
+        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
 
-        if (all.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        // Convert Agenda objects to UltimosAgendamentosDto objects using the mapper
+        List<UltimosAgendamentosDto> dtos = new ArrayList<>();
+        while (!ultimosAgendamentos.isEmpty()) {
+            Agenda agenda = ultimosAgendamentos.pop();
+            UltimosAgendamentosDto dto = UltimosAgendamentosMapper.toDto(agenda);
+            dtos.add(dto);
         }
 
-        // Obtendo os últimos agendamentos da pilha
-        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
-        UltimosAgendamentosDto dto = UltimosAgendamentosMapper.toDto(all.get());
-
-        return ResponseEntity.ok(ultimosAgendamentos);
+        return ResponseEntity.ok(dtos);
     }
+
+
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarAgenda(@PathVariable Long id) {

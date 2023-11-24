@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
+import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,16 +62,22 @@ public class AgendaService {
 
         // Popula a pilha com os últimos agendamentos do banco de dados
         List<Agenda> todosAgendamentos = agendaRepository.findAll();
-        for (Agenda agendamento : todosAgendamentos) {
-            ultimosAgendamentosPilha.push(agendamento);
+
+        // Sort the agendas by date in descending order
+        todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());
+
+        // Add the last 10 agendas to the stack
+        for (int i = 0; i < Math.min(quantidadeDesejada, todosAgendamentos.size()); i++) {
+            ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
         }
 
-        // Inverte a ordem dos agendamentos na pilha
-        inverterOrdemPilha(ultimosAgendamentosPilha);
+        // Retorna a pilha invertida (if needed)
+        // inverterOrdemPilha(ultimosAgendamentosPilha);
 
-        // Retorna a pilha invertida
         return ultimosAgendamentosPilha;
     }
+
+
 
     // Método para inverter a ordem dos elementos na pilha
     private <T> void inverterOrdemPilha(PilhaObj<T> pilha) {

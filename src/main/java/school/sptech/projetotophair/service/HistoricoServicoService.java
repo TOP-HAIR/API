@@ -1,14 +1,13 @@
 package school.sptech.projetotophair.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
 import school.sptech.projetotophair.domain.historicoservico.repository.HistoricoServicoRepository;
 
 import java.util.Optional;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class HistoricoServicoService {

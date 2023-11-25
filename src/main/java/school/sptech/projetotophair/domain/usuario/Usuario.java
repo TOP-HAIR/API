@@ -39,7 +39,6 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
-    @NotNull
     private Empresa empresa;
 
 

@@ -70,7 +70,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioEmpresaVinculadaDto);
     }
 
-    @PutMapping("/vincular-endereco/{idEndereco}/{idEmpresa}")
+    @PutMapping("/vincular-endereco/{idEndereco}/{idUsuario}")
     public ResponseEntity<UsuarioEnderecoVinculadoDto> vincularEndereco(@PathVariable Long idUsuario, @PathVariable Long idEndereco){
         Usuario usuario = usuarioService.vincularEndereco(idEndereco, idUsuario);
         Endereco endereco = usuario.getEndereco();

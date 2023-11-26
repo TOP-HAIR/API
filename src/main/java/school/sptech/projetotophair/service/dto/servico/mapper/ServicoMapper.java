@@ -7,6 +7,7 @@ public class ServicoMapper {
     public static ServicoDto toServicoDto(Servico entity){
         ServicoDto dto = new ServicoDto();
 
+        dto.setIdServico(entity.getIdServico());
         dto.setNomeServico(entity.getNomeServico());
         dto.setPreco(entity.getPreco());
         dto.setQtdTempoServico(entity.getQtdTempoServico());

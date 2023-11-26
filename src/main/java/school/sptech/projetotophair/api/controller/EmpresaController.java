@@ -1,5 +1,6 @@
 package school.sptech.projetotophair.api.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +8,7 @@ import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.service.EmpresaService;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaEnderecoVinculadoDto;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import java.util.ArrayList;
@@ -21,9 +23,17 @@ public class EmpresaController {
     private EmpresaService empresaService;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Empresa> cadastrar(@RequestBody Empresa empresa) {
+    public ResponseEntity<Empresa> cadastrar(@RequestBody @Valid Empresa empresa) {
         Empresa empresaCadastrada = empresaService.cadastrarEmpresa(empresa);
         return ResponseEntity.status(201).body(empresaCadastrada);
+    }
+
+    @PutMapping("/vincular-endereco/{idEmpresa}/{idEndereco}")
+    public ResponseEntity<EmpresaEnderecoVinculadoDto> vincularEndereco(@PathVariable Long idEmpresa, @PathVariable Long idEndereco){
+        Empresa empresa = empresaService.vincularEndereco(idEmpresa, idEndereco);
+
+        EmpresaEnderecoVinculadoDto empresaEnderecoVinculadoDto = EmpresaMapper.toEmpresaEnderecoVinculadoDto(empresa);
+        return ResponseEntity.ok(empresaEnderecoVinculadoDto);
     }
 
     @GetMapping("/{id}")
@@ -71,7 +81,7 @@ public class EmpresaController {
     @PutMapping("/{id}")
     public ResponseEntity<Empresa> atualizar(
             @PathVariable Long id,
-            @RequestBody Empresa empresa
+            @RequestBody @Valid Empresa empresa
     ) {
         Optional<Empresa> empresaAtualizada = empresaService.atualizarEmpresa(id, empresa);
             return ResponseEntity.status(200).body(empresaAtualizada.get());

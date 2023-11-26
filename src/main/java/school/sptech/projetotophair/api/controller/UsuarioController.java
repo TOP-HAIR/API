@@ -11,6 +11,8 @@ import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.UsuarioService;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
+import school.sptech.projetotophair.service.dto.endereco.EnderecoDto;
+import school.sptech.projetotophair.service.dto.endereco.mapper.EnderecoMapper;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
@@ -54,6 +56,13 @@ public class UsuarioController {
         }
         UsuarioAvaliacaoResponseDto usuarioAvaliacaoResponseDto = UsuarioMapper.toUsuarioAvaliacaoResponseDto(usuario);
         return ResponseEntity.ok(usuarioAvaliacaoResponseDto);
+    }
+
+    @GetMapping("/endereco/{idUsuario}")
+    public ResponseEntity<EnderecoDto> buscarEnderecoPorIdusuario(@PathVariable Long idUsuario){
+        Endereco enderecoByUsuarioId = usuarioService.findEnderecoByUsuarioId(idUsuario);
+        EnderecoDto enderecoDto = EnderecoMapper.toEnderecoDto(enderecoByUsuarioId);
+        return ResponseEntity.ok(enderecoDto);
     }
 
     @PutMapping("/{id}")

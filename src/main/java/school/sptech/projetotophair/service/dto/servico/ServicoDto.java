@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ServicoDto {
+    private Long idServico;
     private String nomeServico;
     private String descricao;
     private Double preco;

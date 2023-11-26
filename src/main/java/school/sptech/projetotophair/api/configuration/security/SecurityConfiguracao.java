@@ -54,7 +54,8 @@ public class SecurityConfiguracao {
             new AntPathRequestMatcher("/usuarios/vincular-empresa/**"),
             new AntPathRequestMatcher("/usuarios/vincular-endereco/**"),
             new AntPathRequestMatcher("/empresas/cadastrar/**"),
-            new AntPathRequestMatcher("/enderecos/cadastrar/**"),
+            new AntPathRequestMatcher("/empresas/vincular-endereco/**"),
+            new AntPathRequestMatcher("/empresas/vincular/**"),
             new AntPathRequestMatcher("/h2-console/**"),
             new AntPathRequestMatcher("/error/**")
     };

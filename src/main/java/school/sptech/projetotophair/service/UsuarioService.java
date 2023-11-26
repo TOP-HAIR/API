@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.api.configuration.security.jwt.GerenciadorTokenJwt;
 import school.sptech.projetotophair.domain.empresa.Empresa;
@@ -116,6 +117,15 @@ public class UsuarioService {
             return usuarioRepository.save(usuarioById.get());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço ou usuário não encontrados");
+    }
+
+    public Endereco findEnderecoByUsuarioId(Long idUsuario){
+        Optional<Endereco> enderecoByUsuarioId = usuarioRepository.findEnderecoByUsuarioId(idUsuario);
+
+        if (enderecoByUsuarioId.isPresent()) {
+            return enderecoByUsuarioId.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço não cadastrado ou usuário não encontrado");
     }
 
     public void deletarUsuario(Long id) {

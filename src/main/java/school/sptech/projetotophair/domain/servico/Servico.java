@@ -18,6 +18,10 @@ public class Servico {
     @Size(min = 4, max = 40)
     @NotBlank
     private String nomeServico;
+
+    @NotBlank
+    private String categoria;
+
     @Size(min = 5, max = 250)
     @NotNull
     private String descricao;
@@ -33,9 +37,10 @@ public class Servico {
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
 
-    public Servico(Long idServico, String nomeServico, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+    public Servico(Long idServico, String nomeServico, String categoria, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
         this.idServico = idServico;
         this.nomeServico = nomeServico;
+        this.categoria = categoria;
         this.descricao = descricao;
         this.preco = preco;
         this.qtdTempoServico = qtdTempoServico;
@@ -47,14 +52,6 @@ public class Servico {
 
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
     public Long getIdServico() {
         return idServico;
     }
@@ -63,20 +60,20 @@ public class Servico {
         this.idServico = idServico;
     }
 
-    public Agenda getAgenda() {
-        return agenda;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
-    }
-
     public String getNomeServico() {
         return nomeServico;
     }
 
     public void setNomeServico(String nomeServico) {
         this.nomeServico = nomeServico;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getDescricao() {
@@ -101,5 +98,21 @@ public class Servico {
 
     public void setQtdTempoServico(String qtdTempoServico) {
         this.qtdTempoServico = qtdTempoServico;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }

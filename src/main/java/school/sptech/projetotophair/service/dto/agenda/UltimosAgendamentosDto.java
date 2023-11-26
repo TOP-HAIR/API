@@ -3,6 +3,7 @@ package school.sptech.projetotophair.service.dto.agenda;
 import java.time.LocalDate;
 
 public class UltimosAgendamentosDto {
+    private Long id;
     private String nomeCompleto;
     private LocalDate data;
     private String hora;
@@ -17,6 +18,14 @@ public class UltimosAgendamentosDto {
 
     public UltimosAgendamentosDto() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNomeCompleto() {

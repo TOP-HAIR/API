@@ -6,7 +6,8 @@
         ('Avenida Y', 890, 'Bahia', 'Casa 3', 'Salvador', '67890-123'),
         ('Rua Z', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
         ('Rua Quinze de novembro', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
-        ('Rua Azevedo', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234');
+        ('Rua Azevedo', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
+        ('Av. Nove de Julho', 3186, 'São Paulo', 'Prédio', 'São Paulo', '98901-234');
 
 
 -- Dados fictícios para a tabela Empresa (adicionando mais algumas empresas)
@@ -16,7 +17,8 @@ VALUES
     ('Empresa L', '21098765432102', 2),
     ('Empresa M', '32109876543203', 3),
     ('Empresa N', '43210987654304', 4),
-    ('Empresa O', '54321098765405', 5);
+    ('Empresa O', '54321098765405', 5),
+    ('C6 Bank', '11321098765405', 6);
 
 -- Dados fictícios para a tabela Agenda (adicionando mais alguns agendamentos)
 INSERT INTO Agenda (data, hora, status)
@@ -26,6 +28,23 @@ VALUES
     ('2023-11-07', '16:45:00', 'Reagendado'),
     ('2023-11-08', '11:15:00', 'Agendado'),
     ('2023-11-09', '10:00:00', 'Agendado');
+
+INSERT INTO Agenda (data, hora, status)
+VALUES
+    ('2023-11-10', '08:00:00', 'Agendado'),
+    ('2023-11-11', '13:30:00', 'Agendado'),
+    ('2023-11-12', '15:45:00', 'Reagendado'),
+    ('2023-11-13', '10:30:00', 'Agendado'),
+    ('2023-11-14', '12:00:00', 'Agendado'),
+    ('2023-11-15', '14:15:00', 'Reagendado'),
+    ('2023-11-16', '09:45:00', 'Agendado'),
+    ('2023-11-17', '16:30:00', 'Agendado'),
+    ('2023-11-18', '11:00:00', 'Reagendado'),
+    ('2023-11-19', '13:15:00', 'Agendado'),
+    ('2023-11-20', '15:00:00', 'Agendado'),
+    ('2023-11-21', '10:45:00', 'Reagendado'),
+    ('2023-11-22', '12:30:00', 'Agendado');
+
 
 -- Dados fictícios para a tabela Servico (adicionando mais alguns serviços)
 INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
@@ -56,3 +75,44 @@ VALUES
 
 -- Atualizando o serviço do usuário com ID 1 para o novo serviço adicionado
 UPDATE Usuario SET fk_Servico = 1 WHERE id_Usuario = 1;
+
+
+-- Inserir 2 serviços
+INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
+VALUES
+    ('Pezinho', 'Descrição do Serviço A', 70.00, '01:30:00', 6, 5),
+    ('Barba', 'Descrição do Serviço B', 80.00, '02:00:00', 7, 5);
+
+    -- Inserir 9 serviços adicionais
+    INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
+    VALUES
+        ('Restauração', 'Restaura a raiz do cabelo', 55.00, '01:10:00', 8, 6),
+        ('Botox', 'Relaxamento de cabelo', 65.00, '01:25:00', 9, 6),
+        ('Luzes', 'Tingir o cabelo com tinta a sua escolha', 75.00, '01:40:00', 10, 5),
+        ('Escova', 'Escovamento de cabelo', 85.00, '01:55:00', 11, 6),
+        ('Sobracelha', 'Limpeza facial na região dos olhos', 95.00, '02:10:00', 12, 6),
+        ('Progressiva', 'Alisamento de cabelo', 105.00, '02:25:00', 13, 6),
+        ('Lavagem', 'Lavagem com produtos profissionais', 115.00, '02:40:00', 14, 6),
+        ('Aplique', 'Adição e disfarce de cabelos', 125.00, '02:55:00', 15, 6),
+        ('Trança', 'Penteado de cabelos curtos e longos com trança', 135.00, '03:10:00', 16, 6);
+
+-- Inserir 2 funcionários
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('11122233303', 'Leo Jacinto', 'lJacinto@gmail.com', 'senha123', '(55) 5555-1113', false, null, null, null, null),
+    ('11122233304', 'Julia Da Viste', 'juVista@gmail.com', 'senha123', '(55) 5555-1114', false, null, null, null, null);
+
+
+
+-- Inserir 9 funcionários adicionais
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('44122233303', 'Gabriel Bebel', 'bebel@gamil.com', 'senha123', '(55) 5555-1113', true, 8, 6, 6, null),
+    ('33122233304', 'Wesley Carvalho', 'wsCarvalho@gmail.com', 'senha123', '(55) 5555-1114', true, 9, 7, 6, null),
+    ('22122233305', 'Claudinete da Rosa', 'clauRosa@gmail.com', 'senha123', '(55) 5555-1115', true, 10, 8, 6, null),
+    ('11122233306', 'João Vitor', 'joVitor@gmail.com', 'senha123', '(55) 5555-1116', true, 11, 9, 6, null),
+    ('00122233307', 'Andrew Silva', 'aSival@gmail.com', 'senha123', '(55) 5555-1117', true, 12, 10, 6, null),
+    ('77122233308', 'Anderson Souza', 'anSouza@gamil.com', 'senha123', '(55) 5555-1118', true, 13, 11, 6, null),
+    ('88122233309', 'Cleitim do Santos', 'cleiSantos@gmail.com', 'senha123', '(55) 5555-1119', true, 14, 12, 6, null),
+    ('99122233310', 'Flavim de Queira', 'fQueira@gmail.com', 'senha123', '(55) 5555-1120', true, 15, 13, 6, null),
+    ('55122233311', 'Fabinho Melo', 'fMelo@gmail.com', 'senha123', '(55) 5555-1121', true, 16, 14, 6, null);

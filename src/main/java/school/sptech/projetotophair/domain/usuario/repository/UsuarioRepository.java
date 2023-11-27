@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -18,4 +19,7 @@ public interface UsuarioRepository  extends JpaRepository<Usuario, Long> {
 
     @Query("SELECT u.endereco FROM Usuario u WHERE u.idUsuario = :usuarioId")
     Optional<Endereco> findEnderecoByUsuarioId(Long usuarioId);
+
+    @Query("SELECT u FROM Usuario u WHERE u.empresa.idEmpresa = :idEmpresa")
+    List<Usuario> findAllByEmpresaId(@Param("idEmpresa") Long idEmpresa);
 }

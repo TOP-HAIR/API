@@ -37,10 +37,11 @@ public class ServicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Servico>> listar(@PathVariable Long id) {
+    public ResponseEntity<ServicoDto> listar(@PathVariable Long id) {
         Optional<Servico> servico = servicoService.buscarServicoPorId(id);
         if (servico.isPresent()) {
-            return ResponseEntity.ok(servico);
+            ServicoDto servicoDto = ServicoMapper.toServicoDto(servico.get());
+            return ResponseEntity.ok(servicoDto);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -61,9 +62,9 @@ public class ServicoController {
             return ResponseEntity.status(200).body(servicoAtualizado.get());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarEmpresa(@PathVariable Long id) {
-        servicoService.deletarServico(id);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/{idServico}")
+    public ResponseEntity<Void> deletarServico(@PathVariable Long idServico) {
+        servicoService.deletarServico(idServico);
+        return ResponseEntity.ok().build();
     }
 }

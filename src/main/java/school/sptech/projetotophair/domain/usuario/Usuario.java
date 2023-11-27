@@ -4,6 +4,10 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.br.CPF;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
@@ -31,6 +35,7 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "fkServico", referencedColumnName = "idServico")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Servico servico;
 
     @ManyToOne

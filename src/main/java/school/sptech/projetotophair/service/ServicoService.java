@@ -3,6 +3,7 @@ package school.sptech.projetotophair.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
@@ -24,7 +25,7 @@ public class ServicoService {
         }
     }
 
-    public List<Servico> buscarServicosPorEmpresaId(Long id){
+    public List<Servico> buscarServicosPorEmpresaId(Long id) {
         List<Servico> servicosByEmpresaId = servicoRepository.findServicosByEmpresaId(id);
 
         if (servicosByEmpresaId.isEmpty()) {
@@ -69,11 +70,7 @@ public class ServicoService {
         }
     }
 
-    public void deletarServico(Long id) {
-        try {
-            servicoRepository.deleteById(id);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao deletar o serviço", e);
-        }
+    public void deletarServico(Long idServico) {
+        servicoRepository.deleteById(idServico);
     }
 }

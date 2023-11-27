@@ -16,8 +16,12 @@ import school.sptech.projetotophair.service.dto.endereco.mapper.EnderecoMapper;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -40,20 +44,28 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> buscarPorid(@Valid @PathVariable Long id){
+    public ResponseEntity<UsuarioResponseDto> buscarPorid(@PathVariable Long id){
         Usuario usuario = this.usuarioService.buscarPorId(id);
-        if (usuario == null) {
-            return ResponseEntity.notFound().build();
+        UsuarioResponseDto usuarioResponseDto = UsuarioMapper.toUsuarioResponseDto(usuario);
+        return ResponseEntity.ok(usuarioResponseDto);
+    }
+
+    @GetMapping("/empresa/{idEmpresa}")
+    public ResponseEntity<List<UsuarioResponseDto>> buscarUsuariosPorIdEmpresa(@PathVariable Long idEmpresa){
+        List<Usuario> usuarios = usuarioService.buscarUsuariosPorIdEmpresa(idEmpresa);
+        if (!usuarios.isEmpty()) {
+            List<UsuarioResponseDto> dtos = new ArrayList<>();
+            for (Usuario usuarioDaVez: usuarios) {
+                dtos.add(UsuarioMapper.toUsuarioResponseDto(usuarioDaVez));
+            }
+            return ResponseEntity.ok(dtos);
         }
-        return ResponseEntity.ok().body(usuario);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/avaliacao/{id}")
     public ResponseEntity<UsuarioAvaliacaoResponseDto> buscarPorIdAvaliacao(@PathVariable Long id){
         Usuario usuario = usuarioService.buscarPorIdAvaliacao(id);
-        if (usuario == null) {
-            return ResponseEntity.notFound().build();
-        }
         UsuarioAvaliacaoResponseDto usuarioAvaliacaoResponseDto = UsuarioMapper.toUsuarioAvaliacaoResponseDto(usuario);
         return ResponseEntity.ok(usuarioAvaliacaoResponseDto);
     }

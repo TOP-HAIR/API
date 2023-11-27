@@ -9,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.api.configuration.security.jwt.GerenciadorTokenJwt;
 import school.sptech.projetotophair.domain.empresa.Empresa;
@@ -23,6 +22,7 @@ import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -117,6 +117,14 @@ public class UsuarioService {
             return usuarioRepository.save(usuarioById.get());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço ou usuário não encontrados");
+    }
+
+    public List<Usuario> buscarUsuariosPorIdEmpresa(Long idEmpresa){
+        List<Usuario> allByEmpresaId = usuarioRepository.findAllByEmpresaId(idEmpresa);
+        if (empresaRepository.existsById(idEmpresa)) {
+            return allByEmpresaId;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
     }
 
     public Endereco findEnderecoByUsuarioId(Long idUsuario){

@@ -5,8 +5,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.usuario.Usuario;
+
 import java.util.List;
 
 
@@ -19,9 +25,6 @@ public class Servico {
     @NotBlank
     private String nomeServico;
 
-    @NotBlank
-    private String categoria;
-
     @Size(min = 5, max = 250)
     @NotNull
     private String descricao;
@@ -32,15 +35,20 @@ public class Servico {
     private String qtdTempoServico;
     @OneToOne
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Agenda agenda;
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Empresa empresa;
 
-    public Servico(Long idServico, String nomeServico, String categoria, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+    @OneToMany(mappedBy = "servico")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    private List<Usuario> usuarios;
+
+    public Servico(Long idServico, String nomeServico, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
         this.idServico = idServico;
         this.nomeServico = nomeServico;
-        this.categoria = categoria;
         this.descricao = descricao;
         this.preco = preco;
         this.qtdTempoServico = qtdTempoServico;
@@ -66,14 +74,6 @@ public class Servico {
 
     public void setNomeServico(String nomeServico) {
         this.nomeServico = nomeServico;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getDescricao() {
@@ -114,5 +114,13 @@ public class Servico {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

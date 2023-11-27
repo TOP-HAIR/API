@@ -35,7 +35,7 @@ public class AvaliacaoController {
     }
 
     @GetMapping("/empresa/{id}")
-    public ResponseEntity<List<AvaliacaoResponseDto>> buscarAvaliacoesPorEmpresaId(Long id){
+    public ResponseEntity<List<AvaliacaoResponseDto>> buscarAvaliacoesPorEmpresaId(@PathVariable Long id){
         List<Avaliacao> avaliacoesByEmpresaId = this.avaliacaoService.findAvaliacoesByEmpresaId(id);
 
         if (avaliacoesByEmpresaId.isEmpty()) {
@@ -49,7 +49,7 @@ public class AvaliacaoController {
     }
 
     @GetMapping("/usuario/{id}")
-    public ResponseEntity<List<AvaliacaoResponseDto>> buscarAvaliacoesPorUsuarioId(Long id){
+    public ResponseEntity<List<AvaliacaoResponseDto>> buscarAvaliacoesPorUsuarioId(@PathVariable Long id){
         List<Avaliacao> avaliacoesByEmpresaId = this.avaliacaoService.findAvaliacoesByUsuarioId(id);
 
         if (avaliacoesByEmpresaId.isEmpty()) {

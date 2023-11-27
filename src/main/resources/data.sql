@@ -116,3 +116,17 @@ VALUES
     ('88122233309', 'Cleitim do Santos', 'cleiSantos@gmail.com', 'senha123', '(55) 5555-1119', true, 14, 12, 6, null),
     ('99122233310', 'Flavim de Queira', 'fQueira@gmail.com', 'senha123', '(55) 5555-1120', true, 15, 13, 6, null),
     ('55122233311', 'Fabinho Melo', 'fMelo@gmail.com', 'senha123', '(55) 5555-1121', true, 16, 14, 6, null);
+
+
+-- Dados fictícios para a tabela Avaliacao (adicionando algumas avaliações)
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Excelente atendimento! Profissionais muito competentes.', 1, 1);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (3, 'Poderia melhorar no atendimento ao cliente.', 3, 3);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Adorei o serviço prestado. Voltarei com certeza!', 4, 4);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Ambiente agradável e profissionais dedicados.', 5, 5);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço de alta qualidade. Recomendo a todos.', 2, 2);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (2, 'Não gostei do serviço. Não atendeu às minhas expectativas.', 1, 6);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Atendimento impecável. Empresa altamente recomendada.', 2, 6);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 3, 5);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (3, 'Esperava mais. Não fiquei completamente satisfeito.', 4, 6);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço excelente! Superou minhas expectativas.', 5, 6);
+

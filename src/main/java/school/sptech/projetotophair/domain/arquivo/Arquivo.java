@@ -1,9 +1,8 @@
 package school.sptech.projetotophair.domain.arquivo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.empresa.Empresa;
 
 import java.time.LocalDate;
 
@@ -16,6 +15,10 @@ public class Arquivo {
     private String nomeArquivoOriginal;
     private String nomeArquivoSalvo;
     private LocalDate dataUpload;
+
+    @ManyToOne
+    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    private Empresa empresa;
 
     public Integer getId() {
         return id;

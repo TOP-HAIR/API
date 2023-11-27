@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.arquivo.Arquivo;
 import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
@@ -33,6 +34,11 @@ public class Empresa {
     @Nullable
     @OneToMany(mappedBy = "empresa")
     List<Avaliacao> avaliacoes;
+
+    @Nullable
+    @OneToMany(mappedBy = "empresa")
+    List<Arquivo> arquivos;
+
 
     public Empresa(Long idEmpresa, String razaoSocial, String cnpj, Endereco endereco) {
         this.idEmpresa = idEmpresa;

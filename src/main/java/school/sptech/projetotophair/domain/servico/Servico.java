@@ -22,7 +22,6 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idServico;
     @Size(min = 4, max = 40)
-    @NotBlank
     private String nomeServico;
 
     @Size(min = 5, max = 250)
@@ -31,15 +30,14 @@ public class Servico {
     @NotNull
     private Double preco;
     @Pattern(regexp = "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$")
-    @NotBlank
     private String qtdTempoServico;
     @OneToOne
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Agenda agenda;
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Empresa empresa;
 
     @OneToMany(mappedBy = "servico")

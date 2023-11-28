@@ -3,8 +3,9 @@ package school.sptech.projetotophair.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 
@@ -17,47 +18,48 @@ public class ServicoService {
     @Autowired
     private ServicoRepository servicoRepository;
 
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
     public Servico cadastrarServico(Servico servico) {
-        try {
-            return servicoRepository.save(servico);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao cadastrar o serviço", e);
+        return servicoRepository.save(servico);
+    }
+
+    public Servico vincularEmpresa(Long idServico, Long idEmpresa){
+        Optional<Servico> servicoById = servicoRepository.findById(idServico);
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+        if (empresaById.isPresent() && servicoById.isPresent()) {
+            servicoById.get().setEmpresa(empresaById.get());
+            return servicoRepository.save(servicoById.get());
         }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa ou serviço não encontrados");
     }
 
     public List<Servico> buscarServicosPorEmpresaId(Long id) {
         List<Servico> servicosByEmpresaId = servicoRepository.findServicosByEmpresaId(id);
-
         if (servicosByEmpresaId.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviços não encontrados para essa empresa");
         }
-
         return servicosByEmpresaId;
     }
 
     public Optional<Servico> buscarServicoPorId(Long id) {
-        try {
             Optional<Servico> servico = servicoRepository.findById(id);
             if (servico.isPresent()) {
                 return servico;
-            } else {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado");
             }
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao buscar o serviço por ID", e);
-        }
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado");
     }
 
     public List<Servico> listarTodosServicos() {
-        try {
-            return servicoRepository.findAll();
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao listar todos os serviços", e);
+        List<Servico> all = servicoRepository.findAll();
+        if (all.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Não há serviços");
         }
+        return all;
     }
 
     public Optional<Servico> atualizarServico(Long id, Servico servico) {
-        try {
             Optional<Servico> servicoExistente = servicoRepository.findById(id);
             if (servicoExistente.isPresent()) {
                 servico.setIdServico(id);
@@ -65,12 +67,13 @@ public class ServicoService {
             } else {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado");
             }
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao atualizar o serviço", e);
         }
-    }
 
     public void deletarServico(Long idServico) {
+        Optional<Servico> byId = servicoRepository.findById(idServico);
+        if (byId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado");
+        }
         servicoRepository.deleteById(idServico);
     }
 }

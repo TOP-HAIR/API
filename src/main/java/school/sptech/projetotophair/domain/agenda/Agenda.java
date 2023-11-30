@@ -1,9 +1,12 @@
 package school.sptech.projetotophair.domain.agenda;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
@@ -19,34 +22,25 @@ public class Agenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgenda;
     @FutureOrPresent
-    @NotBlank
+    @Nullable
     private LocalDate data;
-    @NotBlank
-    @Pattern(regexp = "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$")
+    @Nullable
     private String hora;
     @NotBlank
     private String status;
-
     @OneToMany(mappedBy = "agenda")
     List<Usuario> usuarios;
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    private Empresa empresa;
 
-
-    public Agenda(Long idAgenda, LocalDate data, String hora, String status) {
+    public Agenda(Long idAgenda, LocalDate data, String hora, String status, List<Usuario> usuarios, Empresa empresa) {
         this.idAgenda = idAgenda;
         this.data = data;
         this.hora = hora;
         this.status = status;
-    }
-
-    public Agenda() {
-    }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+        this.empresa = empresa;
     }
 
     public Long getIdAgenda() {
@@ -79,5 +73,21 @@ public class Agenda {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }

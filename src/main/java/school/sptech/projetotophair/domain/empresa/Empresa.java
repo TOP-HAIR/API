@@ -3,6 +3,8 @@ package school.sptech.projetotophair.domain.empresa;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.br.CNPJ;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.arquivo.Arquivo;
@@ -25,10 +27,12 @@ public class Empresa {
     @Nullable
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Endereco endereco;
 
     @Nullable
     @OneToMany(mappedBy = "empresa")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     List<Usuario> usuarios;
 
     @Nullable
@@ -37,6 +41,7 @@ public class Empresa {
 
     @Nullable
     @OneToMany(mappedBy = "empresa")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     List<Arquivo> arquivos;
 
 

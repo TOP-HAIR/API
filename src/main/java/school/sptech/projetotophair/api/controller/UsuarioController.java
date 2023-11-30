@@ -17,7 +17,7 @@ import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponse
 import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
-import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioEmpresaVinculadaDto;
+import school.sptech.projetotophair.service.dto.usuario.UsuarioEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 import java.util.ArrayList;

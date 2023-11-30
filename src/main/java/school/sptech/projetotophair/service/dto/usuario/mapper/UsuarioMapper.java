@@ -4,12 +4,9 @@ import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
+import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
+import school.sptech.projetotophair.service.dto.usuario.*;
 
 public class UsuarioMapper {
 
@@ -87,6 +84,21 @@ public class UsuarioMapper {
         dto.setTelefone(usuarioEntity.getTelefone());
         dto.setIsProfissional(usuarioEntity.getProfissional());
         dto.setEndereco(enderecoEntity);
+
+        return dto;
+    }
+
+    public static UsuarioAgendaResponseDto toUsuarioAgendaResponseDto(Usuario entity){
+        UsuarioAgendaResponseDto dto = new UsuarioAgendaResponseDto();
+
+        dto.setAgenda(AgendaMapper.toAgendaDto(entity.getAgenda()));
+        dto.setIdUsuario(entity.getIdUsuario());
+        dto.setEmail(entity.getEmail());
+        dto.setNomeCompleto(entity.getNomeCompleto());
+        dto.setSenha(entity.getSenha());
+        dto.setTelefone(entity.getTelefone());
+        dto.setCpf(entity.getCpf());
+        dto.setIsProfissional(entity.getProfissional());
 
         return dto;
     }

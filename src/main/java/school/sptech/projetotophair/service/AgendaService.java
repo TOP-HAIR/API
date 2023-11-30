@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -19,6 +22,12 @@ public class AgendaService {
 
     @Autowired
     private AgendaRepository agendaRepository;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public Agenda cadastrarAgenda(Agenda agenda) {
         if (agenda == null) {
@@ -34,6 +43,54 @@ public class AgendaService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda não encontrada com o ID: " + id);
         }
+    }
+
+    public List<Agenda> listarAgendasPorUsuario(Long idUsuario) {
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+        if (usuarioById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado");
+        }
+        List<Agenda> allByUsuariosIdUsuario = agendaRepository.findAllByUsuariosIdUsuario(idUsuario);
+        if (allByUsuariosIdUsuario.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Este usuario não tem agendamentos");
+        }
+        return allByUsuariosIdUsuario;
+    }
+
+    public List<Agenda> listarAgendasPorEmpresa(Long idEmpresa) {
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+        if (empresaById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
+        }
+        List<Agenda> allByEmpresaIdEmpresa = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
+        if (allByEmpresaIdEmpresa.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Esta empresa não tem agendamentos");
+        }
+        return allByEmpresaIdEmpresa;
+    }
+
+    public Agenda vincularEmpresa(Long idAgenda, Long idEmpresa){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+
+        if (agendaById.isPresent() && empresaById.isPresent()) {
+            agendaById.get().setEmpresa(empresaById.get());
+            return agendaRepository.save(agendaById.get());
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou empresa não encontradas");
+    }
+
+    public Usuario vincularUsuario(Long idAgenda, Long idUsuario){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+
+        if (agendaById.isPresent() && usuarioById.isPresent()) {
+            usuarioById.get().setAgenda(agendaById.get());
+            return usuarioRepository.save(usuarioById.get());
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou usuario não encontrados");
     }
 
     public Optional<Agenda> atualizarAgenda(Long id, Agenda agenda) {

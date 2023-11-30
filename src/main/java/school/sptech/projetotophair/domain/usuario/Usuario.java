@@ -40,15 +40,17 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "fkAgenda", referencedColumnName = "idAgenda")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Agenda agenda;
 
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Empresa empresa;
-
 
     @OneToOne
     @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Endereco endereco;
 
 

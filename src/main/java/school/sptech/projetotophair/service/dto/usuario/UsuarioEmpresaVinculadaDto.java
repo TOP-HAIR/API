@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.service.dto.usuario.mapper;
+package school.sptech.projetotophair.service.dto.usuario;
 
 
 import lombok.Data;

@@ -42,7 +42,7 @@ public class ArquivoCsv {
                 Servico p = lista.getElemento(i);
 
                 // Converte LocalDate para LocalDateTime com horário 00:00
-                LocalDate dataLocalDate = p.getAgenda().getData();
+                LocalDate dataLocalDate = p.getAgenda().getData().toLocalDate();
                 LocalDateTime dataLocalDateTime = dataLocalDate.atStartOfDay();
 
                 // Formatar a data

@@ -60,10 +60,10 @@ public class AgendaController {
 //        return ResponseEntity.ok(dto);
 //    }
 
-    @GetMapping("/ultimos-agendamentos")
-    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos() {
+    @GetMapping("/ultimos-agendamentos/{id}")
+    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long id) {
         // Assuming you have a service instance called agendaService
-        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
+        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos(id);
 
         // Convert Agenda objects to UltimosAgendamentosDto objects using the mapper
         List<UltimosAgendamentosDto> dtos = new ArrayList<>();
@@ -75,10 +75,6 @@ public class AgendaController {
 
         return ResponseEntity.ok(dtos);
     }
-
-
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarAgenda(@PathVariable Long id) {

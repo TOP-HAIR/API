@@ -11,6 +11,7 @@ import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Agenda {
     private Long idAgenda;
     @FutureOrPresent
     @NotBlank
-    private LocalDate data;
+    private LocalDateTime data;
     @NotBlank
     @Pattern(regexp = "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$")
     private String hora;
@@ -30,15 +31,26 @@ public class Agenda {
     @OneToMany(mappedBy = "agenda")
     List<Usuario> usuarios;
 
+    @ManyToOne
+    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+    private Empresa empresa;
 
-    public Agenda(Long idAgenda, LocalDate data, String hora, String status) {
+
+    public Agenda(Long idAgenda, LocalDateTime data, String hora, String status) {
         this.idAgenda = idAgenda;
         this.data = data;
         this.hora = hora;
         this.status = status;
     }
-
     public Agenda() {
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
     public List<Usuario> getUsuarios() {
@@ -57,11 +69,11 @@ public class Agenda {
         this.idAgenda = idAgenda;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 

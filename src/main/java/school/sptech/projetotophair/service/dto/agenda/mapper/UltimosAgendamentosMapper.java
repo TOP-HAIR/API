@@ -18,7 +18,7 @@ public class UltimosAgendamentosMapper {
         UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
         dto.setId(agenda.getIdAgenda());
         dto.setNomeCompleto(primeiroUsuario.getNomeCompleto());
-        dto.setData(agenda.getData());
+        dto.setData(agenda.getData().toLocalDate());
         dto.setHora(agenda.getHora());
         dto.setStatus(agenda.getStatus());
 

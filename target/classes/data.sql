@@ -21,29 +21,29 @@ VALUES
     ('C6 Bank', '11321098765405', 6);
 
 -- Dados fictícios para a tabela Agenda (adicionando mais alguns agendamentos)
-INSERT INTO Agenda (data, hora, status)
+INSERT INTO Agenda (data, hora, status,fk_Empresa)
 VALUES
-    ('2023-11-05', '09:30:00', 'Agendado'),
-    ('2023-11-06', '14:00:00', 'Agendado'),
-    ('2023-11-07', '16:45:00', 'Reagendado'),
-    ('2023-11-08', '11:15:00', 'Agendado'),
-    ('2023-11-09', '10:00:00', 'Agendado');
+    ('2023-11-05', '09:30:00', 'Agendado',1),
+    ('2023-11-06', '14:00:00', 'Agendado',2),
+    ('2023-11-07', '16:45:00', 'Reagendado',3),
+    ('2023-11-08', '11:15:00', 'Agendado',4),
+    ('2023-11-09', '10:00:00', 'Agendado',5);
 
-INSERT INTO Agenda (data, hora, status)
+INSERT INTO Agenda (data, hora, status, fk_Empresa)
 VALUES
-    ('2023-11-10', '08:00:00', 'Agendado'),
-    ('2023-11-11', '13:30:00', 'Agendado'),
-    ('2023-11-12', '15:45:00', 'Reagendado'),
-    ('2023-11-13', '10:30:00', 'Agendado'),
-    ('2023-11-14', '12:00:00', 'Agendado'),
-    ('2023-11-15', '14:15:00', 'Reagendado'),
-    ('2023-11-16', '09:45:00', 'Agendado'),
-    ('2023-11-17', '16:30:00', 'Agendado'),
-    ('2023-11-18', '11:00:00', 'Reagendado'),
-    ('2023-11-19', '13:15:00', 'Agendado'),
-    ('2023-11-20', '15:00:00', 'Agendado'),
-    ('2023-11-21', '10:45:00', 'Reagendado'),
-    ('2023-11-22', '12:30:00', 'Agendado');
+    ('2023-11-10', '08:00:00', 'Agendado',6),
+    ('2023-11-11', '13:30:00', 'Agendado',6),
+    ('2023-11-12', '15:45:00', 'Reagendado',6),
+    ('2023-11-13', '10:30:00', 'Agendado',6),
+    ('2023-11-14', '12:00:00', 'Agendado',6),
+    ('2023-11-15', '14:15:00', 'Reagendado',6),
+    ('2023-11-16', '09:45:00', 'Agendado',6),
+    ('2023-11-17', '16:30:00', 'Agendado',6),
+    ('2023-11-18', '11:00:00', 'Reagendado',6),
+    ('2023-11-19', '13:15:00', 'Agendado',6),
+    ('2023-11-20', '15:00:00', 'Agendado',6),
+    ('2023-11-21', '10:45:00', 'Reagendado',6),
+    ('2023-11-22', '12:30:00', 'Agendado',6);
 
 
 -- Dados fictícios para a tabela Servico (adicionando mais alguns serviços)

@@ -44,6 +44,17 @@ public class ServicoController {
         return ResponseEntity.ok(dtos);
     }
 
+    @GetMapping("/agenda/{idAgenda}")
+    public ResponseEntity<List<ServicoDto>> buscarServicosPorAgenda(@PathVariable Long idAgenda){
+        List<Servico> servicos = servicoService.buscarServicosPorIdAgenda(idAgenda);
+        List<ServicoDto> dtos = new ArrayList<>();
+
+        for (Servico servicoDaVez: servicos) {
+            dtos.add(ServicoMapper.toServicoDto(servicoDaVez));
+        }
+        return ResponseEntity.ok(dtos);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ServicoDto> listar(@PathVariable Long id) {
         Optional<Servico> servico = servicoService.buscarServicoPorId(id);

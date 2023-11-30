@@ -43,6 +43,10 @@ public class Agenda {
         this.empresa = empresa;
     }
 
+    public Agenda(){
+
+    }
+
     public Long getIdAgenda() {
         return idAgenda;
     }

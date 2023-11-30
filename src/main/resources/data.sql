@@ -7,7 +7,7 @@
         ('Rua Z', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
         ('Rua Quinze de novembro', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
         ('Rua Azevedo', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
-        ('Av. Nove de Julho', 3186, 'São Paulo', 'Prédio', 'São Paulo', '98901-234');
+        ('Av. Nove de Julho', 3186, 'SP', 'Prédio', 'São Paulo', '98901-234');
 
 
 -- Dados fictícios para a tabela Empresa (adicionando mais algumas empresas)

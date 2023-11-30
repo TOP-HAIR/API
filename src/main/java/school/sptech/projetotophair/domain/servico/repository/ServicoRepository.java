@@ -12,4 +12,6 @@ import java.util.List;
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
     @Query("SELECT s FROM Servico s WHERE s.empresa.idEmpresa = :empresaId")
     List<Servico> findServicosByEmpresaId(@Param("empresaId") Long empresaId);
+
+    List<Servico> findAllByAgendaIdAgenda(Long idAgenda);
 }

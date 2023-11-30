@@ -7,8 +7,12 @@ import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
+import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
+import school.sptech.projetotophair.domain.agendaservico.repository.AgendaServicoRepository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.domain.servico.Servico;
+import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
@@ -24,6 +28,12 @@ public class AgendaService {
     private AgendaRepository agendaRepository;
 
     @Autowired
+    private AgendaServicoRepository agendaServicoRepository;
+
+    @Autowired
+    private ServicoRepository servicoRepository;
+
+    @Autowired
     private EmpresaRepository empresaRepository;
 
     @Autowired
@@ -34,6 +44,18 @@ public class AgendaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A agenda não pode ser nula.");
         }
         return agendaRepository.save(agenda);
+    }
+
+    public AgendaServico vincularServico(Long idAgenda, Long idServico){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Servico> servicoById = servicoRepository.findById(idServico);
+
+        if (servicoById.isPresent() && agendaById.isPresent()) {
+            AgendaServico agendaServico = new AgendaServico(null, agendaById.get(), servicoById.get());
+            return agendaServicoRepository.save(agendaServico);
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou serço não encontrados");
     }
 
     public Optional<Agenda> buscarAgendaPorId(Long id) {

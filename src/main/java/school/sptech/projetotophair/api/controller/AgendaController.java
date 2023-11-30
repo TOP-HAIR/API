@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.AgendaService;
@@ -12,6 +13,8 @@ import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
 import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
+import school.sptech.projetotophair.service.dto.agendaservico.AgendaServicoDto;
+import school.sptech.projetotophair.service.dto.agendaservico.mapper.AgendaServicoMapper;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioAgendaResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
@@ -54,6 +57,13 @@ public class AgendaController {
         Usuario usuario = agendaService.vincularUsuario(idAgenda, idUsuario);
         UsuarioAgendaResponseDto usuarioAgendaResponseDto = UsuarioMapper.toUsuarioAgendaResponseDto(usuario);
         return ResponseEntity.ok(usuarioAgendaResponseDto);
+    }
+
+    @PutMapping("/vincular-servico/{idAgenda}/{idServico}")
+    public ResponseEntity<AgendaServicoDto> vincularServico(@PathVariable Long idAgenda, @PathVariable Long idServico){
+        AgendaServico agendaServico = agendaService.vincularServico(idAgenda, idServico);
+        AgendaServicoDto agendaServicoDto = AgendaServicoMapper.toAgendaServicoDto(agendaServico);
+        return ResponseEntity.ok(agendaServicoDto);
     }
 
     @GetMapping("/{id}")
@@ -104,8 +114,8 @@ public class AgendaController {
 //        return ResponseEntity.ok(dto);
 //    }
 
-    @GetMapping("/ultimos-agendamentos")
-    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos() {
+    @GetMapping("/ultimos-agendamentos/{idEmpresa}")
+    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long idEmpresa) {
         // Assuming you have a service instance called agendaService
         PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
 

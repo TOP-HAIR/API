@@ -37,6 +37,7 @@ public class EmpresaMapper {
         dto.setIdEmpresa(entity.getIdEmpresa());
         dto.setRazaoSocial(entity.getRazaoSocial());
         dto.setAvaliacoes(dtosAvaliacao);
+        dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
 
         return dto;
     }

@@ -67,7 +67,7 @@ VALUES
     -- Dados fictícios para a tabela Usuario
     INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
     VALUES
-        ('11122233344', 'Maria Silva', 'maria@example.com', 'maria123', '(55) 5555-1111', true, 1, 1, 1, 1),
+        ('11122233344', 'Maria Silva', 'maria@gmail.com', 'maria123', '(55) 5555-1111', true, 1, 1, 1, 1),
         ('22233344455', 'João Oliveira', 'joao@example.com', 'joao456', '(55) 5555-2222', false, null, 2, 2, 2),
         ('33344455566', 'Ana Souza', 'ana@example.com', 'ana789', '(55) 5555-3333', true, 3, 3, 3, 3),
         ('44455566677', 'Carlos Santos', 'carlos@example.com', 'carlos012', '(55) 5555-4444', false, null, 4, 4, 4),

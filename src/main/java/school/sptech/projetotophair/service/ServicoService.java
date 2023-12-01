@@ -8,6 +8,7 @@ import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.service.Integraveis.lista.ListaObj;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 
@@ -47,7 +48,13 @@ public class ServicoService {
         }
         return servicosByEmpresaId;
     }
-
+    public ListaObj<Servico> buscarServicosPorEmpresaIdObj(Long id) {
+        ListaObj<Servico> servicosByEmpresaId = servicoRepository.findServicosByEmpresaIdObj(id);
+        if (servicosByEmpresaId.getTamanho() == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviços não encontrados para essa empresa");
+        }
+        return servicosByEmpresaId;
+    }
     public List<Servico> buscarServicosPorIdAgenda(Long idAgenda){
         Optional<Agenda> byId = agendaRepository.findById(idAgenda);
         if (byId.isPresent()) {
@@ -68,7 +75,8 @@ public class ServicoService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviço não encontrado");
     }
 
-    public List<Servico> listarTodosServicos() {
+    public List<Servico>listarTodosServicos() {
+        System.out.println("LISTANDOOOOOOOOOO");
         List<Servico> all = servicoRepository.findAll();
         if (all.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Não há serviços");

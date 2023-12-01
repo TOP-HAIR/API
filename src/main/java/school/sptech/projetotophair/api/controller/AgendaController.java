@@ -3,7 +3,7 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import school.sptech.projetotophair.api.pilha.PilhaObj;
+import school.sptech.projetotophair.service.Integraveis.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
 import school.sptech.projetotophair.domain.usuario.Usuario;

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
-import school.sptech.projetotophair.api.pilha.PilhaObj;
+import school.sptech.projetotophair.service.Integraveis.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
 import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
@@ -16,7 +16,6 @@ import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;

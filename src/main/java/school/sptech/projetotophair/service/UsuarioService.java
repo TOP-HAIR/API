@@ -45,7 +45,7 @@ public class UsuarioService {
 
     public void criar(UsuarioCriacaoDto usuarioCriacaoDto) {
         if (usuarioRepository.existsByEmail(usuarioCriacaoDto.getEmail())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
 
         final Usuario novoUsuario = UsuarioMapper.of(usuarioCriacaoDto);
@@ -123,6 +123,18 @@ public class UsuarioService {
         List<Usuario> allByEmpresaId = usuarioRepository.findAllByEmpresaId(idEmpresa);
         if (empresaRepository.existsById(idEmpresa)) {
             return allByEmpresaId;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
+    }
+
+    public List<Usuario> buscarUsuariosIdEmpresa(Long idEmpresa){
+        List<Usuario> usuarios = usuarioRepository.findByEmpresaIdEmpresa(idEmpresa);
+        if (empresaRepository.existsById(idEmpresa)) {
+            return usuarios;
+        }
+        if(usuarios.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Empresa não possui usuarios");
+
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
     }

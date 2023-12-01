@@ -103,4 +103,17 @@ public class Empresa {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
+
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "idEmpresa=" + idEmpresa +
+                ", razaoSocial='" + razaoSocial + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", endereco=" + endereco +
+                ", usuarios=" + usuarios +
+                ", avaliacoes=" + avaliacoes +
+                ", arquivos=" + arquivos +
+                '}';
+    }
 }

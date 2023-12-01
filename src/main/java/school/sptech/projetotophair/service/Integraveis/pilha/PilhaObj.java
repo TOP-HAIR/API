@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.api.pilha;
+package school.sptech.projetotophair.service.Integraveis.pilha;
 
 public class PilhaObj<T> {
 

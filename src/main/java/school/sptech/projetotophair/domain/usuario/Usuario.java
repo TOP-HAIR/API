@@ -148,4 +148,6 @@ public class Usuario {
     public void setAvaliacoes(List<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
     }
+
+
 }

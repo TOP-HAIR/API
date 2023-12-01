@@ -118,7 +118,7 @@ public class AgendaController {
     @GetMapping("/ultimos-agendamentos/{idEmpresa}")
     public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long idEmpresa) {
         // Assuming you have a service instance called agendaService
-        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos();
+        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos(idEmpresa);
 
         // Convert Agenda objects to UltimosAgendamentosDto objects using the mapper
         List<UltimosAgendamentosDto> dtos = new ArrayList<>();

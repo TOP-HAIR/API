@@ -132,13 +132,13 @@ public class AgendaService {
         agendaRepository.deleteById(id);
     }
 
-    public PilhaObj<Agenda> getUltimosAgendamentos() {
+    public PilhaObj<Agenda> getUltimosAgendamentos(Long idEmpresa) {
         int quantidadeDesejada = 10;
 
         PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
 
         // Popula a pilha com os últimos agendamentos do banco de dados
-        List<Agenda> todosAgendamentos = agendaRepository.findAll();
+        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
 
         // Sort the agendas by date in descending order
         todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());

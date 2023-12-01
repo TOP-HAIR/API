@@ -11,6 +11,7 @@ public class ServicoMapper {
 
         dto.setIdServico(entity.getIdServico());
         dto.setNomeServico(entity.getNomeServico());
+        dto.setCategoria(entity.getCategoria());
         dto.setPreco(entity.getPreco());
         dto.setQtdTempoServico(entity.getQtdTempoServico());
         dto.setDescricao(entity.getDescricao());
@@ -23,6 +24,7 @@ public class ServicoMapper {
 
         dto.setIdServico(entity.getIdServico());
         dto.setNomeServico(entity.getNomeServico());
+        dto.setCategoria(entity.getCategoria());
         dto.setDescricao(entity.getDescricao());
         dto.setPreco(entity.getPreco());
         dto.setQtdTempoServico(entity.getQtdTempoServico());

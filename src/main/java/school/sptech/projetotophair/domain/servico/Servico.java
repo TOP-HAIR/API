@@ -24,6 +24,8 @@ public class Servico {
     @Size(min = 4, max = 40)
     private String nomeServico;
 
+    private String categoria;
+
     @Size(min = 5, max = 250)
     @NotNull
     private String descricao;
@@ -43,6 +45,17 @@ public class Servico {
     @OneToMany(mappedBy = "servico")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<Usuario> usuarios;
+
+    public Servico(Long idServico, String nomeServico, String categoria, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+        this.idServico = idServico;
+        this.nomeServico = nomeServico;
+        this.categoria = categoria;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.qtdTempoServico = qtdTempoServico;
+        this.agenda = agenda;
+        this.empresa = empresa;
+    }
 
     public Servico(Long idServico, String nomeServico, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
         this.idServico = idServico;
@@ -120,5 +133,13 @@ public class Servico {
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

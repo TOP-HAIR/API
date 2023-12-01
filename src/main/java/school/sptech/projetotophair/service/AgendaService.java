@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
+import school.sptech.projetotophair.api.fila.Fila;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
@@ -16,10 +17,7 @@ import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AgendaService {
@@ -156,6 +154,38 @@ public class AgendaService {
         return ultimosAgendamentosPilha;
     }
 
+    public Fila mesesOrdenados() {
+        Fila mesesOrdenados = new Fila(12);
+
+        String mes1 = "Janeiro";
+        String mes2 = "Fevereiro";
+        String mes3 = "Março";
+        String mes4 = "Abril";
+        String mes5 = "Maio";
+        String mes6 = "Junho";
+        String mes7 = "Julho";
+        String mes8 = "Agosto";
+        String mes9 = "Setembro";
+        String mes10 = "Outubro";
+        String mes11 = "Novembro";
+        String mes12 = "Dezembro";
+
+        mesesOrdenados.insert(mes1);
+        mesesOrdenados.insert(mes2);
+        mesesOrdenados.insert(mes3);
+        mesesOrdenados.insert(mes4);
+        mesesOrdenados.insert(mes5);
+        mesesOrdenados.insert(mes6);
+        mesesOrdenados.insert(mes7);
+        mesesOrdenados.insert(mes8);
+        mesesOrdenados.insert(mes9);
+        mesesOrdenados.insert(mes10);
+        mesesOrdenados.insert(mes11);
+        mesesOrdenados.insert(mes12);
+
+        return mesesOrdenados;
+
+    }
 
 
     // Método para inverter a ordem dos elementos na pilha

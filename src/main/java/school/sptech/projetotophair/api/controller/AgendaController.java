@@ -3,6 +3,7 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.api.fila.Fila;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
@@ -128,6 +129,26 @@ public class AgendaController {
         }
 
         return ResponseEntity.ok(dtos);
+    }
+
+    @GetMapping("/meses-ordenados")
+    public ResponseEntity<List<String>> obterMesesOrdenados() {
+        Fila mesesOrdenados = agendaService.mesesOrdenados();
+
+        // Verifica se a fila não está vazia antes de retornar o conteúdo
+        if (!mesesOrdenados.isEmpty()) {
+            List<String> meses = new ArrayList<>();
+
+            // Obtém os elementos da fila e adiciona à lista
+            while (!mesesOrdenados.isEmpty()) {
+                meses.add(mesesOrdenados.poll());
+            }
+
+            return ResponseEntity.ok(meses);
+        } else {
+            // Caso a fila esteja vazia, pode retornar uma resposta indicando isso
+            return ResponseEntity.noContent().build();
+        }
     }
 
     @DeleteMapping("/{id}")

@@ -1,0 +1,6 @@
+00Usuarios01-12-2023 23:00:2601
+0300001Empresa K                                         10987654321011    
+02000001Maria Silva                                       maria@Gxample.com                                 (55) 5555-111111122233344   t000001
+0300001Empresa K                                         10987654321011    
+02000017João Silva                                        joao.silva@Gmail.com                              null          123.456.789-00n000001
+010000000004

@@ -43,7 +43,7 @@ public class UsuarioService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public void criar(UsuarioCriacaoDto usuarioCriacaoDto) {
+    public Usuario criar(UsuarioCriacaoDto usuarioCriacaoDto) {
         if (usuarioRepository.existsByEmail(usuarioCriacaoDto.getEmail())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
@@ -54,6 +54,8 @@ public class UsuarioService {
         novoUsuario.setSenha(senhaCriptografada);
 
         this.usuarioRepository.save(novoUsuario);
+
+        return novoUsuario;
     }
 
     public UsuarioTokenDto autenticar(UsuarioLoginDto usuarioLoginDto) {

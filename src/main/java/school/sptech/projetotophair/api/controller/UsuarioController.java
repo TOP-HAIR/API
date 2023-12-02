@@ -32,9 +32,9 @@ public class UsuarioController {
 
     @PostMapping("/cadastrar")
     @SecurityRequirement(name = "Bearer")
-    public ResponseEntity<Void> criar(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
-        this.usuarioService.criar(usuarioCriacaoDto);
-        return ResponseEntity.status(201).build();
+    public ResponseEntity<Long> criar(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
+        Usuario usuario = this.usuarioService.criar(usuarioCriacaoDto);
+        return ResponseEntity.status(201).body(usuario.getIdUsuario());
     }
 
     @PostMapping("/login")

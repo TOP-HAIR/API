@@ -3,11 +3,17 @@ package school.sptech.projetotophair.api.controller;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.service.EmpresaService;
 import school.sptech.projetotophair.service.UsuarioService;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
@@ -19,9 +25,13 @@ import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculado
 import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
 import school.sptech.projetotophair.service.dto.usuario.UsuarioEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
+import school.sptech.projetotophair.service.integraveis.exportacao.Exportacao;
+import school.sptech.projetotophair.service.integraveis.importacao.Importacao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -30,6 +40,8 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private EmpresaService empresaService;
     @PostMapping("/cadastrar")
     @SecurityRequirement(name = "Bearer")
     public ResponseEntity<Long> criar(@RequestBody UsuarioCriacaoDto usuarioCriacaoDto) {
@@ -104,4 +116,56 @@ public class UsuarioController {
         usuarioService.deletarUsuario(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/exportar-txt/{idEmpresa}")
+    public ResponseEntity<Resource> exportarFuncionariosParaTXT(@PathVariable Long idEmpresa) {
+        List<Usuario> usuarios = usuarioService.buscarUsuariosPorIdEmpresa(idEmpresa);
+        Optional<Empresa> empresa = empresaService.buscarEmpresaPorId(idEmpresa);
+        Exportacao exportar = new Exportacao();
+        if (usuarios == null || empresa == null) {
+            return ResponseEntity.notFound().build();
+        }
+        if (usuarios == null || usuarios.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        else {
+
+            String txtFilename = "usuarios.txt";
+            exportar.gravaArquivoFuncionarios(usuarios,empresa, txtFilename);
+
+            // Crie um recurso FileSystemResource para o arquivo TXT gerado
+            Resource resource = (Resource) new FileSystemResource(txtFilename);
+
+            // Configure os cabeçalhos da resposta para indicar o tipo de mídia e o nome do arquivo
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=funcionarios.txt");
+            headers.add(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
+
+            // Retorne a resposta com o arquivo TXT como anexo
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .body(resource);
+        }
+    }
+
+    @PostMapping("/importacao")
+    public ResponseEntity<List<UsuarioCriacaoDto>> cadastrarFuncionariosTxt(
+            @RequestParam MultipartFile file
+    ) throws IOException {
+        // Verifique se o arquivo é nulo ou vazio antes de prosseguir
+        if (file == null || file.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        List<UsuarioCriacaoDto> result = new Importacao(empresaService, usuarioService).importarDados(file);
+
+        if (result.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        } else {
+            return ResponseEntity.status(201).body(result);
+        }
+    }
+
 }

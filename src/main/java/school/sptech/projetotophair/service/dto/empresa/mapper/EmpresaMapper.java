@@ -7,6 +7,7 @@ import school.sptech.projetotophair.service.dto.avaliacao.mapper.AvaliacaoMapper
 import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaEnderecoVinculadoDto;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaPorEstadoDto;
 import school.sptech.projetotophair.service.dto.endereco.EnderecoDto;
 import school.sptech.projetotophair.service.dto.endereco.mapper.EnderecoMapper;
 
@@ -37,6 +38,7 @@ public class EmpresaMapper {
         dto.setIdEmpresa(entity.getIdEmpresa());
         dto.setRazaoSocial(entity.getRazaoSocial());
         dto.setAvaliacoes(dtosAvaliacao);
+        dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
 
         return dto;
     }
@@ -48,6 +50,17 @@ public class EmpresaMapper {
         dto.setCnpj(empresaEntity.getCnpj());
         dto.setIdEmpresa(empresaEntity.getIdEmpresa());
         dto.setRazaoSocial(empresaEntity.getRazaoSocial());
+
+        return dto;
+    }
+
+    public static EmpresaPorEstadoDto toEmpresaPorEstadoDto(Empresa entity){
+        EmpresaPorEstadoDto dto = new EmpresaPorEstadoDto();
+
+        dto.setIdEmpresa(entity.getIdEmpresa());
+        dto.setCnpj(entity.getCnpj());
+        dto.setRazaoSocial(entity.getRazaoSocial());
+        dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
 
         return dto;
     }

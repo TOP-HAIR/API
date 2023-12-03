@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
@@ -20,6 +22,7 @@ public class Avaliacao {
     private String comentario;
     @ManyToOne
     @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private Usuario usuario;
     @ManyToOne
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")

@@ -7,6 +7,7 @@ import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
 public class ServicoEmpresaVinculadaDto {
     private Long idServico;
     private String nomeServico;
+    private String categoria;
     private String descricao;
     private Double preco;
     private String qtdTempoServico;

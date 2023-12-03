@@ -17,7 +17,7 @@ import java.util.FormatterClosedException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class ArquivoCsv {
+public class ArquivoCsv<T> {
 
     public static void gravaArquivoCsv(ListaObj<Servico> lista, String nomeArq) {
         FileWriter arq = null;
@@ -134,7 +134,7 @@ public class ArquivoCsv {
         ListaObj<Servico> lista = new ListaObj<>(5);
 
         lista.adiciona(new Servico(1L, "Hidratação", "Hidrata o cabelo com produtos de qualidade.",
-                100.50, "1 hora", new Agenda(1L, LocalDate.now(),"1", "sim"),
+                100.50, "1 hora", new Agenda(1L, LocalDate.now(),"1", "sim", null, null),
                 new Empresa(2L, "Carmens Cabelo & Vida.", "12.356.444.0001/45" ,
                         new Endereco(3L,"rua dois", 5, "São Paulo",
                                 "A", "São Paulo", "12345-089")

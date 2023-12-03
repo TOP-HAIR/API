@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.servico.Servico;
+import school.sptech.projetotophair.service.dto.servico.ServicoEnderecoDto;
 
 import java.util.List;
 
@@ -12,4 +13,8 @@ import java.util.List;
 public interface ServicoRepository extends JpaRepository<Servico, Long> {
     @Query("SELECT s FROM Servico s WHERE s.empresa.idEmpresa = :empresaId")
     List<Servico> findServicosByEmpresaId(@Param("empresaId") Long empresaId);
+
+    List<Servico> findAllByAgendaIdAgenda(Long idAgenda);
+
+    List<Servico> findBytipoServico(String tipoServico);
 }

@@ -43,7 +43,7 @@ public class UsuarioService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    public void criar(UsuarioCriacaoDto usuarioCriacaoDto) {
+    public Usuario criar(UsuarioCriacaoDto usuarioCriacaoDto) {
         if (usuarioRepository.existsByEmail(usuarioCriacaoDto.getEmail())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
@@ -54,6 +54,8 @@ public class UsuarioService {
         novoUsuario.setSenha(senhaCriptografada);
 
         this.usuarioRepository.save(novoUsuario);
+
+        return novoUsuario;
     }
 
     public UsuarioTokenDto autenticar(UsuarioLoginDto usuarioLoginDto) {
@@ -137,9 +139,10 @@ public class UsuarioService {
     }
 
     public void deletarUsuario(Long id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado com ID: " + id));
-
-        usuarioRepository.delete(usuario);
+        Optional<Usuario> byId = usuarioRepository.findById(id);
+        if (byId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado");
+        }
+        usuarioRepository.deleteById(id);
     }
 }

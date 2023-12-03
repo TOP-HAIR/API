@@ -4,15 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
+import school.sptech.projetotophair.api.fila.Fila;
 import school.sptech.projetotophair.api.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
+import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
+import school.sptech.projetotophair.domain.agendaservico.repository.AgendaServicoRepository;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.domain.servico.Servico;
+import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AgendaService {
@@ -20,11 +25,35 @@ public class AgendaService {
     @Autowired
     private AgendaRepository agendaRepository;
 
+    @Autowired
+    private AgendaServicoRepository agendaServicoRepository;
+
+    @Autowired
+    private ServicoRepository servicoRepository;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     public Agenda cadastrarAgenda(Agenda agenda) {
         if (agenda == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A agenda não pode ser nula.");
         }
         return agendaRepository.save(agenda);
+    }
+
+    public AgendaServico vincularServico(Long idAgenda, Long idServico){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Servico> servicoById = servicoRepository.findById(idServico);
+
+        if (servicoById.isPresent() && agendaById.isPresent()) {
+            AgendaServico agendaServico = new AgendaServico(null, agendaById.get(), servicoById.get());
+            return agendaServicoRepository.save(agendaServico);
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou serço não encontrados");
     }
 
     public Optional<Agenda> buscarAgendaPorId(Long id) {
@@ -34,6 +63,54 @@ public class AgendaService {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda não encontrada com o ID: " + id);
         }
+    }
+
+    public List<Agenda> listarAgendasPorUsuario(Long idUsuario) {
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+        if (usuarioById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado");
+        }
+        List<Agenda> allByUsuariosIdUsuario = agendaRepository.findAllByUsuariosIdUsuario(idUsuario);
+        if (allByUsuariosIdUsuario.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Este usuario não tem agendamentos");
+        }
+        return allByUsuariosIdUsuario;
+    }
+
+    public List<Agenda> listarAgendasPorEmpresa(Long idEmpresa) {
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+        if (empresaById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
+        }
+        List<Agenda> allByEmpresaIdEmpresa = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
+        if (allByEmpresaIdEmpresa.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Esta empresa não tem agendamentos");
+        }
+        return allByEmpresaIdEmpresa;
+    }
+
+    public Agenda vincularEmpresa(Long idAgenda, Long idEmpresa){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+
+        if (agendaById.isPresent() && empresaById.isPresent()) {
+            agendaById.get().setEmpresa(empresaById.get());
+            return agendaRepository.save(agendaById.get());
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou empresa não encontradas");
+    }
+
+    public Usuario vincularUsuario(Long idAgenda, Long idUsuario){
+        Optional<Agenda> agendaById = agendaRepository.findById(idAgenda);
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+
+        if (agendaById.isPresent() && usuarioById.isPresent()) {
+            usuarioById.get().setAgenda(agendaById.get());
+            return usuarioRepository.save(usuarioById.get());
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou usuario não encontrados");
     }
 
     public Optional<Agenda> atualizarAgenda(Long id, Agenda agenda) {
@@ -55,13 +132,13 @@ public class AgendaService {
         agendaRepository.deleteById(id);
     }
 
-    public PilhaObj<Agenda> getUltimosAgendamentos() {
+    public PilhaObj<Agenda> getUltimosAgendamentos(Long idEmpresa) {
         int quantidadeDesejada = 10;
 
         PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
 
         // Popula a pilha com os últimos agendamentos do banco de dados
-        List<Agenda> todosAgendamentos = agendaRepository.findAll();
+        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
 
         // Sort the agendas by date in descending order
         todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());
@@ -77,6 +154,38 @@ public class AgendaService {
         return ultimosAgendamentosPilha;
     }
 
+    public Fila mesesOrdenados() {
+        Fila mesesOrdenados = new Fila(12);
+
+        String mes1 = "Janeiro";
+        String mes2 = "Fevereiro";
+        String mes3 = "Março";
+        String mes4 = "Abril";
+        String mes5 = "Maio";
+        String mes6 = "Junho";
+        String mes7 = "Julho";
+        String mes8 = "Agosto";
+        String mes9 = "Setembro";
+        String mes10 = "Outubro";
+        String mes11 = "Novembro";
+        String mes12 = "Dezembro";
+
+        mesesOrdenados.insert(mes1);
+        mesesOrdenados.insert(mes2);
+        mesesOrdenados.insert(mes3);
+        mesesOrdenados.insert(mes4);
+        mesesOrdenados.insert(mes5);
+        mesesOrdenados.insert(mes6);
+        mesesOrdenados.insert(mes7);
+        mesesOrdenados.insert(mes8);
+        mesesOrdenados.insert(mes9);
+        mesesOrdenados.insert(mes10);
+        mesesOrdenados.insert(mes11);
+        mesesOrdenados.insert(mes12);
+
+        return mesesOrdenados;
+
+    }
 
 
     // Método para inverter a ordem dos elementos na pilha

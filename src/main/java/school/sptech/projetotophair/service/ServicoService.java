@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.servico.Servico;
@@ -17,6 +19,9 @@ public class ServicoService {
 
     @Autowired
     private ServicoRepository servicoRepository;
+
+    @Autowired
+    private AgendaRepository agendaRepository;
 
     @Autowired
     private EmpresaRepository empresaRepository;
@@ -41,6 +46,22 @@ public class ServicoService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Serviços não encontrados para essa empresa");
         }
         return servicosByEmpresaId;
+    }
+
+    public List<Servico> filtroServico(String tipoServico) {
+        return servicoRepository.findBytipoServico(tipoServico);
+    }
+
+    public List<Servico> buscarServicosPorIdAgenda(Long idAgenda){
+        Optional<Agenda> byId = agendaRepository.findById(idAgenda);
+        if (byId.isPresent()) {
+            List<Servico> allByAgendaIdAgenda = servicoRepository.findAllByAgendaIdAgenda(idAgenda);
+            if (allByAgendaIdAgenda.isEmpty()) {
+                throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Esse agendamento não tem serviços");
+            }
+            return allByAgendaIdAgenda;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda não encontrada");
     }
 
     public Optional<Servico> buscarServicoPorId(Long id) {

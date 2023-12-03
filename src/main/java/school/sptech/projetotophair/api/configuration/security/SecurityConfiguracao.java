@@ -50,12 +50,10 @@ public class SecurityConfiguracao {
             new AntPathRequestMatcher("/v3/api-docs/**"),
             new AntPathRequestMatcher("/actuator/*"),
             new AntPathRequestMatcher("/usuarios/login/**"),
-            new AntPathRequestMatcher("/usuarios/**"),
             new AntPathRequestMatcher("/usuarios/cadastrar/**"),
             new AntPathRequestMatcher("/servicos/agenda/**"),
             new AntPathRequestMatcher("/servicos/vincular-empresa/**"),
             new AntPathRequestMatcher("/agendas/vincular-servico/**"),
-
             new AntPathRequestMatcher("/usuarios/vincular-empresa/**"),
             new AntPathRequestMatcher("/usuarios/vincular-endereco/**"),
             new AntPathRequestMatcher("/empresas/cadastrar/**"),

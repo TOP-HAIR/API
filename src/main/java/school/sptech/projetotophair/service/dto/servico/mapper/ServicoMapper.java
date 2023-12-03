@@ -38,13 +38,10 @@ public class ServicoMapper {
     public static ServicoEnderecoDto toServicoEndereco(Servico entity){
         ServicoEnderecoDto dto = new ServicoEnderecoDto();
 
-        dto.setIdServico(entity.getIdServico());
-        dto.setNomeServico(entity.getNomeServico());
-        dto.setCategoria(entity.getCategoria());
-        dto.setDescricao(entity.getDescricao());
+        dto.setIdEmpresa(entity.getEmpresa().getIdEmpresa());
+        dto.setCnpj(entity.getEmpresa().getCnpj());
+        dto.setRazaoSocial(entity.getEmpresa().getRazaoSocial());
         dto.setTipoServico(entity.getTipoServico());
-        dto.setPreco(entity.getPreco());
-        dto.setQtdTempoServico(entity.getQtdTempoServico());
         dto.setEstado(entity.getEndereco().getEstado());
 
         return dto;

@@ -7,7 +7,8 @@
         ('Rua Z', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
         ('Rua Quinze de novembro', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
         ('Rua Azevedo', 111, 'Santa Catarina', 'Bloco 4', 'Florianópolis', '78901-234'),
-        ('Av. Nove de Julho', 3186, 'SP', 'Prédio', 'São Paulo', '98901-234');
+        ('Av. Nove de Julho', 3186, 'SP', 'Prédio', 'São Paulo', '98901-234'),
+        ('Av. Tucuruvi', 3186, 'SP', 'Prédio', 'São Paulo', '98901-234');
 
 
 -- Dados fictícios para a tabela Empresa (adicionando mais algumas empresas)
@@ -64,14 +65,26 @@ VALUES
     (2023, 6, 14, 1300.00, 4),
     (2023, 6, 15, 1600.00, 5);
 
-    -- Dados fictícios para a tabela Usuario
+    -- Dados fictícios para a tabela Usuario com a senha cryptografada senha123
     INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
     VALUES
-        ('11122233344', 'Maria Silva', 'maria@example.com', 'maria123', '(55) 5555-1111', true, 1, 1, 1, 1),
-        ('22233344455', 'João Oliveira', 'joao@example.com', 'joao456', '(55) 5555-2222', false, null, 2, 2, 2),
-        ('33344455566', 'Ana Souza', 'ana@example.com', 'ana789', '(55) 5555-3333', true, 3, 3, 3, 3),
-        ('44455566677', 'Carlos Santos', 'carlos@example.com', 'carlos012', '(55) 5555-4444', false, null, 4, 4, 4),
-        ('55566677788', 'Mariana Lima', 'mariana@example.com', 'mariana345', '(55) 5555-5555', true, 5, 5, 5, 5);
+        ('11122233344', 'Maria Silva', 'maria@example.com', '$2a$10$w0gN7PUZHk0DdGG7WDkr4eYmSgKjZ0R8tsoJosJXq6p0EjTOu6tG.', '(55) 5555-1111', true, 1, 1, 1, 1);
+
+    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+    VALUES
+        ('22233344455', 'João Oliveira', 'joao@example.com', '$2a$10$AQxLHSwvn58Rr0SRhiDj.uhu9mg.pB3AhkISz/MsMrD9KDuVn3jyq', '(55) 5555-2222', false, null, 2, null, 2);
+
+    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+    VALUES
+        ('33344455566', 'Ana Souza', 'ana@example.com', '$2a$10$59xAE8sQDBgVO1FxC58kX.HsHzmC9EZbulGCMb34QXZQEvFTO5dli', '(55) 5555-3333', true, 3, 3, 3, 3);
+
+    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+    VALUES
+        ('44455566677', 'Carlos Santos', 'carlos@example.com', '$2a$10$KrBn7PSMNWKkOVM6nnCn2Ox.VXb53vBVF4S/Aj5EvqHLQMX9qr226', '(55) 5555-4444', false, null, 4, null, 4);
+
+    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+    VALUES
+        ('55566677788', 'Mariana Lima', 'mariana@example.com', '$2a$10$wTdV1/83.HYZcl3.PL5NSe0/t4uVEksQisP6EIvAJJfVFU5lCY.DS', '(55) 5555-5555', true, 5, 5, 5, 5);
 
 -- Atualizando o serviço do usuário com ID 1 para o novo serviço adicionado
 UPDATE Usuario SET fk_Servico = 1 WHERE id_Usuario = 1;
@@ -96,26 +109,53 @@ VALUES
         ('Aplique', 'Adição e disfarce de cabelos', 125.00, '02:55:00', 15, 6),
         ('Trança', 'Penteado de cabelos curtos e longos com trança', 135.00, '03:10:00', 16, 6);
 
--- Inserir 2 funcionários
+-- Inserir 2 funcionários com a senha cryptografada senha123
 INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
 VALUES
-    ('11122233303', 'Leo Jacinto', 'lJacinto@gmail.com', 'senha123', '(55) 5555-1113', false, null, null, null, null),
-    ('11122233304', 'Julia Da Viste', 'juVista@gmail.com', 'senha123', '(55) 5555-1114', false, null, null, null, null);
+    ('11122233303', 'Leo Jacinto', 'lJacinto@gmail.com', '$2a$10$zoY4yM3Cv3POiS8xblYzW.ugNjCoCbl929sIUlySNA8/CF1upPPMW', '(55) 5555-1113', false, null, null, null, null);
 
-
-
--- Inserir 9 funcionários adicionais
 INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
 VALUES
-    ('44122233303', 'Gabriel Bebel', 'bebel@gamil.com', 'senha123', '(55) 5555-1113', true, 8, 6, 6, null),
-    ('33122233304', 'Wesley Carvalho', 'wsCarvalho@gmail.com', 'senha123', '(55) 5555-1114', true, 9, 7, 6, null),
-    ('22122233305', 'Claudinete da Rosa', 'clauRosa@gmail.com', 'senha123', '(55) 5555-1115', true, 10, 8, 6, null),
-    ('11122233306', 'João Vitor', 'joVitor@gmail.com', 'senha123', '(55) 5555-1116', true, 11, 9, 6, null),
-    ('00122233307', 'Andrew Silva', 'aSival@gmail.com', 'senha123', '(55) 5555-1117', true, 12, 10, 6, null),
-    ('77122233308', 'Anderson Souza', 'anSouza@gamil.com', 'senha123', '(55) 5555-1118', true, 13, 11, 6, null),
-    ('88122233309', 'Cleitim do Santos', 'cleiSantos@gmail.com', 'senha123', '(55) 5555-1119', true, 14, 12, 6, null),
-    ('99122233310', 'Flavim de Queira', 'fQueira@gmail.com', 'senha123', '(55) 5555-1120', true, 15, 13, 6, null),
-    ('55122233311', 'Fabinho Melo', 'fMelo@gmail.com', 'senha123', '(55) 5555-1121', true, 16, 14, 6, null);
+    ('11122233304', 'Julia Da Viste', 'juVista@gmail.com', '$2a$10$0y4AVQZFIwotLc54.9f0A.3Dwecr.dR7Dmjwme.Pi1Id86zvV/hmq', '(55) 5555-1114', false, null, null, null, null);
+
+
+
+-- Inserir 9 funcionários com a senha cryptografada senha123
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('44122233303', 'Gabriel Bebel', 'bebel@gamil.com', '$2a$10$Pjfmw8.nxs8NIh.Qqg5Kf.bSHC/GQ5kuic.6teiCCZYl8PCvuG/56', '(55) 5555-1113', true, 8, 6, 6, 6);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('33122233304', 'Wesley Carvalho', 'wsCarvalho@gmail.com', '$2a$10$CixShkZdu94JMSvMcCeyqe02hc6iSQc32f8p98hmQDAoNhgagn6Ki', '(55) 5555-1114', true, 9, 7, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('22122233305', 'Claudinete da Rosa', 'clauRosa@gmail.com', '$2a$10$SAaOLJDFy85KhDNdJAW8p.N/E85SfW/cJ2FAPvaZH4ZSkmZTU2X3K', '(55) 5555-1115', true, 10, 8, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('11122233306', 'João Vitor', 'joVitor@gmail.com', '$2a$10$Ix2GXk2KjIu.bB7UaiCdd.GWeCVd2G9IrBMFUGFK/5tvnaH5GoE/.', '(55) 5555-1116', true, 11, 9, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('00122233307', 'Andrew Silva', 'aSival@gmail.com', '$2a$10$hhmYnB8WySQWp902ER/29uL3QqcNGcyCYC6AFei5fbhf9t91/5.ta', '(55) 5555-1117', true, 12, 10, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('77122233308', 'Anderson Souza', 'anSouza@gamil.com', '$2a$10$bKEcXc2NMLUPZOxqf2h8D.fP7uQg4FKHYqXz4RBFSiM70/B5ulXAe', '(55) 5555-1118', true, 13, 11, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('88122233309', 'Cleitim do Santos', 'cleiSantos@gmail.com', '$2a$10$wL1HKN7HEkKbGUeOhk2Xj.IK6dLZvKFi9iEI3/9JHDnzDtC6dhOBm', '(55) 5555-1119', true, 14, 12, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('99122233310', 'Flavim de Queira', 'fQueira@gmail.com', '$2a$10$eplEgYyNG.dGp13edOZyv.7eB1Cx.2TdCh7ei8uwBF91hAqETmv7C', '(55) 5555-1120', true, 15, 13, 6, null);
+
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('55122233311', 'Fabinho Melo', 'fMelo@gmail.com', '$2a$10$8cCjOX/CwaQzDuIWSxJJd.H0wIvQ4fhpjR28ZRlfXYIjA.1nNqzIq', '(55) 5555-1121', true, 16, 14, 6, null);
 
 
 -- Dados fictícios para a tabela Avaliacao (adicionando algumas avaliações)

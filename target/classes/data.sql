@@ -48,13 +48,13 @@ VALUES
 
 
 -- Dados fictícios para a tabela Servico (adicionando mais alguns serviços)
-INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
+INSERT INTO Servico (nome_Servico, descricao, tipo_Servico ,preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
 VALUES
-    ('Maquiagem Profissional', 'Maquiagem para eventos especiais', 80.00, '01:30:00', 1, 1),
-    ('Manicure e Pedicure', 'Cuidados com as unhas', 50.00, '01:00:00', 2, 2),
-    ('Tratamento Capilar', 'Hidratação e cuidados com os cabelos', 60.00, '01:15:00', 3, 3),
-    ('Depilação', 'Remoção de pelos', 40.00, '00:45:00',4, 4),
-    ('Massagem Relaxante', 'Massagem terapêutica', 70.00, '01:30:00', 5, 5);
+    ('Maquiagem Profissional', 'Maquiagem para eventos especiais', 'tintura', 80.00, '01:30:00', 1, 1, 2),
+    ('Manicure e Pedicure', 'Cuidados com as unhas', 'cabelo', 50.00, '01:00:00', 2, 2, 4),
+    ('Tratamento Capilar', 'Hidratação e cuidados com os cabelos', 'cabelo', 60.00, '01:15:00', 3, 3, 1),
+    ('Depilação', 'Remoção de pelos', 'barba', 40.00, '00:45:00',4, 4, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica', 'tintura', 70.00, '01:30:00', 5, 5, 3);
 
 -- Dados fictícios para a tabela Historico_Servico (adicionando mais alguns registros)
 INSERT INTO Historico_Servico (ano, mes, semana, faturamento, fk_Agenda)

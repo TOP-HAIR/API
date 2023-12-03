@@ -9,6 +9,7 @@ import school.sptech.projetotophair.service.EmpresaService;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaEnderecoVinculadoDto;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaPorEstadoDto;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import java.util.ArrayList;
@@ -43,9 +44,13 @@ public class EmpresaController {
     }
 
     @GetMapping("/estado")
-    public ResponseEntity<List<Empresa>> listarPorEstado(@RequestParam String estado) {
+    public ResponseEntity<List<EmpresaPorEstadoDto>> listarPorEstado(@RequestParam String estado) {
         List<Empresa> empresasPorEstado = empresaService.listarEmpresasPorEstado(estado);
-        return ResponseEntity.ok(empresasPorEstado);
+        List<EmpresaPorEstadoDto> dtos = new ArrayList<>();
+        for (Empresa empresaDaVez: empresasPorEstado) {
+            dtos.add(EmpresaMapper.toEmpresaPorEstadoDto(empresaDaVez));
+        }
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/usuario/{id}")

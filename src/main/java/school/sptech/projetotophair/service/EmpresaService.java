@@ -54,7 +54,6 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada com o ID: " + id);
         }
     }
-
     public List<Empresa> listarEmpresasPorEstado(String estado) {
         List<Empresa> empresas = empresaRepository.findByEnderecoEstado(estado);
         if (empresas.isEmpty()) {

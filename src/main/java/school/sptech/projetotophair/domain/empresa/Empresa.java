@@ -103,4 +103,13 @@ public class Empresa {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
+
+    @Nullable
+    public List<Arquivo> getArquivos() {
+        return arquivos;
+    }
+
+    public void setArquivos(@Nullable List<Arquivo> arquivos) {
+        this.arquivos = arquivos;
+    }
 }

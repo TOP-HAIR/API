@@ -7,11 +7,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.domain.arquivo.Arquivo;
 import school.sptech.projetotophair.domain.arquivo.repository.ArquivoRepository;
+import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.domain.usuario.Usuario;
+import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,7 +26,44 @@ public class ArquivoService {
     @Autowired
     private ArquivoRepository arquivoRepository;
 
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     private Path diretorioBase = Path.of(System.getProperty("java.io.tmpdir") + "/arquivos");
+
+    public List<Arquivo> bucarPorEmpresa(Long idEmpresa) {
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+        if (empresaById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa não encontrada");
+        }
+        List<Arquivo> allByEmpresaIdEmpresa = arquivoRepository.findAllByEmpresaIdEmpresa(idEmpresa);
+        if (allByEmpresaIdEmpresa.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Essa empresa não tem arquivos");
+        }
+        return allByEmpresaIdEmpresa;
+    }
+
+    public Arquivo buscarArquivoPorUsuario(Long idUsuario) {
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+        if (usuarioById.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não econtrado");
+        }
+        Arquivo byUsuarioIdUsuario = arquivoRepository.findByUsuarioIdUsuario(idUsuario);
+        return byUsuarioIdUsuario;
+    }
+
+    public Arquivo vincularEmpresa(Integer idArquivo, Long idEmpresa) {
+        Optional<Arquivo> arquivoById = arquivoRepository.findById(idArquivo);
+        Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
+        if (empresaById.isPresent() && arquivoById.isPresent()) {
+            arquivoById.get().setEmpresa(empresaById.get());
+            return arquivoById.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa ou arquivo não encontrados");
+    }
 
     public Arquivo uploadArquivo(MultipartFile file) {
         if (file.isEmpty()) {
@@ -71,5 +113,13 @@ public class ArquivoService {
 
     private String formatarNomeArquivo(String nomeOriginal) {
         return String.format("%s_%s", UUID.randomUUID(), nomeOriginal);
+    }
+
+    public void deletar(Integer idArquivo) {
+        Optional<Arquivo> byId = arquivoRepository.findById(idArquivo);
+        if (byId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Arquivo não encontrado");
+        }
+        arquivoRepository.deleteById(idArquivo);
     }
 }

@@ -38,9 +38,10 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Empresa>> listar(@PathVariable Long id) {
+    public ResponseEntity<EmpresaDto> listar(@PathVariable Long id) {
         Optional<Empresa> empresa = empresaService.buscarEmpresaPorId(id);
-        return ResponseEntity.ok(empresa);
+        EmpresaDto empresaDto = EmpresaMapper.toEmpresaDto(empresa.get());
+        return ResponseEntity.ok(empresaDto);
     }
 
     @GetMapping("/estado")
@@ -84,12 +85,14 @@ public class EmpresaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Empresa> atualizar(
-            @PathVariable Long id,
-            @RequestBody @Valid Empresa empresa
+    public ResponseEntity<EmpresaDto> atualizar(@PathVariable Long id, @RequestBody @Valid Empresa empresa
     ) {
         Optional<Empresa> empresaAtualizada = empresaService.atualizarEmpresa(id, empresa);
-            return ResponseEntity.status(200).body(empresaAtualizada.get());
+        if (empresaAtualizada.isPresent()) {
+            EmpresaDto empresaDto = EmpresaMapper.toEmpresaDto(empresaAtualizada.get());
+            return ResponseEntity.ok(empresaDto);
+        }
+        return ResponseEntity.internalServerError().build();
     }
 
     @DeleteMapping("/{id}")

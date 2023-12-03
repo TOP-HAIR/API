@@ -32,6 +32,7 @@ public class Agenda {
     List<Usuario> usuarios;
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
+    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
 
     public Agenda(Long idAgenda, LocalDate data, String hora, String status, List<Usuario> usuarios, Empresa empresa) {

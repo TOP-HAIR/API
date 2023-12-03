@@ -8,10 +8,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import school.sptech.projetotophair.domain.arquivo.Arquivo;
 import school.sptech.projetotophair.domain.arquivo.repository.ArquivoRepository;
+import school.sptech.projetotophair.service.ArquivoService;
+import school.sptech.projetotophair.service.dto.arquivo.ArquivoDto;
+import school.sptech.projetotophair.service.dto.arquivo.ArquivoEmpresaVinculadaDto;
+import school.sptech.projetotophair.service.dto.arquivo.mapper.ArquivoMapper;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -21,6 +27,9 @@ public class ArquivoController {
 
     @Autowired
     private ArquivoRepository arquivoRepository;
+
+    @Autowired
+    private ArquivoService arquivoService;
 
     private Path diretorioBase = Path.of(System.getProperty("java.io.tmpdir") + "/arquivos");
 
@@ -55,6 +64,30 @@ public class ArquivoController {
         return ResponseEntity.status(200).body(arquivoBanco);
     }
 
+    @PutMapping("/vincular-empresa/{idArquivo}/{idEmpresa}")
+    public ResponseEntity<ArquivoEmpresaVinculadaDto> vincularEmpresa(@PathVariable Integer idArquivo, @PathVariable Long idEmpresa){
+        Arquivo arquivo = arquivoService.vincularEmpresa(idArquivo, idEmpresa);
+        ArquivoEmpresaVinculadaDto arquivoEmpresaVinculadaDto = ArquivoMapper.toArquivoEmpresaVinculadaDto(arquivo);
+        return ResponseEntity.ok(arquivoEmpresaVinculadaDto);
+    }
+
+    @GetMapping("/empresa/{idEmpresa}")
+    public ResponseEntity<List<ArquivoDto>> buscarArquivosEmpresa(@PathVariable Long idEmpresa){
+        List<Arquivo> arquivos = arquivoService.bucarPorEmpresa(idEmpresa);
+        List<ArquivoDto> dtos = new ArrayList<>();
+        for (Arquivo arquivoDaVez: arquivos) {
+            dtos.add(ArquivoMapper.toArquivoDto(arquivoDaVez));
+        }
+        return ResponseEntity.ok(dtos);
+    }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<ArquivoDto> buscarArquivoPorUsuario(@PathVariable Long idUsuario){
+        Arquivo arquivo = arquivoService.buscarArquivoPorUsuario(idUsuario);
+        ArquivoDto arquivoDto = ArquivoMapper.toArquivoDto(arquivo);
+        return ResponseEntity.ok(arquivoDto);
+    }
+
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> download(@PathVariable Integer id){
         Optional<Arquivo> arquivoOptional = arquivoRepository.findById(id);
@@ -84,5 +117,11 @@ public class ArquivoController {
 
     private String formatarNomeArquivo(String nomeOriginal) {
         return String.format("%s_%s", UUID.randomUUID(), nomeOriginal);
+    }
+
+    @DeleteMapping("{idArquivo}")
+    public ResponseEntity<Void> deletar(@PathVariable Integer idArquivo){
+    arquivoService.deletar(idArquivo);
+    return ResponseEntity.noContent().build();
     }
 }

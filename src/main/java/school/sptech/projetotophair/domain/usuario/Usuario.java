@@ -55,6 +55,7 @@ public class Usuario {
 
 
     @OneToMany(mappedBy = "usuario")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     List<Avaliacao> avaliacoes;
 
     public Long getIdUsuario() {

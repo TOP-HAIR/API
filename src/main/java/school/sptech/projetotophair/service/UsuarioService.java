@@ -139,9 +139,10 @@ public class UsuarioService {
     }
 
     public void deletarUsuario(Long id) {
-        Usuario usuario = usuarioRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado com ID: " + id));
-
-        usuarioRepository.delete(usuario);
+        Optional<Usuario> byId = usuarioRepository.findById(id);
+        if (byId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado");
+        }
+        usuarioRepository.deleteById(id);
     }
 }

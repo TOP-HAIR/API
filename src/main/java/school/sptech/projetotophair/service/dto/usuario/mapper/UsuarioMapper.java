@@ -55,6 +55,7 @@ public class UsuarioMapper {
         dto.setEmail(entity.getEmail());
         dto.setCpf(entity.getCpf());
         dto.setTelefone(entity.getTelefone());
+        dto.setIsProfissional(entity.getProfissional());
 
         return dto;
     }

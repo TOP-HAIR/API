@@ -48,6 +48,10 @@ public class ServicoService {
         return servicosByEmpresaId;
     }
 
+    public List<Servico> filtroServico(String tipoServico) {
+        return servicoRepository.findBytipoServico(tipoServico);
+    }
+
     public List<Servico> buscarServicosPorIdAgenda(Long idAgenda){
         Optional<Agenda> byId = agendaRepository.findById(idAgenda);
         if (byId.isPresent()) {

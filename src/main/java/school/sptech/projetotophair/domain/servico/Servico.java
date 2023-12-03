@@ -11,6 +11,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.util.List;
@@ -25,6 +26,8 @@ public class Servico {
     private String nomeServico;
 
     private String categoria;
+
+    private String tipoServico;
 
     @Size(min = 5, max = 250)
     @NotNull
@@ -42,14 +45,20 @@ public class Servico {
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private Empresa empresa;
 
+    @ManyToOne
+    @JoinColumn(name = "fkEndereco", referencedColumnName = "idEndereco")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    private Endereco endereco;
+
     @OneToMany(mappedBy = "servico")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private List<Usuario> usuarios;
 
-    public Servico(Long idServico, String nomeServico, String categoria, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+    public Servico(Long idServico, String nomeServico, String categoria, String tipoServico ,String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
         this.idServico = idServico;
         this.nomeServico = nomeServico;
         this.categoria = categoria;
+        this.tipoServico = tipoServico;
         this.descricao = descricao;
         this.preco = preco;
         this.qtdTempoServico = qtdTempoServico;
@@ -57,7 +66,7 @@ public class Servico {
         this.empresa = empresa;
     }
 
-    public Servico(Long idServico, String nomeServico, String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
+    public Servico(Long idServico, String nomeServico,String descricao, Double preco, String qtdTempoServico, Agenda agenda, Empresa empresa) {
         this.idServico = idServico;
         this.nomeServico = nomeServico;
         this.descricao = descricao;
@@ -69,6 +78,22 @@ public class Servico {
 
     public Servico() {
 
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTipoServico() {
+        return tipoServico;
+    }
+
+    public void setTipoServico(String tipoServico) {
+        this.tipoServico = tipoServico;
     }
 
     public Long getIdServico() {

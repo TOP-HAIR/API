@@ -131,8 +131,8 @@ public class AgendaController {
         return ResponseEntity.ok(dtos);
     }
 
-    @GetMapping("/meses-ordenados")
-    public ResponseEntity<List<String>> obterMesesOrdenados() {
+    @GetMapping("/meses-ordenados/{idEmpresa}")
+    public ResponseEntity<List<String>> obterMesesOrdenados(@PathVariable Long idEmpresa) {
         Fila mesesOrdenados = agendaService.mesesOrdenados();
 
         // Verifica se a fila não está vazia antes de retornar o conteúdo

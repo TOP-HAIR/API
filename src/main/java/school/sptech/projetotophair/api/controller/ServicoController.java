@@ -6,15 +6,18 @@ import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.servico.ArquivoCsv;
 import school.sptech.projetotophair.domain.servico.ListaObj;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.service.ServicoService;
 import school.sptech.projetotophair.service.dto.servico.ServicoDto;
 import school.sptech.projetotophair.service.dto.servico.ServicoEmpresaVinculadaDto;
+import school.sptech.projetotophair.service.dto.servico.ServicoEnderecoDto;
 import school.sptech.projetotophair.service.dto.servico.mapper.ServicoMapper;
 
 import java.util.ArrayList;
@@ -40,6 +43,42 @@ public class ServicoController {
         ServicoEmpresaVinculadaDto servicoEmpresaVinculadaDto = ServicoMapper.toServicoEmpresaVinculadaDto(servico);
         return ResponseEntity.ok(servicoEmpresaVinculadaDto);
     }
+
+    @GetMapping("/filtrados/{tipoServico}/{estado}")
+    public ResponseEntity<List<ServicoEnderecoDto>> obterServicosFiltrados(
+            @PathVariable String tipoServico,
+            @PathVariable String estado) {
+
+        List<Servico> servicos = servicoService.filtroServico(tipoServico);
+
+        // Criar uma lista para armazenar os objetos convertidos
+        List<ServicoEnderecoDto> servicoEnderecoDtoList = new ArrayList<>();
+
+        // Iterar sobre cada Servico na lista
+        for (Servico servico : servicos) {
+            // Converter o Servico para ServicoEnderecoDto usando o mapper
+            ServicoEnderecoDto servicoEnderecoDto = ServicoMapper.toServicoEndereco(servico);
+
+            // Adicionar o objeto convertido à lista
+            servicoEnderecoDtoList.add(servicoEnderecoDto);
+        }
+
+        List<ServicoEnderecoDto> servicoEnderecoDtoList2 = new ArrayList<>();
+        for (ServicoEnderecoDto s : servicoEnderecoDtoList) {
+            if (s.getEstado() != null && s.getEstado().equals(estado)) {
+                // Adicionar o objeto à lista se o estado for igual
+                servicoEnderecoDtoList2.add(s);
+            }
+        }
+
+
+        // Retornar a lista de objetos convertidos
+        return new ResponseEntity<>(servicoEnderecoDtoList2, HttpStatus.OK);
+    }
+
+
+
+
 
     @GetMapping("/empresa/{id}")
     public ResponseEntity<List<ServicoDto>> buscarServicosPorEmpresaId(@PathVariable Long id){

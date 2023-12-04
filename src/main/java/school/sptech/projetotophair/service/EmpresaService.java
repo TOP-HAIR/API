@@ -1,6 +1,8 @@
 package school.sptech.projetotophair.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -13,6 +15,7 @@ import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmpresaService {
@@ -62,13 +65,27 @@ public class EmpresaService {
         return empresas;
     }
 
+//    public List<Empresa> listarEmpresasTop5AvaliacoesPorEstado(String estado) {
+//        List<Empresa> empresas = empresaRepository.findTop5EmpresasMelhorAvaliadasPorEstado(estado);
+//        if (empresas.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
+//        }
+//        return empresas;
+//    }
+
     public List<Empresa> listarEmpresasTop5AvaliacoesPorEstado(String estado) {
-        List<Empresa> empresas = empresaRepository.findTop5EmpresasMelhorAvaliadasPorEstado(estado);
+        List<Empresa> empresas = empresaRepository.findTopEmpresasMelhorAvaliadasPorEstado(estado);
         if (empresas.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
         }
-        return empresas;
+
+        // Retorne apenas os primeiros 5 resultados
+        return empresas.stream().limit(5).collect(Collectors.toList());
     }
+
+
+
+
 
     public Optional<Empresa> findEmpresaByUsuarioId(Long idUsuario) {
         if (usuarioRepository.existsById(idUsuario)) {

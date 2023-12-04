@@ -3,8 +3,8 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import school.sptech.projetotophair.api.fila.Fila;
-import school.sptech.projetotophair.api.pilha.PilhaObj;
+import school.sptech.projetotophair.service.integraveis.fila.Fila;
+import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -115,21 +116,28 @@ public class AgendaController {
 //        return ResponseEntity.ok(dto);
 //    }
 
-    @GetMapping("/ultimos-agendamentos/{idEmpresa}")
-    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long idEmpresa) {
-        // Assuming you have a service instance called agendaService
-        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos(idEmpresa);
+//    @GetMapping("/ultimos-agendamentos/{idEmpresa}")
+//    public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long idEmpresa) {
+//        // Assuming you have a service instance called agendaService
+//        PilhaObj<Agenda> ultimosAgendamentos = agendaService.getUltimosAgendamentos(idEmpresa);
+//
+//        // Convert Agenda objects to UltimosAgendamentosDto objects using the mapper
+//        List<UltimosAgendamentosDto> dtos = new ArrayList<>();
+//        while (!ultimosAgendamentos.isEmpty()) {
+//            Agenda agenda = ultimosAgendamentos.pop();
+//            UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
+//            dtos.add(dto);
+//        }
+//
+//        return ResponseEntity.ok(dtos);
+//    }
+// No seu controlador
+@GetMapping("/ultimos-agendamentos/{idEmpresa}")
+public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVariable Long idEmpresa) {
+    List<UltimosAgendamentosDto> dtos = agendaService.getUltimosAgendamentosDto(idEmpresa);
+    return ResponseEntity.ok(dtos);
+}
 
-        // Convert Agenda objects to UltimosAgendamentosDto objects using the mapper
-        List<UltimosAgendamentosDto> dtos = new ArrayList<>();
-        while (!ultimosAgendamentos.isEmpty()) {
-            Agenda agenda = ultimosAgendamentos.pop();
-            UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
-            dtos.add(dto);
-        }
-
-        return ResponseEntity.ok(dtos);
-    }
 
     @GetMapping("/meses-ordenados/{idEmpresa}")
     public ResponseEntity<List<String>> obterMesesOrdenados(@PathVariable Long idEmpresa) {

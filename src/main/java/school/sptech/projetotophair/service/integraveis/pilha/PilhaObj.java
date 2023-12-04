@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.api.pilha;
+package school.sptech.projetotophair.service.integraveis.pilha;
 
 public class PilhaObj<T> {
 
@@ -23,12 +23,22 @@ public class PilhaObj<T> {
     }
 
     // 05) Método push
+//    public void push(T info) {
+//        if (isFull()) {
+//            throw new IllegalStateException("Pilha cheia!");
+//        }
+//        pilha[++topo] = info;
+//    }
+// 05) Método push
     public void push(T info) {
         if (isFull()) {
-            throw new IllegalStateException("Pilha cheia!");
+            // Se a pilha estiver cheia, remova o elemento mais antigo
+            System.arraycopy(pilha, 1, pilha, 0, pilha.length - 1);
+            topo--;
         }
         pilha[++topo] = info;
     }
+
 
     // 06) Método pop
     public T pop() {
@@ -45,6 +55,7 @@ public class PilhaObj<T> {
         }
         return pilha[topo];
     }
+
 
     // 08) Método exibe
     public void exibe() {

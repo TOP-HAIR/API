@@ -1,4 +1,4 @@
-package school.sptech.projetotophair.api.fila;
+package school.sptech.projetotophair.service.integraveis.fila;
 
 import java.util.Arrays;
 

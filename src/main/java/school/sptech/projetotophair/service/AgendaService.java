@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
-import school.sptech.projetotophair.api.fila.Fila;
-import school.sptech.projetotophair.api.pilha.PilhaObj;
+import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
+import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
+import school.sptech.projetotophair.service.integraveis.fila.Fila;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.agenda.repository.AgendaRepository;
 import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
@@ -16,6 +17,7 @@ import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.servico.repository.ServicoRepository;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
+import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 
 import java.util.*;
 
@@ -132,26 +134,52 @@ public class AgendaService {
         agendaRepository.deleteById(id);
     }
 
-    public PilhaObj<Agenda> getUltimosAgendamentos(Long idEmpresa) {
-        int quantidadeDesejada = 10;
+//    public PilhaObj<Agenda> getUltimosAgendamentos(Long idEmpresa) {
+//        int quantidadeDesejada = 10;
+//
+//        PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
+//
+//        // Popula a pilha com os últimos agendamentos do banco de dados
+//        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
+//
+//        // Sort the agendas by date in descending order
+//        todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());
+//
+//        // Add the last 10 agendas to the stack
+//        for (int i = 0; i < Math.min(quantidadeDesejada, todosAgendamentos.size()); i++) {
+//            ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
+//        }
+//
+//        // Retorna a pilha invertida (if needed)
+//        // inverterOrdemPilha(ultimosAgendamentosPilha);
+//
+//        return ultimosAgendamentosPilha;
+//    }
 
+
+    public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long idEmpresa) {
+        int quantidadeDesejada = 10;
         PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
 
-        // Popula a pilha com os últimos agendamentos do banco de dados
         List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
 
-        // Sort the agendas by date in descending order
-        todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());
-
-        // Add the last 10 agendas to the stack
-        for (int i = 0; i < Math.min(quantidadeDesejada, todosAgendamentos.size()); i++) {
+        // Adicionar os últimos 10 agendamentos à pilha
+        int startIndex = Math.max(0, todosAgendamentos.size() - quantidadeDesejada);
+        for (int i = startIndex; i < todosAgendamentos.size(); i++) {
             ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
         }
 
-        // Retorna a pilha invertida (if needed)
-        // inverterOrdemPilha(ultimosAgendamentosPilha);
+        // Obter os itens da pilha na ordem correta
+        List<UltimosAgendamentosDto> dtos = new ArrayList<>();
+        while (!ultimosAgendamentosPilha.isEmpty()) {
+            Agenda agenda = ultimosAgendamentosPilha.pop();
+            if (agenda != null) {
+                UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
+                dtos.add(dto);
+            }
+        }
 
-        return ultimosAgendamentosPilha;
+        return dtos;
     }
 
     public Fila mesesOrdenados() {

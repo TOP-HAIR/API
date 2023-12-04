@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +23,6 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
             "WHERE e.endereco.estado = :estado " +
             "GROUP BY e " +
             "ORDER BY AVG(a.nivel) DESC")
-    List<Empresa> findTop5EmpresasMelhorAvaliadasPorEstado(@Param("estado") String estado);
+    List<Empresa> findTopEmpresasMelhorAvaliadasPorEstado(@Param("estado") String estado);
+
 }

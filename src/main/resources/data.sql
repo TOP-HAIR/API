@@ -307,4 +307,3 @@ INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'At
 INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 19, 19);
 INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (3, 'Esperava mais. Não fiquei completamente satisfeito.', 20, 20);
 INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço excelente! Superou minhas expectativas.', 21, 21);
-

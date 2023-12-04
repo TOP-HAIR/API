@@ -34,7 +34,7 @@ public class EmpresaController {
         return ResponseEntity.ok(empresaEnderecoVinculadoDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/listar-por-id/{id}")
     public ResponseEntity<EmpresaComImagensDto> listar(@PathVariable Long id) {
         Optional<Empresa> empresa = empresaService.buscarEmpresaPorId(id);
         EmpresaComImagensDto empresaComImagensDto = EmpresaMapper.toEmpresaComImagensDto(empresa.get());

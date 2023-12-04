@@ -79,10 +79,11 @@ public class UsuarioService {
     }
 
     public Usuario buscarPorId(Long id) {
-        Usuario usuario = this.usuarioRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Usuário não encontrado com ID: " + id)
-        );
-        return usuario;
+        Optional<Usuario> byId = usuarioRepository.findById(id);
+        if (byId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return byId.get();
     }
 
     public Usuario buscarPorIdAvaliacao(Long id){
@@ -91,14 +92,16 @@ public class UsuarioService {
     }
 
     public Usuario atualizarUsuario(Long id, Usuario novoUsuario) {
-        Usuario usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Usuário não encontrado com ID: " + id));
+        Optional<Usuario> byId = usuarioRepository.findById(id);
 
-        usuarioExistente.setNomeCompleto(novoUsuario.getNomeCompleto());
-        usuarioExistente.setEmail(novoUsuario.getEmail());
-        usuarioExistente.setTelefone(novoUsuario.getTelefone());
+        if (byId.isPresent()) {
+            byId.get().setNomeCompleto(novoUsuario.getNomeCompleto());
+            byId.get().setEmail(novoUsuario.getEmail());
+            byId.get().setTelefone(novoUsuario.getTelefone());
 
-        return usuarioRepository.save(usuarioExistente);
+            return usuarioRepository.save(byId.get());
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     public Usuario vincularFkEmpresa(Long idEmpresa, Long idUsuario){

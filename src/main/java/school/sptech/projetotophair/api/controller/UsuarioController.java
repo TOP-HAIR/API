@@ -86,9 +86,10 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario novoUsuario) {
+    public ResponseEntity<UsuarioResponseDto> atualizarUsuario(@PathVariable Long id, @RequestBody Usuario novoUsuario) {
         Usuario usuarioAtualizado = usuarioService.atualizarUsuario(id, novoUsuario);
-        return ResponseEntity.ok(usuarioAtualizado);
+        UsuarioResponseDto usuarioResponseDto = UsuarioMapper.toUsuarioResponseDto(usuarioAtualizado);
+        return ResponseEntity.ok(usuarioResponseDto);
     }
 
     @PutMapping("/vincular-empresa/{idUsuario}/{idEmpresa}")

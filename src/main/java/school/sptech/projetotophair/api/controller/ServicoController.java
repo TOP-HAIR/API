@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.servico.ArquivoCsv;
 import school.sptech.projetotophair.domain.servico.ListaObj;
 import school.sptech.projetotophair.domain.servico.Servico;
@@ -115,12 +114,10 @@ public class ServicoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Servico> atualizar(
-            @PathVariable Long id,
-            @RequestBody Servico servico
-    ) {
+    public ResponseEntity<ServicoDto> atualizar(@PathVariable Long id, @RequestBody Servico servico) {
         Optional<Servico> servicoAtualizado = servicoService.atualizarServico(id, servico);
-            return ResponseEntity.status(200).body(servicoAtualizado.get());
+        ServicoDto servicoDto = ServicoMapper.toServicoDto(servicoAtualizado.get());
+        return ResponseEntity.ok(servicoDto);
     }
 
     @DeleteMapping("/{idServico}")

@@ -21,6 +21,7 @@ public class AgendaMapper {
         UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
         dto.setIdAgenda(agenda.getIdAgenda());
         dto.setIdUsuario(primeiroUsuario.getIdUsuario());
+        dto.setNomeEmpresa(primeiroUsuario.getNomeCompleto());
         dto.setData(agenda.getData());
         dto.setHora(agenda.getHora());
         dto.setStatus(agenda.getStatus());

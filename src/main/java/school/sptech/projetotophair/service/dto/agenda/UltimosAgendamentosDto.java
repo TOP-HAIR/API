@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class UltimosAgendamentosDto {
     private Long idAgenda;
     private Long idUsuario;
+    private String nomeEmpresa;
     private LocalDate data;
     private String hora;
     private String status;

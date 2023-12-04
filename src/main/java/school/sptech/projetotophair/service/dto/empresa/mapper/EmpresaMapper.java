@@ -1,13 +1,13 @@
 package school.sptech.projetotophair.service.dto.empresa.mapper;
 
+import school.sptech.projetotophair.domain.arquivo.Arquivo;
 import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.service.dto.arquivo.ArquivoDto;
+import school.sptech.projetotophair.service.dto.arquivo.mapper.ArquivoMapper;
 import school.sptech.projetotophair.service.dto.avaliacao.AvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.avaliacao.mapper.AvaliacaoMapper;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaEnderecoVinculadoDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaPorEstadoDto;
+import school.sptech.projetotophair.service.dto.empresa.*;
 import school.sptech.projetotophair.service.dto.endereco.EnderecoDto;
 import school.sptech.projetotophair.service.dto.endereco.mapper.EnderecoMapper;
 
@@ -63,5 +63,22 @@ public class EmpresaMapper {
         dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
 
         return dto;
+    }
+
+    public static EmpresaComImagensDto toEmpresaComImagensDto(Empresa entity){
+        EmpresaComImagensDto dtos = new EmpresaComImagensDto();
+        List<Arquivo> arquivos = entity.getArquivos();
+        List<ArquivoDto> arquivoDtos = new ArrayList<>();
+
+        for (Arquivo arquivoDaVez: arquivos) {
+            arquivoDtos.add(ArquivoMapper.toArquivoDto(arquivoDaVez));
+        }
+
+        dtos.setIdEmpresa(entity.getIdEmpresa());
+        dtos.setRazaoSocial(entity.getRazaoSocial());
+        dtos.setCnpj(entity.getCnpj());;
+        dtos.setArquivos(arquivoDtos);
+
+        return dtos;
     }
 }

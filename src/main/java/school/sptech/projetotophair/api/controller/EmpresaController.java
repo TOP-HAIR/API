@@ -6,10 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.service.EmpresaService;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaEnderecoVinculadoDto;
-import school.sptech.projetotophair.service.dto.empresa.EmpresaPorEstadoDto;
+import school.sptech.projetotophair.service.dto.empresa.*;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import java.util.ArrayList;
@@ -38,10 +35,10 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmpresaDto> listar(@PathVariable Long id) {
+    public ResponseEntity<EmpresaComImagensDto> listar(@PathVariable Long id) {
         Optional<Empresa> empresa = empresaService.buscarEmpresaPorId(id);
-        EmpresaDto empresaDto = EmpresaMapper.toEmpresaDto(empresa.get());
-        return ResponseEntity.ok(empresaDto);
+        EmpresaComImagensDto empresaComImagensDto = EmpresaMapper.toEmpresaComImagensDto(empresa.get());
+        return ResponseEntity.ok(empresaComImagensDto);
     }
 
     @GetMapping("/estado")

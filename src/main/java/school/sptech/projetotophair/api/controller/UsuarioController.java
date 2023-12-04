@@ -19,11 +19,7 @@ import school.sptech.projetotophair.service.autenticacao.dto.UsuarioLoginDto;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 import school.sptech.projetotophair.service.dto.endereco.EnderecoDto;
 import school.sptech.projetotophair.service.dto.endereco.mapper.EnderecoMapper;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioAvaliacaoResponseDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioEnderecoVinculadoDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioResponseDto;
-import school.sptech.projetotophair.service.dto.usuario.UsuarioEmpresaVinculadaDto;
+import school.sptech.projetotophair.service.dto.usuario.*;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 import school.sptech.projetotophair.service.integraveis.exportacao.Exportacao;
 import school.sptech.projetotophair.service.integraveis.importacao.Importacao;
@@ -56,10 +52,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioResponseDto> buscarPorid(@PathVariable Long id){
+    public ResponseEntity<UsuarioComArquivoDto> buscarPorid(@PathVariable Long id){
         Usuario usuario = this.usuarioService.buscarPorId(id);
-        UsuarioResponseDto usuarioResponseDto = UsuarioMapper.toUsuarioResponseDto(usuario);
-        return ResponseEntity.ok(usuarioResponseDto);
+        UsuarioComArquivoDto usuarioDto = UsuarioMapper.toUsuarioComArquivoDto(usuario);
+        return ResponseEntity.ok(usuarioDto);
     }
 
     @GetMapping("/empresa/{idEmpresa}")

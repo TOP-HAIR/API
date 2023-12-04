@@ -4,12 +4,10 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.br.CPF;
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.arquivo.Arquivo;
 import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.endereco.Endereco;
@@ -53,10 +51,17 @@ public class Usuario {
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private Endereco endereco;
 
-
+    @Nullable
+    @Getter
     @OneToMany(mappedBy = "usuario")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     List<Avaliacao> avaliacoes;
+
+    @Nullable
+    @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "fkArquivo", referencedColumnName = "id")
+    private Arquivo arquivo;
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -148,5 +153,13 @@ public class Usuario {
 
     public void setAvaliacoes(List<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
+    }
+
+    public Arquivo getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(Arquivo arquivo) {
+        this.arquivo = arquivo;
     }
 }

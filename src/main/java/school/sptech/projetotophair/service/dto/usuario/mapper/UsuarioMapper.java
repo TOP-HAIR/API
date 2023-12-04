@@ -5,6 +5,7 @@ import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.autenticacao.dto.UsuarioTokenDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
+import school.sptech.projetotophair.service.dto.arquivo.mapper.ArquivoMapper;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 import school.sptech.projetotophair.service.dto.usuario.*;
 
@@ -97,6 +98,20 @@ public class UsuarioMapper {
         dto.setEmail(entity.getEmail());
         dto.setNomeCompleto(entity.getNomeCompleto());
         dto.setSenha(entity.getSenha());
+        dto.setTelefone(entity.getTelefone());
+        dto.setCpf(entity.getCpf());
+        dto.setIsProfissional(entity.getProfissional());
+
+        return dto;
+    }
+
+    public static UsuarioComArquivoDto toUsuarioComArquivoDto(Usuario entity){
+        UsuarioComArquivoDto dto = new UsuarioComArquivoDto();
+
+        dto.setArquivo(ArquivoMapper.toArquivoDto(entity.getArquivo()));
+        dto.setIdUsuario(entity.getIdUsuario());
+        dto.setEmail(entity.getEmail());
+        dto.setNomeCompleto(entity.getNomeCompleto());
         dto.setTelefone(entity.getTelefone());
         dto.setCpf(entity.getCpf());
         dto.setIsProfissional(entity.getProfissional());

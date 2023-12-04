@@ -146,7 +146,7 @@ public class ServicoController {
                     servicoList.adiciona(servicoDaVez);
                 }
                 // Gere um arquivo CSV com os funcionários
-                String csvFilename = "servico";
+                String csvFilename = "Servico.csv";
                 ArquivoCsv<Servico> csvExporter = new ArquivoCsv<>();
                 csvExporter.gravaArquivoCsv(servicoList, csvFilename);
 
@@ -155,22 +155,24 @@ public class ServicoController {
 
                 // Configure os cabeçalhos da resposta para indicar o tipo de mídia e o nome do arquivo
                 HttpHeaders headers = new HttpHeaders();
-                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=funcionarios.csv");
+                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Servico.csv");
                 headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
 
-                // Armazena o resultado do ResponseEntity em uma variavel
+                // Armazena o resultado do ResponseEntity em uma variável
                 ResponseEntity<Resource> responseEntity = ResponseEntity.ok()
                         .headers(headers)
                         .contentType(MediaType.APPLICATION_OCTET_STREAM)
                         .body(resource);
 
+                // Retorna a resposta
+                return responseEntity;
             } catch (IOException e) {
                 // Em caso de erro ao criar o arquivo CSV, retorne uma resposta de erro 500
                 return ResponseEntity.internalServerError().build();
             }
         }
-        return ResponseEntity.ok().build();
     }
+
 
 
 }

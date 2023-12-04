@@ -1,12 +1,32 @@
 00Usuarios01-12-2023 23:00:2601
 0300001Empresa K                                         10987654321011    
-02000001Maria Silva                                       maria@Gxample.com                                 (55) 5555-111111122233344   t000001
+02000001Maria Silva                                       reber@gmail.com                                 (55) 5555-111111122233344   t000001
 0300001Empresa K                                         10987654321011    
-02000017João Silva                                        joao.silva@Gmail.com                              null          123.456.789-00n000001
+02000017João Silva                                        joao.ilva@Gmail.com                              null          123.456.789-00n000001
 010000000004
 00Usuarios03-12-2023 15:36:0701
 0300006C6 Bank                                           11321098765405    
-02000008Gabriel Bebel                                     bebel@gamil.com                                   (55) 5555-111344122233303   t000006
+02000008Gabriel Bebel                                     veve@gamil.com                                   (55) 5555-111344122233303   t000006
+0300006C6 Bank                                           11321098765405    
+02000009Wesley Carvalho                                   wsefrvalho@gmail.com                              (55) 5555-111433122233304   t000006
+0300006C6 Bank                                           11321098765405    
+02000010Claudinete da Rosa                                clatRosa@gmail.com                                (55) 5555-111522122233305   t000006
+0300006C6 Bank                                           11321098765405    
+02000011João Vitor                                        j0Vgtor@gmail.com                                 (55) 5555-111611122233306   t000006
+0300006C6 Bank                                           11321098765405    
+02000012Andrew Silva                                      arifal@gmail.com                                  (55) 5555-111700122233307   t000006
+0300006C6 Bank                                           11321098765405    
+02000013Anderson Souza                                    a3Sfuza@gamil.com                                 (55) 5555-111877122233308   t000006
+0300006C6 Bank                                           11321098765405    
+02000014Cleitim do Santos                                 cleifantos@gmail.com                              (55) 5555-111988122233309   t000006
+0300006C6 Bank                                           11321098765405    
+02000015Flavim de Queira                                  fwueira@gmail.com                                 (55) 5555-112099122233310   t000006
+0300006C6 Bank                                           11321098765405    
+02000016Fabinho Melo                                      fMxlo@gmail.com                                   (55) 5555-112155122233311   t000006
+010000000018
+00Usuarios04-12-2023 01:39:4101
+0300006C6 Bank                                           11321098765405    
+02000008Gabriel Bebel                                     bebel@gmail.com                                   (55) 5555-111344122233303   t000006
 0300006C6 Bank                                           11321098765405    
 02000009Wesley Carvalho                                   wsCarvalho@gmail.com                              (55) 5555-111433122233304   t000006
 0300006C6 Bank                                           11321098765405    

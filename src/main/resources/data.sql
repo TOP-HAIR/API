@@ -144,17 +144,17 @@ VALUES
     ('Barba', 'Descrição do Serviço B', 80.00, '02:00:00', 7, 5);
 
     -- Inserir 9 serviços adicionais
-    INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
+    INSERT INTO Servico (nome_Servico, categoria, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
     VALUES
-        ('Restauração', 'Restaura a raiz do cabelo', 55.00, '01:10:00', 8, 6),
-        ('Botox', 'Relaxamento de cabelo', 65.00, '01:25:00', 9, 6),
-        ('Luzes', 'Tingir o cabelo com tinta a sua escolha', 75.00, '01:40:00', 10, 5),
-        ('Escova', 'Escovamento de cabelo', 85.00, '01:55:00', 11, 6),
-        ('Sobracelha', 'Limpeza facial na região dos olhos', 95.00, '02:10:00', 12, 6),
-        ('Progressiva', 'Alisamento de cabelo', 105.00, '02:25:00', 13, 6),
-        ('Lavagem', 'Lavagem com produtos profissionais', 115.00, '02:40:00', 14, 6),
-        ('Aplique', 'Adição e disfarce de cabelos', 125.00, '02:55:00', 15, 6),
-        ('Trança', 'Penteado de cabelos curtos e longos com trança', 135.00, '03:10:00', 16, 6);
+        ('Restauração','Cabelo', 'Restaura a raiz do cabelo', 55.00, '01:10:00', 8, 6),
+        ('Botox','Cabelo', 'Relaxamento de cabelo', 65.00, '01:25:00', 9, 6),
+        ('Luzes','Tintura', 'Tingir o cabelo com tinta a sua escolha', 75.00, '01:40:00', 10, 5),
+        ('Escova','Cabelo', 'Escovamento de cabelo', 85.00, '01:55:00', 11, 6),
+        ('Sobracelha','Tintura', 'Limpeza facial na região dos olhos', 95.00, '02:10:00', 12, 6),
+        ('Progressiva','Cabelo', 'Alisamento de cabelo', 105.00, '02:25:00', 13, 6),
+        ('Lavagem','Barba', 'Lavagem com produtos profissionais', 115.00, '02:40:00', 14, 6),
+        ('Aplique','Barba', 'Adição e disfarce de cabelos', 125.00, '02:55:00', 15, 6),
+        ('Trança','Barba', 'Penteado de cabelos curtos e longos com trança', 135.00, '03:10:00', 16, 6);
 
 -- Inserir 2 funcionários com a senha cryptografada senha123
 INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)

@@ -108,7 +108,9 @@ public class UsuarioMapper {
     public static UsuarioComArquivoDto toUsuarioComArquivoDto(Usuario entity){
         UsuarioComArquivoDto dto = new UsuarioComArquivoDto();
 
-        dto.setArquivo(ArquivoMapper.toArquivoDto(entity.getArquivo()));
+        if (entity.getArquivo() != null) {
+            dto.setArquivo(ArquivoMapper.toArquivoDto(entity.getArquivo()));
+        }
         dto.setIdUsuario(entity.getIdUsuario());
         dto.setEmail(entity.getEmail());
         dto.setNomeCompleto(entity.getNomeCompleto());

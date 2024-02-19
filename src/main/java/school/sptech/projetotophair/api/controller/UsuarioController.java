@@ -53,8 +53,8 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioComArquivoDto> buscarPorid(@PathVariable Long id){
-        Usuario usuario = this.usuarioService.buscarPorId(id);
-        UsuarioComArquivoDto usuarioDto = UsuarioMapper.toUsuarioComArquivoDto(usuario);
+        Optional<Usuario> usuario = usuarioService.buscarPorId(id);
+        UsuarioComArquivoDto usuarioDto = UsuarioMapper.toUsuarioComArquivoDto(usuario.get());
         return ResponseEntity.ok(usuarioDto);
     }
 

@@ -1,6 +1,5 @@
 package school.sptech.projetotophair.service;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,7 +22,6 @@ import school.sptech.projetotophair.service.dto.usuario.UsuarioCriacaoDto;
 import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -78,12 +76,12 @@ public class UsuarioService {
         return UsuarioMapper.of(usuarioAutenticado, token);
     }
 
-    public Usuario buscarPorId(Long id) {
+    public Optional<Usuario> buscarPorId(Long id) {
         Optional<Usuario> byId = usuarioRepository.findById(id);
-        if (byId.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (byId.isPresent()) {
+            return byId;
         }
-        return byId.get();
+        return byId;
     }
 
     public Usuario buscarPorIdAvaliacao(Long id){

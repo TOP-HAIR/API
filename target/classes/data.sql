@@ -1,98 +1,331 @@
 
 -- Dados fictícios para a tabela Endereco (adicionando mais alguns endereços)
-    INSERT INTO Endereco (logradouro, numero, estado, complemento, cidade, cep)
-    VALUES
-        ('Rua X', 567, 'Rio Grande do Sul', 'Apto 202', 'RS', '56789-012'),
-        ('Avenida Y', 890, 'Bahia', 'Casa 3', 'BH', '67890-123'),
-        ('Rua Z', 111, 'Santa Catarina', 'Bloco 4', 'SC', '78901-234'),
-        ('Rua Quinze de novembro', 111, 'SC', 'Bloco 4', 'SP', '78901-234'),
-        ('Rua Azevedo', 111, 'SC', 'Bloco 4', 'SP', '78901-234'),
-        ('Av. Nove de Julho', 3186, 'SP', 'Prédio', 'SP', '98901-234'),
-        ('Av. Tucuruvi', 3186, 'SP', 'Prédio', 'SP', '98901-234');
-
--- Inserções fictícias para a tabela Endereco
 INSERT INTO Endereco (logradouro, numero, estado, complemento, cidade, cep)
 VALUES
-    ('Rua Cabeleireiro 1', 123, 'Rio Grande do Sul', 'Apto 101', 'SP', '56789-012'),
-    ('Avenida dos Cortes', 456, 'Bahia', 'Casa 5', 'BH', '67890-123'),
-    ('Rua das Tesouras', 789, 'Santa Catarina', 'Bloco 7', 'RS', '78901-234'),
-    ('Rua dos Penteados', 222, 'Santa Catarina', 'Bloco 8', 'RS', '78901-234'),
-    ('Avenida dos Estilos', 555, 'Santa Catarina', 'Bloco 9', 'RS', '78901-234'),
-    ('Av. Cabelo Perfeito', 777, 'SP', 'Prédio', 'SP', '98901-234'),
-    ('Av. dos Cortes Modernos', 999, 'SP', 'Prédio', 'SP', '98901-234'),
-    ('Rua dos Cortes Elegantes', 111, 'SP', 'Prédio', 'SP', '98901-234'),
-    ('Avenida dos Penteados', 333, 'SP', 'Prédio', 'SP', '98901-234'),
-    ('Av. Cabelo Fashion', 444, 'RJ', 'Loja 1', 'RJ', '45678-901'),
-    ('Rua do Estilo Trendy', 666, 'RJ', 'Loja 2', 'RJ', '45678-901'),
-    ('Av. Fashion Hair', 888, 'RJ', 'Loja 3', 'RJ', '45678-901'),
-    ('Rua Estilista Chic', 999, 'RS', 'Sala 101', 'RS', '12345-678'),
-    ('Av. dos Cortes Sofisticados', 333, 'RS', 'Sala 102', 'RS', '12345-678'),
-    ('Rua da Beleza Eterna', 555, 'RS', 'Sala 103', 'RS', '12345-678'),
-    ('Av. da Elegância', 777, 'RS', 'Sala 104', 'SP', '12345-678'),
-    ('Rua dos Cabelos', 999, 'BA', 'Salão 1', 'SP', '23456-789'),
-    ('Av. dos Cortes Divinos', 111, 'BA', 'Salão 2', 'BH', '23456-789'),
-    ('Rua dos Estilos Únicos', 333, 'BA', 'Salão 3', 'BH', '23456-789'),
-    ('Av. da Beleza', 555, 'BA', 'Salão 4', 'BH', '23456-789');
+    ('Rua das Flores', 118, 'RS', 'Bloco 5', 'Porto Alegre', '12345-678'),
+    ('Avenida dos Coqueiros', 547, 'BA', 'Prédio', 'Salvador', '23456-789'),
+    ('Rua do Sol', 254, 'SC', 'Casa 7', 'Florianópolis', '34567-890'),
+    ('Rua do Arco-íris', 987, 'SP', 'Bloco 9', 'São Paulo', '45678-901'),
+    ('Avenida das Estrelas', 753, 'RJ', 'Apartamento 3', 'Rio de Janeiro', '56789-012'),
+    ('Rua das Águas Claras', 326, 'PR', 'Casa 2', 'Curitiba', '67890-123'),
+    ('Avenida das Palmeiras', 114, 'MG', 'Bloco B', 'Belo Horizonte', '78901-234'),
+    ('Rua das Pedras Preciosas', 669, 'RS', 'Sala 101', 'Porto Alegre', '89012-345'),
+    ('Avenida das Maravilhas', 132, 'BA', 'Salão 5', 'Salvador', '90123-456'),
+    ('Rua das Estrelas Cadentes', 703, 'SC', 'Bloco C', 'Florianópolis', '01234-567'),
+    ('Avenida das Cores', 287, 'SP', 'Prédio', 'São Paulo', '12345-678'),
+    ('Rua das Borboletas', 531, 'RJ', 'Loja 2', 'Rio de Janeiro', '23456-789'),
+    ('Avenida dos Sonhos', 623, 'PR', 'Casa 3', 'Curitiba', '34567-890'),
+    ('Rua das Marés', 819, 'MG', 'Apartamento 6', 'Belo Horizonte', '45678-901'),
+    ('Avenida das Flores', 415, 'RS', 'Bloco 6', 'Porto Alegre', '56789-012'),
+    ('Rua das Canções', 201, 'BA', 'Casa 4', 'Salvador', '67890-123'),
+    ('Avenida dos Ventos', 897, 'SC', 'Prédio', 'Florianópolis', '78901-234'),
+    ('Rua das Ilusões', 383, 'SP', 'Bloco 10', 'São Paulo', '89012-345'),
+    ('Avenida das Ondas', 662, 'RJ', 'Loja 3', 'Rio de Janeiro', '90123-456'),
+    ('Rua das Fontes', 104, 'PR', 'Casa 5', 'Curitiba', '01234-567'),
+    ('Avenida dos Encantos', 770, 'MG', 'Bloco D', 'Belo Horizonte', '12345-678'),
+    ('Rua das Estrelas', 223, 'RS', 'Casa 8', 'Porto Alegre', '23456-789'),
+    ('Avenida das Araras', 689, 'BA', 'Prédio', 'Salvador', '34567-890'),
+    ('Rua das Árvores', 451, 'SC', 'Bloco D', 'Florianópolis', '45678-901'),
+    ('Rua dos Ipês', 177, 'SP', 'Casa 6', 'São Paulo', '56789-012'),
+    ('Avenida das Borboletas', 840, 'RJ', 'Apartamento 4', 'Rio de Janeiro', '67890-123'),
+    ('Rua das Montanhas', 299, 'PR', 'Bloco 7', 'Curitiba', '78901-234'),
+    ('Avenida dos Pássaros', 502, 'MG', 'Casa 7', 'Belo Horizonte', '89012-345'),
+    ('Rua das Nuvens', 623, 'RS', 'Bloco 10', 'Porto Alegre', '90123-456'),
+    ('Avenida das Estações', 738, 'BA', 'Casa 9', 'Salvador', '01234-567'),
+    ('Rua Cadentes', 804, 'SC', 'Bloco E', 'Florianópolis', '12345-678'),
+    ('Avenida das Rosas', 925, 'RS', 'Prédio', 'Porto Alegre', '23456-789'),
+    ('Rua das Maravilhas', 374, 'BA', 'Casa 10', 'Salvador', '34567-890'),
+    ('Avenida das Gaivotas', 661, 'SC', 'Bloco F', 'Florianópolis', '45678-901'),
+    ('Rua das Estrelas ', 247, 'SP', 'Apartamento 7', 'São Paulo', '56789-012'),
+    ('Avenida dos Girassóis', 512, 'RJ', 'Casa 11', 'Rio de Janeiro', '67890-123'),
+    ('Rua das Cachoeiras', 893, 'PR', 'Bloco 11', 'Curitiba', '78901-234'),
+    ('Avenida dos Ventos', 296, 'MG', 'Prédio', 'Belo Horizonte', '89012-345'),
+    ('Rua das Cores', 441, 'RS', 'Casa 12', 'Porto Alegre', '90123-456'),
+    ('Avenida das Estações', 578, 'BA', 'Bloco G', 'Salvador', '01234-567'),
+    ('Rua das Estrelas Caidas', 699, 'SC', 'Casa 13', 'Florianópolis', '12345-678'),
+    ('Rua das Estrelas Cadentes', 333, 'RS', 'Bloco H', 'Porto Alegre', '23456-789'),
+    ('Avenida das Águias', 721, 'BA', 'Casa 14', 'Salvador', '34567-890'),
+    ('Rua das Estrelas', 864, 'SC', 'Apartamento 8', 'Florianópolis', '45678-901'),
+    ('Avenida dos Ipês', 429, 'SP', 'Prédio', 'São Paulo', '56789-012'),
+    ('Rua das Maravilhas', 590, 'RJ', 'Casa 15', 'Rio de Janeiro', '67890-123'),
+    ('Avenida dos Pássaros', 157, 'PR', 'Bloco 12', 'Curitiba', '78901-234'),
+    ('Rua das Pedras', 778, 'MG', 'Casa 16', 'Belo Horizonte', '89012-345'),
+    ('Avenida das Rosas', 221, 'RS', 'Bloco I', 'Porto Alegre', '90123-456'),
+    ('Rua das Estações', 664, 'BA', 'Casa 17', 'Salvador', '01234-567'),
+    ('Avenida das Estrelas', 789, 'SC', 'Prédio', 'Florianópolis', '12345-678'),
+    ('Avenida das Flores', 1011, 'RS', 'Bloco J', 'Porto Alegre', '23456-789'),
+    ('Rua das Estrelas', 812, 'BA', 'Casa 18', 'Salvador', '34567-890'),
+    ('Avenida dos Pássaros', 557, 'SC', 'Apartamento 9', 'Florianópolis', '45678-901'),
+    ('Rua das Maravilhas', 204, 'SP', 'Prédio', 'São Paulo', '56789-012'),
+    ('Avenida dos Girassóis', 934, 'RJ', 'Casa 19', 'Rio de Janeiro', '67890-123'),
+    ('Rua das Árvores', 462, 'PR', 'Bloco 13', 'Curitiba', '78901-234'),
+    ('Avenida dos Ventos', 613, 'MG', 'Casa 20', 'Belo Horizonte', '89012-345'),
+    ('Rua das Cores', 287, 'RS', 'Bloco K', 'Porto Alegre', '90123-456'),
+    ('Avenida das Estrelas Cadentes', 899, 'BA', 'Casa 21', 'Salvador', '01234-567'),
+    ('Rua das Estações', 720, 'SC', 'Prédio', 'Florianópolis', '12345-678'),
+    ('Rua do Arco Celeste', 388, 'RS', 'Torre Mágica', 'Porto Alegre', '23456-789'),
+    ('Avenida da Lua Cheia', 913, 'BA', 'Casa da Harmonia', 'Salvador', '34567-890'),
+    ('Rua das Estrelas Cadentes', 502, 'SC', 'Ninho dos Sonhos', 'Florianópolis', '45678-901'),
+    ('Avenida dos Unicórnios', 777, 'SP', 'Torre Encantada', 'São Paulo', '56789-012'),
+    ('Rua da Aurora Boreal', 333, 'RJ', 'Casa dos Desejos', 'Rio de Janeiro', '67890-123'),
+    ('Avenida das Fadas', 888, 'PR', 'Palácio das Maravilhas', 'Curitiba', '78901-234'),
+    ('Rua do Vale Encantado', 222, 'MG', 'Casa dos Segredos', 'Belo Horizonte', '89012-345'),
+    ('Avenida dos Dragões', 999, 'RS', 'Torre Proibida', 'Porto Alegre', '90123-456'),
+    ('Rua das Sereias', 444, 'BA', 'Palácio dos Encantos', 'Salvador', '01234-567'),
+    ('Avenida das Esfinges', 666, 'SC', 'Casa das Ilusões', 'Florianópolis', '12345-678'),
+    ('Rua dos Androides', 452, 'RS', 'Torre Espacial', 'Porto Alegre', '23456-789'),
+    ('Avenida das Galáxias', 789, 'BA', 'Base Lunar', 'Salvador', '34567-890'),
+    ('Rua dos Extraterrestres', 321, 'SC', 'Nave Estelar', 'Florianópolis', '45678-901'),
+    ('Avenida dos Robôs', 555, 'SP', 'Colônia Marciana', 'São Paulo', '56789-012'),
+    ('Rua dos Ciborgues', 999, 'RJ', 'Estação Orbital', 'Rio de Janeiro', '67890-123'),
+    ('Avenida das Naves', 123, 'PR', 'Estação Espacial', 'Curitiba', '78901-234'),
+    ('Rua dos Androides', 777, 'MG', 'Cidade Cibernética', 'Belo Horizonte', '89012-345'),
+    ('Avenida das Estrelas', 888, 'RS', 'Cidade dos Exos', 'Porto Alegre', '90123-456'),
+    ('Rua dos Cyborgs', 111, 'BA', 'Torre de Teletransporte', 'Salvador', '01234-567'),
+    ('Avenida das Engrenagens', 666, 'SC', 'Complexo Futurista', 'Florianópolis', '12345-678');
 
 -- Dados fictícios para a tabela Empresa (adicionando mais algumas empresas)
 INSERT INTO Empresa (razao_Social, cnpj, fk_Endereco)
 VALUES
-    ('Empresa K', '10987654321011', 1),
-    ('Empresa L', '21098765432102', 2),
-    ('Empresa M', '32109876543203', 3),
-    ('Empresa N', '43210987654304', 4),
-    ('Empresa O', '54321098765405', 5),
-    ('C6 Bank', '11321098765405', 6);
-
--- Inserções fictícias para a tabela Empresa
-INSERT INTO Empresa (razao_Social, cnpj, fk_Endereco)
-VALUES
-    ('Salão Elegante', '01234567890123', 7),
-    ('Estilo Perfeito', '12345678901234', 8),
-    ('Cortes Modernos', '23456789012345', 9),
-    ('Beleza Fashion', '34567890123456', 10),
-    ('Visual Trendy', '45678901234567', 11),
-    ('Elegância Total', '56789012345678', 12),
-    ('Cortes Charmosos', '67890123456789', 13),
-    ('Salão Chic', '78901234567890', 14),
-    ('Estilo Único', '89012345678901', 15),
-    ('Hair Fashion', '90123456789012', 16),
-    ('Eterna Beleza', '10987654321098', 17),
-    ('Cabelo Sofisticado', '21098765432109', 18),
-    ('Cortes Elegantes', '32109876543210', 19),
-    ('Beleza Infinita', '43210987654321', 20),
-    ('Estilo Divino', '54321098765432', 21),
-    ('Elegância Pura', '65432109876543', 22),
-    ('Beleza Celestial', '76543210987654', 23),
-    ('Cortes Moderníssimos', '87654321098765', 24),
-    ('Estilo Inovador', '98765432109876', 25),
-    ('Cabelo Charmoso', '09876543210987', 26);
+    ('Salão do Zé Navalha', '12345678901234', 1),
+    ('Barbearia do Bigode Chic', '23456789012345', 2),
+    ('Cortes e Cia', '34567890123456', 3),
+    ('Barbearia Elegância Máxima', '45678901234567', 4),
+    ('Estilo Masculino', '56789012345678', 5),
+    ('Beard Brothers', '67890123456789', 6),
+    ('Barbearia da Moda', '78901234567890', 7),
+    ('Cortes Arrojados', '89012345678901', 8),
+    ('Barba e Cabelo', '90123456789012', 9),
+    ('Corte e Estilo', '10987654321098', 10),
+    ('The Gentleman Barber', '21098765432109', 11),
+    ('Estilo Barbeiro', '32109876543210', 12),
+    ('Barbearia Luxo', '43210987654321', 13),
+    ('Cortes Precisos', '54321098765432', 14),
+    ('Barba Fina', '65432109876543', 15),
+    ('Corte Certinho', '76543210987654', 16),
+    ('Barbearia do Rosto Liso', '87654321098765', 17),
+    ('Estilo de Macho', '98765432109876', 18),
+    ('Barba de Respeito', '09876543210987', 19),
+    ('Corte do Guerreiro', '19876543210988', 20),
+    ('Barber Shop Deluxe', '29876543210989', 21),
+    ('Cortes Vitoriosos', '39876543210980', 22),
+    ('Barbearia Vintage', '49876543210981', 23),
+    ('Corte Clássico', '59876543210982', 24),
+    ('Barbearia da Navalha Dourada', '69876543210983', 25),
+    ('Estilo Barber', '79876543210984', 26);
 
 -- Dados fictícios para a tabela Agenda (adicionando mais alguns agendamentos)
 INSERT INTO Agenda (data, hora, status, fk_Empresa)
 VALUES
-    ('2023-11-05', '09:30:00', 'Agendado',1),
-    ('2023-11-06', '14:00:00', 'Agendado',2),
-    ('2023-11-07', '16:45:00', 'Reagendado',3),
-    ('2023-11-08', '11:15:00', 'Agendado',4),
-    ('2023-11-09', '10:00:00', 'Agendado',5);
-
-INSERT INTO Agenda (data, hora, status, fk_Empresa)
-VALUES
-    ('2023-11-10', '08:00:00', 'Agendado',6),
-    ('2023-11-11', '13:30:00', 'Agendado',6),
-    ('2023-11-12', '15:45:00', 'Reagendado',6),
-    ('2023-11-13', '10:30:00', 'Agendado',6),
-    ('2023-11-14', '12:00:00', 'Agendado',6),
-    ('2023-11-15', '14:15:00', 'Reagendado',6),
-    ('2023-11-16', '09:45:00', 'Agendado',6),
-    ('2023-11-17', '16:30:00', 'Agendado',6),
-    ('2023-11-18', '11:00:00', 'Reagendado',6),
-    ('2023-11-19', '13:15:00', 'Agendado',6),
-    ('2023-11-20', '15:00:00', 'Agendado',6),
-    ('2023-11-21', '10:45:00', 'Reagendado',6),
-    ('2023-11-22', '12:30:00', 'Agendado',6);
-
+    ('2023-11-01', '09:00:00', 'Agendado', 1),
+    ('2023-11-01', '09:30:00', 'Agendado', 1),
+    ('2023-11-01', '10:00:00', 'Agendado', 1),
+    ('2023-11-02', '09:00:00', 'Agendado', 1),
+    ('2023-11-02', '09:30:00', 'Agendado', 1),
+    ('2023-11-02', '10:00:00', 'Agendado', 1),
+    ('2023-11-03', '14:00:00', 'Agendado', 2),
+    ('2023-11-03', '14:45:00', 'Agendado', 2),
+    ('2023-11-03', '15:30:00', 'Agendado', 2),
+    ('2023-11-04', '14:00:00', 'Agendado', 2),
+    ('2023-11-04', '14:45:00', 'Agendado', 2),
+    ('2023-11-04', '15:30:00', 'Agendado', 2),
+    ('2023-11-05', '16:45:00', 'Reagendado', 3),
+    ('2023-11-05', '17:30:00', 'Reagendado', 3),
+    ('2023-11-05', '18:15:00', 'Reagendado', 3),
+    ('2023-11-06', '16:45:00', 'Reagendado', 3),
+    ('2023-11-06', '17:30:00', 'Reagendado', 3),
+    ('2023-11-06', '18:15:00', 'Reagendado', 3),
+    ('2023-11-07', '11:15:00', 'Agendado', 4),
+    ('2023-11-07', '12:00:00', 'Agendado', 4),
+    ('2023-11-07', '12:45:00', 'Agendado', 4),
+    ('2023-11-08', '11:15:00', 'Agendado', 4),
+    ('2023-11-08', '12:00:00', 'Agendado', 4),
+    ('2023-11-08', '12:45:00', 'Agendado', 4),
+    ('2023-11-09', '10:00:00', 'Agendado', 5),
+    ('2023-11-09', '10:30:00', 'Agendado', 5),
+    ('2023-11-09', '11:00:00', 'Agendado', 5),
+    ('2023-11-10', '10:00:00', 'Agendado', 5),
+    ('2023-11-10', '10:30:00', 'Agendado', 5),
+    ('2023-11-10', '11:00:00', 'Agendado', 5),
+    ('2023-11-11', '08:00:00', 'Agendado', 6),
+    ('2023-11-11', '08:30:00', 'Agendado', 6),
+    ('2023-11-11', '09:00:00', 'Agendado', 6),
+    ('2023-11-12', '08:00:00', 'Agendado', 6),
+    ('2023-11-12', '08:30:00', 'Agendado', 6),
+    ('2023-11-12', '09:00:00', 'Agendado', 6),
+    ('2023-11-13', '13:30:00', 'Agendado', 7),
+    ('2023-11-13', '14:00:00', 'Agendado', 7),
+    ('2023-11-13', '14:30:00', 'Agendado', 7),
+    ('2023-11-14', '13:30:00', 'Agendado', 7),
+    ('2023-11-14', '14:00:00', 'Agendado', 7),
+    ('2023-11-14', '14:30:00', 'Agendado', 7),
+    ('2023-11-15', '10:00:00', 'Agendado', 8),
+    ('2023-11-15', '10:45:00', 'Agendado', 8),
+    ('2023-11-15', '11:30:00', 'Agendado', 8),
+    ('2023-11-16', '10:00:00', 'Agendado', 8),
+    ('2023-11-16', '10:45:00', 'Agendado', 8),
+    ('2023-11-16', '11:30:00', 'Agendado', 8),
+    ('2023-11-17', '08:00:00', 'Agendado', 9),
+    ('2023-11-17', '08:30:00', 'Agendado', 9),
+    ('2023-11-17', '09:15:00', 'Agendado', 9),
+    ('2023-11-18', '08:00:00', 'Agendado', 9),
+    ('2023-11-18', '08:30:00', 'Agendado', 9),
+    ('2023-11-18', '09:15:00', 'Agendado', 9),
+    ('2023-11-19', '14:00:00', 'Agendado', 10),
+    ('2023-11-19', '14:45:00', 'Agendado', 10),
+    ('2023-11-19', '15:30:00', 'Agendado', 10),
+    ('2023-11-20', '14:00:00', 'Agendado', 10),
+    ('2023-11-20', '14:45:00', 'Agendado', 10),
+    ('2023-11-20', '15:30:00', 'Agendado', 10),
+    ('2023-11-21', '11:00:00', 'Agendado', 11),
+    ('2023-11-21', '11:30:00', 'Agendado', 11),
+    ('2023-11-21', '12:00:00', 'Agendado', 11),
+    ('2023-11-22', '11:00:00', 'Agendado', 11),
+    ('2023-11-22', '11:30:00', 'Agendado', 11),
+    ('2023-11-22', '12:00:00', 'Agendado', 11),
+    ('2023-11-23', '16:00:00', 'Agendado', 12),
+    ('2023-11-23', '16:45:00', 'Agendado', 12),
+    ('2023-11-23', '17:30:00', 'Agendado', 12),
+    ('2023-11-24', '16:00:00', 'Agendado', 12),
+    ('2023-11-24', '16:45:00', 'Agendado', 12),
+    ('2023-11-24', '17:30:00', 'Agendado', 12),
+    ('2023-11-25', '09:00:00', 'Agendado', 13),
+    ('2023-11-25', '09:45:00', 'Agendado', 13),
+    ('2023-11-25', '10:30:00', 'Agendado', 13),
+    ('2023-11-26', '09:00:00', 'Agendado', 13),
+    ('2023-11-26', '09:45:00', 'Agendado', 13),
+    ('2023-11-26', '10:30:00', 'Agendado', 13),
+    ('2023-11-27', '13:00:00', 'Agendado', 14),
+    ('2023-11-27', '13:45:00', 'Agendado', 14),
+    ('2023-11-27', '14:30:00', 'Agendado', 14),
+    ('2023-11-28', '13:00:00', 'Agendado', 14),
+    ('2023-11-28', '13:45:00', 'Agendado', 14),
+    ('2023-11-28', '14:30:00', 'Agendado', 14),
+    ('2023-11-29', '11:15:00', 'Agendado', 15),
+    ('2023-11-29', '12:00:00', 'Agendado', 15),
+    ('2023-11-29', '12:45:00', 'Agendado', 15),
+    ('2023-11-30', '11:15:00', 'Agendado', 15),
+    ('2023-11-30', '12:00:00', 'Agendado', 15),
+    ('2023-11-30', '12:45:00', 'Agendado', 15),
+    ('2023-11-01', '14:00:00', 'Agendado', 16),
+    ('2023-11-01', '14:45:00', 'Agendado', 16),
+    ('2023-11-01', '15:30:00', 'Agendado', 16),
+    ('2023-11-02', '14:00:00', 'Agendado', 16),
+    ('2023-11-02', '14:45:00', 'Agendado', 16),
+    ('2023-11-02', '15:30:00', 'Agendado', 16),
+    ('2023-11-03', '08:00:00', 'Agendado', 21),
+    ('2023-11-03', '08:30:00', 'Agendado', 21),
+    ('2023-11-03', '09:15:00', 'Agendado', 21),
+    ('2023-11-04', '08:00:00', 'Agendado', 21),
+    ('2023-11-04', '08:30:00', 'Agendado', 21),
+    ('2023-11-04', '09:15:00', 'Agendado', 21),
+    ('2023-11-05', '16:00:00', 'Agendado', 6),
+    ('2023-11-05', '16:45:00', 'Agendado', 6),
+    ('2023-11-05', '17:30:00', 'Agendado', 6),
+    ('2023-11-06', '16:00:00', 'Agendado', 6),
+    ('2023-11-06', '16:45:00', 'Agendado', 6),
+    ('2023-11-06', '17:30:00', 'Agendado', 6),
+    ('2023-11-07', '11:00:00', 'Agendado', 12),
+    ('2023-11-07', '11:30:00', 'Agendado', 12),
+    ('2023-11-07', '12:00:00', 'Agendado', 12),
+    ('2023-11-08', '11:00:00', 'Agendado', 12),
+    ('2023-11-08', '11:30:00', 'Agendado', 12),
+    ('2023-11-08', '12:00:00', 'Agendado', 12),
+    ('2023-11-09', '13:00:00', 'Agendado', 26),
+    ('2023-11-09', '13:45:00', 'Agendado', 26),
+    ('2023-11-09', '14:30:00', 'Agendado', 26),
+    ('2023-11-10', '13:00:00', 'Agendado', 26),
+    ('2023-11-10', '13:45:00', 'Agendado', 26),
+    ('2023-11-10', '14:30:00', 'Agendado', 26),
+    ('2023-11-11', '09:30:00', 'Agendado', 18),
+    ('2023-11-11', '10:15:00', 'Agendado', 18),
+    ('2023-11-11', '11:00:00', 'Agendado', 18),
+    ('2023-11-12', '09:30:00', 'Agendado', 18),
+    ('2023-11-12', '10:15:00', 'Agendado', 18),
+    ('2023-11-12', '11:00:00', 'Agendado', 18),
+    ('2023-11-13', '14:00:00', 'Agendado', 2),
+    ('2023-11-13', '14:45:00', 'Agendado', 2),
+    ('2023-11-13', '15:30:00', 'Agendado', 2),
+    ('2023-11-14', '14:00:00', 'Agendado', 2),
+    ('2023-11-14', '14:45:00', 'Agendado', 2),
+    ('2023-11-14', '15:30:00', 'Agendado', 2),
+    ('2023-11-15', '10:45:00', 'Agendado', 23),
+    ('2023-11-15', '11:30:00', 'Agendado', 23),
+    ('2023-11-15', '12:15:00', 'Agendado', 23),
+    ('2023-11-16', '10:45:00', 'Agendado', 23),
+    ('2023-11-16', '11:30:00', 'Agendado', 23),
+    ('2023-11-16', '12:15:00', 'Agendado', 23),
+    ('2023-11-17', '08:30:00', 'Agendado', 9),
+    ('2023-11-17', '09:00:00', 'Agendado', 9),
+    ('2023-11-17', '09:45:00', 'Agendado', 9),
+    ('2023-11-18', '08:30:00', 'Agendado', 9),
+    ('2023-11-18', '09:00:00', 'Agendado', 9),
+    ('2023-11-18', '09:45:00', 'Agendado', 9),
+    ('2023-11-19', '15:00:00', 'Agendado', 19),
+    ('2023-11-19', '15:45:00', 'Agendado', 19),
+    ('2023-11-19', '16:30:00', 'Agendado', 19),
+    ('2023-11-20', '15:00:00', 'Agendado', 19),
+    ('2023-11-20', '15:45:00', 'Agendado', 19),
+    ('2023-11-20', '16:30:00', 'Agendado', 19),
+    ('2023-11-21', '13:00:00', 'Agendado', 17),
+    ('2023-11-21', '13:45:00', 'Agendado', 17),
+    ('2023-11-21', '14:30:00', 'Agendado', 17),
+    ('2023-11-22', '13:00:00', 'Agendado', 17),
+    ('2023-11-22', '13:45:00', 'Agendado', 17),
+    ('2023-11-22', '14:30:00', 'Agendado', 17),
+    ('2023-11-01', '13:00:00', 'Agendado', 22),
+    ('2023-11-01', '13:45:00', 'Agendado', 22),
+    ('2023-11-01', '14:30:00', 'Agendado', 22),
+    ('2023-11-02', '13:00:00', 'Agendado', 22),
+    ('2023-11-02', '13:45:00', 'Agendado', 22),
+    ('2023-11-02', '14:30:00', 'Agendado', 22),
+    ('2023-11-03', '09:00:00', 'Agendado', 8),
+    ('2023-11-03', '09:30:00', 'Agendado', 8),
+    ('2023-11-03', '10:15:00', 'Agendado', 8),
+    ('2023-11-04', '09:00:00', 'Agendado', 8),
+    ('2023-11-04', '09:30:00', 'Agendado', 8),
+    ('2023-11-04', '10:15:00', 'Agendado', 8),
+    ('2023-11-05', '14:00:00', 'Agendado', 15),
+    ('2023-11-05', '14:45:00', 'Agendado', 15),
+    ('2023-11-05', '15:30:00', 'Agendado', 15),
+    ('2023-11-06', '14:00:00', 'Agendado', 15),
+    ('2023-11-06', '14:45:00', 'Agendado', 15),
+    ('2023-11-06', '15:30:00', 'Agendado', 15),
+    ('2023-11-07', '11:00:00', 'Agendado', 14),
+    ('2023-11-07', '11:30:00', 'Agendado', 14),
+    ('2023-11-07', '12:00:00', 'Agendado', 14),
+    ('2023-11-08', '11:00:00', 'Agendado', 14),
+    ('2023-11-08', '11:30:00', 'Agendado', 14),
+    ('2023-11-08', '12:00:00', 'Agendado', 14),
+    ('2023-11-09', '16:00:00', 'Agendado', 3),
+    ('2023-11-09', '16:45:00', 'Agendado', 3),
+    ('2023-11-09', '17:30:00', 'Agendado', 3),
+    ('2023-11-10', '16:00:00', 'Agendado', 3),
+    ('2023-11-10', '16:45:00', 'Agendado', 3),
+    ('2023-11-10', '17:30:00', 'Agendado', 3),
+    ('2023-11-11', '08:30:00', 'Agendado', 7),
+    ('2023-11-11', '09:15:00', 'Agendado', 7),
+    ('2023-11-11', '10:00:00', 'Agendado', 7),
+    ('2023-11-12', '08:30:00', 'Agendado', 7),
+    ('2023-11-12', '09:15:00', 'Agendado', 7),
+    ('2023-11-12', '10:00:00', 'Agendado', 7),
+    ('2023-11-13', '15:00:00', 'Agendado', 11),
+    ('2023-11-13', '15:45:00', 'Agendado', 11),
+    ('2023-11-13', '16:30:00', 'Agendado', 11),
+    ('2023-11-14', '15:00:00', 'Agendado', 11),
+    ('2023-11-14', '15:45:00', 'Agendado', 11),
+    ('2023-11-14', '16:30:00', 'Agendado', 11),
+    ('2023-11-15', '09:30:00', 'Agendado', 19),
+    ('2023-11-15', '10:15:00', 'Agendado', 19),
+    ('2023-11-15', '11:00:00', 'Agendado', 19),
+    ('2023-11-16', '09:30:00', 'Agendado', 19),
+    ('2023-11-16', '10:15:00', 'Agendado', 19),
+    ('2023-11-16', '11:00:00', 'Agendado', 19),
+    ('2023-11-17', '14:00:00', 'Agendado', 5),
+    ('2023-11-17', '14:45:00', 'Agendado', 5),
+    ('2023-11-17', '15:30:00', 'Agendado', 5),
+    ('2023-11-18', '14:00:00', 'Agendado', 5),
+    ('2023-11-18', '14:45:00', 'Agendado', 5);
 
 -- Dados fictícios para a tabela Servico (adicionando mais alguns serviços)
 INSERT INTO Servico (nome_Servico, descricao, tipo_Servico ,preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
@@ -100,8 +333,189 @@ VALUES
     ('Maquiagem Profissional', 'Maquiagem para eventos especiais', 'tintura', 80.00, '01:30:00', 1, 1, 2),
     ('Manicure e Pedicure', 'Cuidados com as unhas', 'cabelo', 50.00, '01:00:00', 2, 2, 4),
     ('Tratamento Capilar', 'Hidratação e cuidados com os cabelos', 'cabelo', 60.00, '01:15:00', 3, 3, 1),
-    ('Depilação', 'Remoção de pelos', 'barba', 40.00, '00:45:00',4, 4, 3),
-    ('Massagem Relaxante', 'Massagem terapêutica', 'tintura', 70.00, '01:30:00', 5, 5, 3);
+    ('Depilação', 'Remoção de pelos', 'barba', 40.00, '00:45:00', 4, 4, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica', 'tintura', 70.00, '01:30:00', 5, 5, 3),
+    ('Pezinho', 'Descrição do Serviço A', 'cabelo', 70.00, '00:30:00', 6, 1, 2),
+    ('Barba', 'Descrição do Serviço B', 'barba', 80.00, '00:45:00', 7, 1, 4),
+    ('Restauração','Restaura a raiz do cabelo', 'cabelo', 55.00, '01:10:00', 8, 1, 1),
+    ('Botox','Relaxamento de cabelo', 'cabelo', 65.00, '01:25:00', 9, 1, 3),
+    ('Luzes','Tingir o cabelo com tinta a sua escolha', 'tintura', 75.00, '01:40:00', 10, 1, 3),
+    ('Escova','Escovamento de cabelo', 'cabelo', 85.00, '01:55:00', 11, 1, 3),
+    ('Sobracelha','Limpeza facial na região dos olhos', 'tintura', 95.00, '02:10:00', 12, 1, 3),
+    ('Progressiva','Alisamento de cabelo', 'cabelo', 105.00, '02:25:00', 13, 1, 3),
+    ('Lavagem','Lavagem com produtos profissionais', 'barba', 115.00, '02:40:00', 14, 1, 3),
+    ('Aplique','Adição e disfarce de cabelos', 'barba', 125.00, '02:55:00', 15, 1, 3),
+    ('Trança','Penteado de cabelos curtos e longos com trança', 'barba', 135.00, '03:10:00', 16, 1, 3),
+    ('Banho de Verniz', 'Tratamento capilar com brilho intenso', 'cabelo', 90.00, '01:20:00', 17, 2, 4),
+    ('Design de Sobrancelhas', 'Modelagem e correção das sobrancelhas', 'tintura', 55.00, '00:40:00', 18, 2, 4),
+    ('Corte de Cabelo Masculino', 'Corte moderno e estilizado para homens', 'cabelo', 40.00, '00:30:00', 19, 3, 1),
+    ('Coloração Fantasia', 'Tintura criativa com cores vibrantes', 'tintura', 80.00, '01:15:00', 20, 3, 1),
+    ('Escova Progressiva', 'Alisamento e redução de volume dos cabelos', 'cabelo', 100.00, '02:00:00', 21, 4, 3),
+    ('Tratamento Facial', 'Limpeza profunda e hidratação da pele', 'barba', 70.00, '01:00:00', 22, 4, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica para alívio de tensões', 'tintura', 90.00, '01:30:00', 23, 5, 3),
+    ('Lavagem e Hidratação', 'Lavagem e nutrição profunda dos cabelos', 'cabelo', 50.00, '01:00:00', 24, 5, 3),
+    ('Técnica de Mechas', 'Técnica de iluminação e destaque nos cabelos', 'tintura', 75.00, '01:20:00', 25, 6, 3),
+    ('Hidratação Capilar', 'Tratamento intensivo para cabelos ressecados', 'cabelo', 60.00, '01:10:00', 26, 6, 3),
+    ('Tratamento Facial', 'Limpeza profunda e revitalização da pele', 'estética', 80.00, '01:15:00', 27, 2, 4),
+    ('Corte de Cabelo Feminino', 'Corte moderno e elegante para mulheres', 'cabelo', 50.00, '01:00:00', 28, 3, 1),
+    ('Coloração Mechas', 'Meio a meio com coloração e técnicas de mechas', 'tintura', 85.00, '01:30:00', 29, 4, 3),
+    ('Escova Modeladora', 'Escovação para modelagem dos cabelos', 'cabelo', 45.00, '00:45:00', 30, 5, 3),
+    ('Maquiagem Artística', 'Maquiagem criativa e artística para eventos', 'maquiagem', 60.00, '01:00:00', 31, 6, 3),
+    ('Pedicure Spa', 'Tratamento completo para pés, incluindo spa', 'cuidados pessoais', 70.00, '01:15:00', 32, 2, 4),
+    ('Alongamento de Unhas', 'Aplicação de unhas postiças com alongamento', 'manicure', 55.00, '01:30:00', 33, 3, 1),
+    ('Hidratação Profunda', 'Hidratação intensiva para cabelos secos', 'tratamento capilar', 65.00, '01:20:00', 34, 4, 3),
+    ('Depilação a Cera', 'Remoção de pelos com cera quente ou fria', 'depilação', 40.00, '00:45:00', 35, 5, 3),
+    ('Massagem Terapêutica', 'Massagem profissional para relaxamento muscular', 'massagem', 75.00, '01:30:00', 36, 6, 3),
+    ('Tratamento Facial', 'Limpeza de pele profunda e revitalização', 'estética', 80.00, '01:15:00', 37, 3, 1),
+    ('Manicure Francesa', 'Aplicação de esmalte com ponta branca', 'manicure', 40.00, '00:45:00', 38, 4, 3),
+    ('Design de Sobrancelhas', 'Modelagem e correção das sobrancelhas', 'estética', 50.00, '00:30:00', 39, 5, 3),
+    ('Depilação Masculina', 'Remoção de pelos com cera ou lâmina', 'depilação', 60.00, '01:00:00', 40, 6, 3),
+    ('Penteado para Eventos', 'Penteado elaborado para ocasiões especiais', 'cabelo', 70.00, '01:30:00', 41, 2, 4),
+    ('Hidratação Capilar', 'Tratamento profundo para cabelos ressecados', 'tratamento capilar', 45.00, '00:45:00', 42, 3, 1),
+    ('Coloração Platinada', 'Coloração em tom platinado para cabelos', 'tintura', 90.00, '01:45:00', 43, 4, 3),
+    ('Maquiagem de Noiva', 'Maquiagem sofisticada para noivas', 'maquiagem', 100.00, '02:00:00', 44, 5, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica para relaxamento', 'massagem', 55.00, '01:00:00', 45, 6, 3),
+    ('Barba Completa', 'Corte e modelagem completa da barba', 'barba', 35.00, '00:30:00', 46, 2, 4),
+    ('Tratamento Facial', 'Limpeza de pele profunda e revitalização', 'estética', 80.00, '01:15:00', 47, 4, 3),
+    ('Manicure Francesa', 'Aplicação de esmalte com ponta branca', 'manicure', 40.00, '00:45:00', 48, 5, 3),
+    ('Design de Sobrancelhas', 'Modelagem e correção das sobrancelhas', 'estética', 50.00, '00:30:00', 49, 6, 3),
+    ('Depilação Masculina', 'Remoção de pelos com cera ou lâmina', 'depilação', 60.00, '01:00:00', 50, 1, 3),
+    ('Penteado para Eventos', 'Penteado elaborado para ocasiões especiais', 'cabelo', 70.00, '01:30:00', 51, 2, 4),
+    ('Hidratação Capilar', 'Tratamento profundo para cabelos ressecados', 'tratamento capilar', 45.00, '00:45:00', 52, 3, 1),
+    ('Coloração Platinada', 'Coloração em tom platinado para cabelos', 'tintura', 90.00, '01:45:00', 53, 4, 3),
+    ('Maquiagem de Noiva', 'Maquiagem sofisticada para noivas', 'maquiagem', 100.00, '02:00:00', 54, 5, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica para relaxamento', 'massagem', 55.00, '01:00:00', 55, 6, 3),
+    ('Barba Completa', 'Corte e modelagem completa da barba', 'barba', 35.00, '00:30:00', 56, 1, 3),
+    ('Limpeza de Pele Profunda', 'Limpeza facial com remoção de impurezas', 'estética', 70.00, '01:00:00', 57, 2, 4),
+    ('Corte Masculino Tradicional', 'Corte clássico para homens', 'cabelo', 30.00, '00:30:00', 58, 3, 1),
+    ('Tonalização de Cabelo', 'Tonalização suave para cabelos', 'tintura', 50.00, '01:00:00', 59, 4, 3),
+    ('Escova Modeladora', 'Escovação para modelagem dos cabelos', 'cabelo', 40.00, '00:45:00', 60, 5, 3),
+    ('Maquiagem para Festa', 'Maquiagem elaborada para eventos', 'maquiagem', 60.00, '01:15:00', 61, 6, 3),
+    ('Podologia', 'Cuidados especializados com os pés', 'cuidados pessoais', 80.00, '01:30:00', 62, 2, 4),
+    ('Unhas Decoradas', 'Decoração artística das unhas', 'manicure', 45.00, '01:00:00', 63, 3, 1),
+    ('Tratamento Reconstrutor', 'Recuperação intensiva dos cabelos danificados', 'tratamento capilar', 90.00, '02:00:00', 64, 4, 3),
+    ('Depilação com Cera', 'Remoção de pelos com cera quente', 'depilação', 35.00, '00:45:00', 65, 5, 3),
+    ('Massagem Terapêutica', 'Massagem profissional para relaxamento muscular', 'massagem', 75.00, '01:30:00', 66, 6, 3),
+    ('Limpeza de Pele Profunda', 'Tratamento facial para remover impurezas', 'estética', 70.00, '01:00:00', 67, 3, 1),
+    ('Corte Masculino Tradicional', 'Corte clássico para homens', 'cabelo', 30.00, '00:30:00', 68, 4, 3),
+    ('Tonalização de Cabelo', 'Tonalização suave para cabelos', 'tintura', 50.00, '01:00:00', 69, 5, 3),
+    ('Escova Modeladora', 'Escovação para modelagem dos cabelos', 'cabelo', 40.00, '00:45:00', 70, 6, 3),
+    ('Maquiagem para Festa', 'Maquiagem elaborada para eventos', 'maquiagem', 60.00, '01:15:00', 71, 1, 3),
+    ('Podologia', 'Cuidados especializados com os pés', 'cuidados pessoais', 80.00, '01:30:00', 72, 2, 4),
+    ('Unhas Decoradas', 'Decoração artística das unhas', 'manicure', 45.00, '01:00:00', 73, 3, 1),
+    ('Tratamento Reconstrutor', 'Recuperação intensiva dos cabelos danificados', 'tratamento capilar', 90.00, '02:00:00', 74, 4, 3),
+    ('Depilação com Cera', 'Remoção de pelos com cera quente', 'depilação', 35.00, '00:45:00', 75, 5, 3),
+    ('Massagem Terapêutica', 'Massagem profissional para relaxamento muscular', 'massagem', 75.00, '01:30:00', 76, 6, 3),
+    ('Limpeza Facial Profunda', 'Tratamento facial para limpeza profunda da pele', 'estética', 70.00, '01:00:00', 77, 4, 3),
+    ('Corte Masculino Clássico', 'Corte tradicional para homens', 'cabelo', 30.00, '00:30:00', 78, 5, 3),
+    ('Coloração de Cabelo', 'Coloração de cabelos com técnica profissional', 'tintura', 50.00, '01:00:00', 79, 6, 3),
+    ('Escova Modeladora', 'Escovação para modelagem e brilho dos cabelos', 'cabelo', 40.00, '00:45:00', 80, 1, 3),
+    ('Maquiagem para Eventos', 'Maquiagem elaborada para ocasiões especiais', 'maquiagem', 60.00, '01:15:00', 81, 2, 4),
+    ('Tratamento para os Pés', 'Cuidados especiais e tratamento para os pés', 'cuidados pessoais', 80.00, '01:30:00', 82, 3, 1),
+    ('Manicure Artística', 'Decoração e arte nas unhas', 'manicure', 45.00, '01:00:00', 83, 4, 3),
+    ('Reconstrução Capilar', 'Tratamento para cabelos danificados', 'tratamento capilar', 90.00, '02:00:00', 84, 5, 3),
+    ('Depilação com Cera Quente', 'Remoção de pelos com cera quente', 'depilação', 35.00, '00:45:00', 85, 6, 3),
+    ('Massagem Relaxante', 'Massagem terapêutica para relaxamento muscular', 'massagem', 75.00, '01:30:00', 86, 1, 3),
+    ('Tratamento Facial Revitalizante', 'Tratamento facial para revitalização da pele', 'estética', 80.00, '01:00:00', 87, 2, 4),
+    ('Corte Masculino Moderno', 'Corte moderno e estiloso para homens', 'cabelo', 40.00, '00:30:00', 88, 3, 1),
+    ('Coloração de Cabelo', 'Coloração de cabelos com tintas profissionais', 'tintura', 60.00, '01:00:00', 89, 4, 3),
+    ('Escova Modeladora', 'Escovação para modelagem e brilho dos cabelos', 'cabelo', 50.00, '00:45:00', 90, 5, 3),
+    ('Maquiagem para Eventos Especiais', 'Maquiagem sofisticada para ocasiões especiais', 'maquiagem', 70.00, '01:15:00', 91, 6, 3),
+    ('Spa para Pés', 'Tratamento completo para os pés', 'cuidados pessoais', 90.00, '01:30:00', 92, 1, 3),
+    ('Manicure e Pedicure Profissional', 'Serviço profissional de manicure e pedicure', 'manicure', 50.00, '01:00:00', 93, 2, 4),
+    ('Hidratação Intensa para Cabelos', 'Tratamento profundo de hidratação capilar', 'tratamento capilar', 100.00, '02:00:00', 94, 3, 1),
+    ('Depilação com Cera Quente', 'Remoção de pelos com cera quente', 'depilação', 40.00, '00:45:00', 95, 4, 3),
+    ('Massagem Terapêutica Relaxante', 'Massagem relaxante para alívio do estresse', 'massagem', 80.00, '01:30:00', 96, 5, 3),
+     ('Limpeza de Pele Profunda', 'Tratamento facial para limpeza profunda da pele', 'estética', 70.00, '01:00:00', 97, 1, 3),
+    ('Corte de Cabelo Masculino', 'Corte tradicional para homens', 'cabelo', 30.00, '00:30:00', 98, 2, 4),
+    ('Coloração de Cabelo', 'Coloração de cabelos com tintas profissionais', 'tintura', 60.00, '01:00:00', 99, 3, 1),
+    ('Escova Modeladora', 'Escovação para modelagem e brilho dos cabelos', 'cabelo', 40.00, '00:45:00', 100, 4, 3),
+    ('Maquiagem para Eventos Especiais', 'Maquiagem sofisticada para ocasiões especiais', 'maquiagem', 70.00, '01:15:00', 101, 5, 3),
+    ('Spa para Pés', 'Tratamento completo para os pés', 'cuidados pessoais', 90.00, '01:30:00', 102, 6, 3),
+    ('Manicure e Pedicure Profissional', 'Serviço profissional de manicure e pedicure', 'manicure', 50.00, '01:00:00', 103, 1, 3),
+    ('Hidratação Intensa para Cabelos', 'Tratamento profundo de hidratação capilar', 'tratamento capilar', 100.00, '02:00:00', 104, 2, 4),
+    ('Depilação com Cera Quente', 'Remoção de pelos com cera quente', 'depilação', 40.00, '00:45:00', 105, 3, 1),
+    ('Massagem Terapêutica Relaxante', 'Massagem relaxante para alívio do estresse', 'massagem', 80.00, '01:30:00', 106, 4, 3),
+    ('Penteado para Casamento', 'Penteado elegante para ocasiões especiais', 'cabelo', 80.00, '01:30:00', 107, 3, 1),
+    ('Design de Sobrancelhas', 'Modelagem precisa das sobrancelhas', 'estética', 40.00, '00:45:00', 108, 4, 3),
+    ('Barba Completa', 'Corte e modelagem completa da barba', 'barba', 50.00, '00:45:00', 109, 5, 3),
+    ('Massagem Terapêutica Relaxante', 'Massagem profissional para relaxamento', 'massagem', 70.00, '01:15:00', 110, 6, 3),
+    ('Manicure e Pedicure', 'Cuidados completos para unhas', 'manicure', 45.00, '01:00:00', 111, 1, 3),
+    ('Tratamento Capilar Hidratante', 'Hidratação profunda para cabelos', 'tratamento capilar', 60.00, '01:00:00', 112, 2, 4),
+    ('Depilação com Cera', 'Remoção de pelos com cera quente', 'depilação', 35.00, '00:45:00', 113, 3, 1),
+    ('Maquiagem para Festas', 'Maquiagem artística para eventos', 'maquiagem', 65.00, '01:30:00', 114, 4, 3),
+    ('Lavagem de Barba', 'Lavagem especializada da barba', 'barba', 25.00, '00:30:00', 115, 5, 3),
+    ('Massagem Terapêutica com Pedras Quentes', 'Massagem relaxante com pedras quentes', 'massagem', 90.00, '01:45:00', 116, 6, 3),
+    ('Tratamento Facial de Luxo', 'Tratamento facial completo com produtos de luxo', 'estética', 100.00, '01:30:00', 117, 2, 4),
+    ('Corte de Cabelo Moderno', 'Corte de cabelo com técnicas modernas', 'cabelo', 45.00, '00:45:00', 118, 3, 1),
+    ('Coloração de Cabelo Fantasia', 'Coloração criativa para cabelos', 'tintura', 80.00, '01:15:00', 119, 4, 3),
+    ('Escova Progressiva', 'Alisamento capilar com escova progressiva', 'cabelo', 70.00, '02:00:00', 120, 5, 3),
+    ('Maquiagem Artística', 'Maquiagem artística para eventos especiais', 'maquiagem', 80.00, '01:30:00', 121, 6, 3),
+    ('Reflexologia Podal', 'Massagem nos pés para alívio do estresse', 'cuidados pessoais', 60.00, '01:00:00', 122, 1, 3),
+    ('Unhas de Gel', 'Aplicação de unhas de gel com acabamento profissional', 'manicure', 55.00, '01:15:00', 123, 2, 4),
+    ('Tratamento Reconstrutor Capilar', 'Reconstrução capilar para cabelos danificados', 'tratamento capilar', 90.00, '02:30:00', 124, 3, 1),
+    ('Depilação com Linha', 'Remoção de pelos com técnica de linha', 'depilação', 40.00, '00:40:00', 125, 4, 3),
+    ('Shiatsu', 'Massagem japonesa para relaxamento muscular', 'massagem', 75.00, '01:45:00', 126, 5, 3),
+    ('Tratamento Facial Revitalizante', 'Tratamento facial para revitalização da pele', 'estética', 80.00, '01:00:00', 127, 4, 3),
+    ('Corte Masculino Moderno', 'Corte de cabelo moderno para homens', 'cabelo', 35.00, '00:40:00', 128, 5, 3),
+    ('Coloração de Cabelo Vibrante', 'Coloração vibrante para cabelos', 'tintura', 65.00, '01:15:00', 129, 6, 3),
+    ('Escova Modeladora', 'Escovação para modelagem e brilho dos cabelos', 'cabelo', 45.00, '00:45:00', 130, 1, 3),
+    ('Maquiagem para Eventos Especiais', 'Maquiagem sofisticada para ocasiões especiais', 'maquiagem', 75.00, '01:30:00', 131, 2, 4),
+    ('Pedicure com Hidratação', 'Tratamento para os pés com hidratação intensiva', 'cuidados pessoais', 55.00, '01:15:00', 132, 3, 1),
+    ('Unhas Decoradas', 'Decoração artística das unhas', 'manicure', 50.00, '01:00:00', 133, 4, 3),
+    ('Tratamento Capilar Reconstrutor', 'Tratamento para cabelos danificados', 'tratamento capilar', 85.00, '02:00:00', 134, 5, 3),
+    ('Depilação com Cera Quente', 'Remoção de pelos com cera quente', 'depilação', 40.00, '00:45:00', 135, 6, 3),
+    ('Massagem Relaxante', 'Massagem para relaxamento muscular', 'massagem', 70.00, '01:15:00', 136, 1, 3),
+    ('Barba Completa e Hidratação Facial', 'Corte e modelagem da barba com hidratação facial', 'barba', 50.00, '01:00:00', 137, 1, 3),
+    ('Corte de Cabelo e Barba Tradicional', 'Corte de cabelo e barba com técnicas tradicionais', 'cabelo', 40.00, '00:45:00', 138, 2, 4),
+    ('Coloração de Barba', 'Coloração da barba para um visual diferente', 'barba', 35.00, '00:30:00', 139, 3, 1),
+    ('Tratamento Capilar Masculino', 'Tratamento especializado para cabelos masculinos', 'tratamento capilar', 60.00, '01:00:00', 140, 4, 3),
+    ('Depilação de Rosto', 'Remoção de pelos indesejados do rosto', 'depilação', 25.00, '00:20:00', 141, 5, 3),
+    ('Massagem Facial', 'Massagem relaxante para rejuvenescimento facial', 'massagem', 30.00, '00:30:00', 142, 6, 3),
+    ('Barba Completa e Corte Moderno', 'Corte de cabelo moderno com barba completa', 'barba', 55.00, '01:15:00', 143, 1, 3),
+    ('Tratamento Antiqueda para Cabelo', 'Tratamento para prevenção da queda de cabelo', 'tratamento capilar', 70.00, '01:30:00', 144, 2, 4),
+    ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 30.00, '00:30:00', 145, 3, 1),
+    ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 40.00, '00:45:00', 146, 4, 3),
+    ('Corte Masculino Clássico', 'Corte de cabelo tradicional para homens', 'cabelo', 30.00, '00:30:00', 147, 2, 4),
+    ('Barba Completa com Toalha Quente', 'Barba completa com aplicação de toalha quente', 'barba', 35.00, '00:45:00', 148, 3, 1),
+    ('Coloração de Barba e Cabelo', 'Coloração de barba e cabelo para um visual moderno', 'barba', 50.00, '01:00:00', 149, 4, 3),
+    ('Tratamento Capilar Masculino Premium', 'Tratamento capilar premium para homens', 'tratamento capilar', 70.00, '01:15:00', 150, 5, 3),
+    ('Depilação de Nariz e Orelhas', 'Remoção de pelos indesejados do nariz e orelhas', 'depilação', 20.00, '00:15:00', 151, 6, 3),
+    ('Massagem de Cabeça e Pescoço', 'Massagem relaxante para alívio da tensão na cabeça e pescoço', 'massagem', 25.00, '00:20:00', 152, 1, 3),
+    ('Barba Completa e Corte Moderno', 'Corte de cabelo moderno com barba completa', 'barba', 45.00, '01:00:00', 153, 2, 4),
+    ('Tratamento Antiqueda para Cabelo', 'Tratamento para prevenção da queda de cabelo', 'tratamento capilar', 60.00, '01:30:00', 154, 3, 1),
+    ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 25.00, '00:30:00', 155, 4, 3),
+    ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 35.00, '00:45:00', 156, 5, 3),
+    ('Corte Masculino Tradicional', 'Corte de cabelo clássico para homens', 'cabelo', 25.00, '00:30:00', 157, 1, 3),
+    ('Barba Completa e Massagem Facial', 'Barba completa com massagem facial relaxante', 'barba', 40.00, '00:45:00', 158, 2, 4),
+    ('Coloração de Barba e Bigode', 'Coloração da barba e bigode para um visual diferente', 'barba', 30.00, '00:40:00', 159, 3, 1),
+    ('Tratamento Capilar Masculino', 'Tratamento especializado para cabelos masculinos', 'tratamento capilar', 50.00, '01:00:00', 160, 4, 3),
+    ('Depilação de Costeletas', 'Remoção de pelos indesejados das costeletas', 'depilação', 15.00, '00:15:00', 161, 5, 3),
+    ('Massagem de Couro Cabeludo', 'Massagem relaxante para alívio do estresse no couro cabeludo', 'massagem', 20.00, '00:20:00', 162, 6, 3),
+    ('Barba Completa e Corte Moderno', 'Corte de cabelo moderno com barba completa', 'barba', 35.00, '00:45:00', 163, 1, 3),
+    ('Tratamento Antiqueda para Cabelo', 'Tratamento para prevenção da queda de cabelo', 'tratamento capilar', 45.00, '01:15:00', 164, 2, 4),
+    ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 20.00, '00:30:00', 165, 3, 1),
+    ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 30.00, '00:45:00', 166, 4, 3),
+    ('Corte Masculino Clássico', 'Corte de cabelo tradicional para homens', 'cabelo', 25.00, '00:30:00', 167, 1, 3),
+    ('Barba Completa e Massagem Facial', 'Barba completa com massagem facial relaxante', 'barba', 40.00, '00:45:00', 168, 2, 4),
+    ('Coloração de Barba e Bigode', 'Coloração da barba e do bigode para um visual diferenciado', 'barba', 30.00, '00:40:00', 169, 3, 1),
+    ('Tratamento Capilar Masculino', 'Tratamento especializado para cabelos masculinos', 'tratamento capilar', 50.00, '01:00:00', 170, 4, 3),
+    ('Depilação de Costeletas', 'Depilação das costeletas para um visual limpo', 'depilação', 15.00, '00:15:00', 171, 5, 3),
+    ('Massagem de Couro Cabeludo', 'Massagem relaxante para alívio do estresse no couro cabeludo', 'massagem', 20.00, '00:20:00', 172, 6, 3),
+    ('Barba Completa e Corte Moderno', 'Corte de cabelo moderno com barba completa', 'barba', 35.00, '00:45:00', 173, 1, 3),
+    ('Tratamento Antiqueda para Cabelo', 'Tratamento para prevenção da queda de cabelo', 'tratamento capilar', 45.00, '01:15:00', 174, 2, 4),
+    ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 20.00, '00:30:00', 175, 3, 1),
+    ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 30.00, '00:45:00', 176, 4, 3),
+    ('Corte Masculino Estilizado', 'Corte de cabelo estilizado para homens modernos', 'cabelo', 35.00, '00:40:00', 177, 1, 3),
+    ('Barba Completa e Hidratação Facial', 'Barba completa com hidratação facial para um visual renovado', 'barba', 45.00, '00:50:00', 178, 2, 4),
+    ('Coloração de Barba e Bigode', 'Coloração da barba e do bigode para um visual único', 'barba', 40.00, '00:45:00', 179, 3, 1),
+    ('Tratamento Capilar Masculino', 'Tratamento especializado para cabelos masculinos', 'tratamento capilar', 55.00, '01:15:00', 180, 4, 3),
+    ('Depilação de Costeletas', 'Depilação das costeletas para uma aparência mais limpa', 'depilação', 20.00, '00:20:00', 181, 5, 3),
+    ('Massagem de Couro Cabeludo', 'Massagem relaxante para alívio da tensão no couro cabeludo', 'massagem', 25.00, '00:25:00', 182, 6, 3),
+    ('Barba Completa e Corte Moderno', 'Corte de cabelo moderno com barba completa', 'barba', 40.00, '00:50:00', 183, 1, 3),
+    ('Tratamento Antiqueda para Cabelo', 'Tratamento para prevenção da queda de cabelo', 'tratamento capilar', 50.00, '01:00:00', 184, 2, 4),
+    ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 25.00, '00:30:00', 185, 3, 1),
+    ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 35.00, '00:40:00', 186, 4, 3);
 
 -- Dados fictícios para a tabela Historico_Servico (adicionando mais alguns registros)
 INSERT INTO Historico_Servico (ano, mes, semana, faturamento, fk_Agenda)
@@ -112,198 +526,111 @@ VALUES
     (2023, 6, 14, 1300.00, 4),
     (2023, 6, 15, 1600.00, 5);
 
-    -- Dados fictícios para a tabela Usuario com a senha cryptografada senha123
-    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-    VALUES
-        ('11122233344', 'Maria Silva', 'maria@example.com', '$2a$10$w0gN7PUZHk0DdGG7WDkr4eYmSgKjZ0R8tsoJosJXq6p0EjTOu6tG.', '(55) 5555-1111', true, 1, 1, 1, 1);
+-- Dados fictícios para a tabela Usuario com a senha cryptografada senha123
+INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
+VALUES
+    ('19542837598', 'Arnold Schwarzenegger', 'arnold@example.com', '$2a$10$06Df/5blf9D5ES7.iWIXYuaMFrW2z8QckuhZTzq8yVjqV5kK3F3CC', '(55) 98236-1478', true, 1, 1, 1, 1),
+    ('37598214764', 'Bruce Wayne', 'bruce@example.com', '$2a$10$5b6TfnhW9SDrNW4QvT9jweC2mYOJ3RgBsHqzIxy8a4A3KEaOJW.q.', '(55) 74125-3698', false, null, 2, null, 2),
+    ('68975314762', 'Tony Stark', 'tony@example.com', '$2a$10$6DM0aI0hbYSiKgUqOqD.dO9sGh5rMyckPwMNFy9i0Fu4hIXjxmuBm', '(55) 36985-1472', true, 3, 3, 3, 3),
+    ('12365478998', 'Peter Parker', 'peter@example.com', '$2a$10$5wy0i6rNrUbCwU/y9.VI3.CIq7Rl7tDP0xhfxgACtXuhF1nl0RQQG', '(55) 98741-3698', false, null, 4, null, 4),
+    ('98765432196', 'Clark Kent', 'clark@example.com', '$2a$10$I.eyqTQr7GZpI7MMSwwbX.NtddrA5j4vWgIdp3njf.GPbVfdTUIZm', '(55) 12369-8524', true, 5, 5, 5, 5),
+    ('45612378903', 'John Doe', 'john@example.com', '$2a$10$XyI4/30mpo/XVqZBb6pYZeCGWBtufOmaF2QJjWzmd98t8WFEIykIi', '(55) 12345-6789', false, null, 6, null, 6),
+    ('12345678901', 'Jane Doe', 'jane@example.com', '$2a$10$eOlwLEuzth1XrE6I9wXyeOaXV0f95XfNzVrGAoQ5gO3ztpSGZy2Iu', '(55) 98765-4321', false, null, 7, null, 7),
+    ('32165498701', 'Ellen Ripley', 'ellen@example.com', '$2a$10$pNntB8esr1NnNIB6lum8Euh9reF1vn1hRg8oJ7ywAyfPz2ghstl1q', '(55) 78965-3214', true, 8, 8, 8, 8),
+    ('15975385203', 'Sarah Connor', 'sarah@example.com', '$2a$10$BO2QsCq6UbUmfr4smBwfg.WyKhUBcoVZ8j3H.qJRFa2HN59nXmz7q', '(55) 36985-1478', true, 9, 9, 9, 9),
+    ('35795146208', 'Leeloo Dallas', 'leeloo@example.com', '$2a$10$C2U4fgLztyYQoOew3gLcJuy4eZYjFLPvHCnkR/1Le.8HwIlK1MvGW', '(55) 85296-1473', true, 10, 10, 10, 10),
+    ('25896314709', 'Luke Skywalker', 'luke@example.com', '$2a$10$zNxvA8HOXoiB7XqfamfZDuRe4x8XplQFzF2aH/OzBfwNk9QZpYrXi', '(55) 74125-3698', true, 11, 11, 11, 11),
+    ('14785236905', 'Han Solo', 'han@example.com', '$2a$10$8tF.F7LBKpgWsIiATrF1lOez0v2F7Q0.1lxLlqpeObn3Z5elGCsBa', '(55) 36985-1472', true, 12, 12, 12, 12),
+    ('96385274100', 'Indiana Jones', 'indy@example.com', '$2a$10$Jj3B7HPUL/ZqLFslhAyWgOti/O5rDKdSx0slkp/9yx.nV8Fcd4yWa', '(55) 98741-3698', true, 13, 13, 13, 13),
+    ('98765432100', 'Rick Deckard', 'rick@example.com', '$2a$10$eT4T54w5rKE7T4Iy.5QzBOLyGS4bB7Dm45AtCE5Iuy0BqVrZXFVky', '(55) 12369-8524', true, 14, 14, 14, 14),
+    ('45612378900', 'Neo Anderson', 'neo@example.com', '$2a$10$hwR2AvLh3RMtFl6GpIqP4eVvJ9fgNCtIKq1l3atWFlb/JHZF0u8.i', '(55) 12345-6789', true, 15, 15, 15, 15),
+    ('12345678900', 'Trinity', 'trinity@example.com', '$2a$10$L5pALOa97O9SxG2JqfMY1.WlG19p2A1Q0fT7jz1HDAZqaygJ2C0y6', '(55) 98765-4321', true, 16, 16, 16, 16),
+    ('32165498700', 'Morpheus', 'morpheus@example.com', '$2a$10$MWDkLbMqs6JHjBfdy1fDQuMJB/wZ7D5QVbCEZLoJp1t5aC9eg9GzG', '(55) 78965-3214', true, 17, 17, 17, 17),
+    ('15975385200', 'Tron', 'tron@example.com', '$2a$10$CvsiXpO.w78ISf/roFh8FeOKdBJyXO9HBeKnvZXUGWnLp2PnFE2vy', '(55) 85296-1473', true, 18, 18, 18, 18),
+    ('35795146200', 'RoboCop', 'robocop@example.com', '$2a$10$5gVne.Baw2IR3I9axox2q.pMSs.1BGU/k2mY2jJxElj/n4ZMjnMQ6', '(55) 74125-3698', true, 19, 19, 19, 19),
+    ('96385274100', 'Ellen Ripley', 'ripley@example.com', '$2a$10$2obRHOT3GszCVc2d/gqWGOB9KwtF0Ab8a4/n87S3I6p8Ku8OamYIy', '(55) 36985-1472', true, 20, 20, 20, 20),
+    ('11122233303', 'Dana Scully', 'scully@example.com', '$2a$10$CvsiXpO.w78ISf/roFh8FeOKdBJyXO9HBeKnvZXUGWnLp2PnFE2vy', '(55) 36985-1472', false, null, 21, null, 21),
+    ('11122233304', 'Fox Mulder', 'mulder@example.com', '$2a$10$eU7ZXMPsEKHDXNEidzjvwOf4k.8Hx8GXYUBtEGhKCVogBtZ0Qme/e', '(55) 36985-1472', false, null, 22, null, 22),
+    ('44122233303', 'James T. Kirk', 'kirk@example.com', '$2a$10$UvDHylnQND2fjwiy3D8ZdeZnESMHTIst3vHGs1bbqfYJc4T6ANMpy', '(55) 36985-1472', true, 23, 23, 23, null),
+    ('33122233304', 'Jean-Luc Picard', 'picard@example.com', '$2a$10$O/1Rme38f1Wlx8F.RRpXmO3f5P7NTYB3Q/FDusgXgt0hsx2fvXdce', '(55) 36985-1472', true, 24, 24, 24, null),
+    ('22122233305', 'Kara Thrace', 'kara@example.com', '$2a$10$fR1aTIo5kv5r91QtvFK2oOcF4a8E68wnEo7.Mz03H8gGUGWj.C76S', '(55) 36985-1472', true, 25, 25, 25, null),
+    ('11122233306', 'Luke Cage', 'luke@example.com', '$2a$10$vAI8pYqONfXns5EvMQvraOKyNleZZNh/G.ZEwBzntTvzduJ2rSX0S', '(55) 36985-1472', true, 26, 26, 26, null),
+    ('12345678910', 'Michael Scofield', 'michael@example.com', '$2a$10$FkF2UBvlWbZoybYS0P9u/.zVvOKXKdInyDZrNzkVmOuYmiY3d8z.C', '(55) 12345-6789', true, 27, 27, 27, 27),
+    ('23456789101', 'Lincoln Burrows', 'lincoln@example.com', '$2a$10$GgrXo/9fl2P8Z4CCk2hl7.nfA/qV2KbGtIDiFjVr8xKqTsxNss1ei', '(55) 98765-4321', false, null, 28, null, 28),
+    ('34567891012', 'Sarah Tancredi', 'sarah@example.com', '$2a$10$LX0md5oJLEu.ZO.l3KE0IOObZsCpWEH0pRc4l.PzY2gVTT/0K7Z26', '(55) 74125-3698', true, 29, 29, 29, 29),
+    ('45678910123', 'Theodore Bagwell', 'theodore@example.com', '$2a$10$K5vhPTI.YsVE/KXwzruaXudInDEyIYBVsozS2NYCk5LqZ0jDxPWyK', '(55) 36985-1472', false, null, 30, null, 30),
+    ('56789101234', 'Fernando Sucre', 'fernando@example.com', '$2a$10$k3Z1VfmlDXqTpIh7pZi.H.MNn/rX45oElKouKdt8DcXoK4ac6toRO', '(55) 85296-1473', true, 31, 31, 31, 31),
+    ('67891012345', 'Alex Mahone', 'alex@example.com', '$2a$10$43RMbNj5sn1PzQ0Zp5IK.Os6EJ.7om3nH0CJ7JpAcl/wuOMh3h2ma', '(55) 74125-3698', true, 32, 32, 32, 32),
+    ('78910123456', 'John Abruzzi', 'john@example.com', '$2a$10$IGpCVgdAyyt2t7nRzZiw8eH5k1RYfCPimacI8bOzo0yZtGZZKZ.VG', '(55) 36985-1472', true, 33, 33, 33, 33),
+    ('89101234567', 'Charles Westmoreland', 'charles@example.com', '$2a$10$qRCPwM1jqu7sjOINanDkWuDgI8Ftf51N96.cZw01/QMNEqof3q12e', '(55) 85296-1473', true, 34, 34, 34, 34),
+    ('91012345678', 'David Apolskis', 'david@example.com', '$2a$10$Mns4Y2VBPuvBu0BVRK10mepTZ/SQT9dY8TK8CxQxZ4vDBY/yWVt7q', '(55) 74125-3698', true, 35, 35, 35, 35),
+    ('10123456789', 'Paul Kellerman', 'paul@example.com', '$2a$10$F68XxR/av/jF/lXp9G3Z3e8RMeG3ABj5vgoJl4isKRdOx.4M0sOtm', '(55) 36985-1472', true, 36, 36, 36, 36),
+    ('12345678900', 'Sara Scofield', 'sara@example.com', '$2a$10$GqAtXI2MloR5edMeKPe8n.uO.6XLUicIBU9mzBzH4W5u/nUy8SVkW', '(55) 85296-1473', true, 37, 37, 37, 37),
+    ('23456789011', 'Alexander Mahone', 'alexander@example.com', '$2a$10$MchMJr.KG2cJv4PbgecI9O..5ZfPpiOqPf3Iw8gJoR/cizF1c00Au', '(55) 74125-3698', true, 38, 38, 38, 38),
+    ('34567890122', 'Fernand Sucre', 'fernand@example.com', '$2a$10$t0mTiTX5k2EmKQd8dTT.WetLltVkchOGmKkKv9RGmkofGciFFN8ji', '(55) 36985-1472', true, 39, 39, 39, 39),
+    ('45678901233', 'Alex Mahoney', 'alexma@example.com', '$2a$10$OKL2X8lilM6ee7DAl7vO4.uMeAe5R/XaRlFipjpZ//v59lSZ9DfAC', '(55) 85296-1473', true, 40, 40, 40, 40),
+    ('56789012344', 'Fernando S.', 'fsucre@example.com', '$2a$10$r.L2cRKQ6Byu4pzOMZXTju5mbTxNxMM91kiX3PJnAXiDMwS5P9rmi', '(55) 74125-3698', true, 41, 41, 41, 41),
+    ('67890123455', 'A. Mahone', 'amahone@example.com', '$2a$10$LF/RoKLLh.5v2R8b8gV/3e33hxXcW3DbDx5DcyVjw/T1w84s.KgSK', '(55) 36985-1472', true, 42, 42, 42, 42),
+    ('78901234566', 'F. Sucre', 'fs@example.com', '$2a$10$qvw1D7tZ9/Yv0Il26NSBFuycPUpRP2aYdDvX7snFwrcoyKoALxRvq', '(55) 85296-1473', true, 43, 43, 43, 43),
+    ('89101234577', 'A. Mahoney', 'am@example.com', '$2a$10$RLW/pHl4kKs6jl3AuaREXO2K8rvRAnPNKd98brzDy1BcYx4bbqV2e', '(55) 74125-3698', true, 44, 44, 44, 44),
+    ('91012345688', 'F. S.', 'fsu@example.com', '$2a$10$gd.s0sALR0C0KwWgZJqORucUL4FJpRPZENun9zMVplJFXEMlcxtCG', '(55) 36985-1472', true, 45, 45, 45, 45),
+    ('21098765432', 'Dominic Toretto', 'dominic@example.com', '$2a$10$J0M3H5/7Vm53CzYyv/oJtu.eDP8lgY6fSog3Itw9IJnNeW/.VZuvu', '(55) 54321-0987', true, 46, 46, 46, 46),
+    ('32109876543', 'Brian O\'Conner', 'brian@example.com', '$2a$10$DTT3lnYGd8PwJrLBrPKK6.XtsG/1smHusTPsR8KLDAzYv03N6dHLG', '(55) 23456-7890', false, null, 47, null, 47),
+    ('43210987654', 'Letty Ortiz', 'letty@example.com', '$2a$10$l91HTQv47MunP6IFmrP09O1q8qIqqnWEpGc75QH15i08UYfBL5yQq', '(55) 98765-4321', true, 48, 48, 48, 48),
+    ('54321098765', 'Roman Pearce', 'roman@example.com', '$2a$10$iw7Hh0IyjxcnE8ePnXC5UOM5ZUjw33GnNbpXY8RLQYcmX8ujnyLbC', '(55) 76543-2109', false, null, 49, null, 49),
+    ('65432109876', 'Tej Parker', 'tej@example.com', '$2a$10$V4J3G/eeAGKBCtVMKUEqMe/GxJsfUIK5MlI.qGVCs8HbII7Z5JAgC', '(55) 54321-0987', true, 50, 50, 50, 50),
+    ('76543210987', 'Mia Toretto', 'mia@example.com', '$2a$10$9ysWGtSpf0s7TStc8f/kUOXTX8dR1bI8yXpucvm7gxfP7mCbsQxLe', '(55) 43210-9876', true, 51, 51, 51, 51),
+    ('87654321098', 'Gisele Yashar', 'gisele@example.com', '$2a$10$.f7vQb./OWeVJBjs.RmV3.pG4dZOH3pJWoyYR1bQzRfMWChWDgfPa', '(55) 32109-8765', true, 52, 52, 52, 52),
+    ('98765432109', 'Han Lue', 'han@example.com', '$2a$10$rMvEx3om0L9YnUmkkTvh1u0N7EvABTMS./8kBU/qR1e./b89D5HP.', '(55) 65432-1098', true, 53, 53, 53, 53),
+    ('09876543210', 'Luke Hobbs', 'luke@example.com', '$2a$10$tdDszu3dyZJZoJb3otV7c.OhcnNPsFv8rN7F.Nt5tY56LHukQw9F6', '(55) 98765-4321', true, 54, 54, 54, 54),
+    ('01234567890', 'Deckard Shaw', 'deckard@example.com', '$2a$10$Xecot.KT6gXW69nJQqMCROp2g/3w97t02W56A5HAYpY.W2Jfvb7Om', '(55) 54321-0987', true, 55, 55, 55, 55),
+    ('12345678901', 'Dominic T.', 'dt@example.com', '$2a$10$V2fPplvTCd6yE4rKjpp0fePfxq3XtKk0sDsU0/Wk3AsjIZ.rJBojy', '(55) 43210-9876', true, 56, 56, 56, 56),
+    ('23456789012', 'Brian O\'C.', 'boc@example.com', '$2a$10$N4xM8lrgcw/qBUd7ev7fs.4qoUfTqldVazArpD0/mLoJYVX0uCFti', '(55) 32109-8765', true, 57, 57, 57, 57),
+    ('34567890123', 'Letty O.', 'lo@example.com', '$2a$10$gKCS/7Ab6Vq6zZnyvGqEj.GP1nWnn.J49DQDn5bWjXpFqJkTL40dS', '(55) 65432-1098', true, 58, 58, 58, 58),
+    ('45678901234', 'Roman P.', 'rp@example.com', '$2a$10$F1UGZ1b9nxM8nu4yi.3Xp.4tS5AYJHtrSQogt..hU1YR76pzUxzri', '(55) 76543-2109', true, 59, 59, 59, 59),
+    ('56789012345', 'Tej P.', 'tp@example.com', '$2a$10$ioCIi.nD7aABqk76.Hv1L.zbhHUIt3c3v3GyUOk/UKBZX7a72SmBu', '(55) 98765-4321', true, 60, 60, 60, 60),
+    ('67890123456', 'Mia T.', 'mt@example.com', '$2a$10$qeIlKpLndvQhV9YV1Idw4Oh/PUGehbVgXUjz2hbtRd8roC4RGCoN.', '(55) 12345-6789', true, 61, 61, 61, 61),
+    ('78901234567', 'Gisele Y.', 'gy@example.com', '$2a$10$gj.EAb1UZGAVzTR2EzM7Ve4vU2WOfjprTL23Zzy8tE3X7yMU.2Ii2', '(55) 67890-1234', true, 62, 62, 62, 62),
+    ('89012345678', 'Han L.', 'hl@example.com', '$2a$10$lPc2Doj/i69N90mG9Z8xDeeDW0Jvzwbfx0iAVDg3gPzKlhJlJoZBq', '(55) 98765-4321', true, 63, 63, 63, 63),
+    ('90123456789', 'Luke H.', 'lh@example.com', '$2a$10$rZPKkVp9HBiANXKBrv7VaePGu10tQ1G/iSwOKvZk8H7K3iC7xtVp6', '(55) 12345-6789', true, 64, 64, 64, 64),
+    ('56789012300', 'Deckard S.', 'ds@example.com', '$2a$10$z1lSzeh.Z2foBvRf4lN1D.5ioY6bPUIG8pkYD5.WwfwlXFRtO2zDi', '(55) 67890-1234', true, 65, 65, 65, 65),
+    ('67890123401', 'Dominic T.', 'dtt@example.com', '$2a$10$LxhD/5rLSwAvOZOP8FJ8QOpumOB4Ln9yQa/S0P6fF89hX/UQ9dPeW', '(55) 12345-6789', true, 66, 66, 66, 66),
+    ('78901234512', 'Brian O\'C.', 'bocc@example.com', '$2a$10$5.MvW3vOd1x84pZzeJNTyeKizYXtySh7zo9jE/HnQmV91N8KYHYCO', '(55) 67890-1234', true, 67, 67, 67, 67),
+    ('89012345623', 'Letty O.', 'loo@example.com', '$2a$10$5H57lvmc9L3Kt5QqN3zUw.Q/XrjQy8gSvQwhQxNcIJx.N/1T18DeW', '(55) 98765-4321', true, 68, 68, 68, 68),
+    ('90123456734', 'Roman P.', 'rpp@example.com', '$2a$10$yYLKLGBw9JwzUz8.bfvD5OR.JT2u0J8gVLm5v/1Z1cqSLV1ds43Bq', '(55) 12345-6789', true, 69, 69, 69, 69),
+    ('01234567845', 'Tej P.', 'tpp@example.com', '$2a$10$0IsJvqjxIKO3ff67r/xxBONzKRw8WqRx3WqsMXwB62D1L6szsDdKq', '(55) 67890-1234', true, 70, 70, 70, 70),
+    ('12345678956', 'Mia T.', 'mtt@example.com', '$2a$10$X0evM80mzN1aL9usKoNNN.DjRqzrPzNynt7tHrVcNsC2/IZU65GR.', '(55) 12345-6789', true, 71, 71, 71, 71),
+    ('23456789067', 'Gisele Y.', 'gyy@example.com', '$2a$10$xJAlN0uJrNUszUXfT1XyFeJkXxauQVAC7Q4nHzU.x8FB3kwGxl1Sa', '(55) 67890-1234', true, 72, 72, 72, 72),
+    ('34567890178', 'Han L.', 'hl@example.com', '$2a$10$lEkrY47FRpOyU.lxsB/94eplm64ZkT1zBkG76I0n8Z2qLlm6sS/TW', '(55) 12345-6789', true, 73, 73, 73, 73),
+    ('45678901289', 'Luke H.', 'lh@example.com', '$2a$10$60ehkDZlJ3Voh5zmt6wZ4eydw4w7lD1smGvn1UKtBElrLdzPMeT4a', '(55) 67890-1234', true, 74, 74, 74, 74),
+    ('56789012390', 'Deckard S.', 'ds@example.com', '$2a$10$phN9oG8yFQcyrzr5eYF/i..NrjPrXkNPMI6hUak/8K0G5u9WAlzvq', '(55) 12345-6789', true, 75, 75, 75, 75);
 
-    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-    VALUES
-        ('22233344455', 'João Oliveira', 'joao@example.com', '$2a$10$AQxLHSwvn58Rr0SRhiDj.uhu9mg.pB3AhkISz/MsMrD9KDuVn3jyq', '(55) 5555-2222', false, null, 2, null, 2);
 
-    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-    VALUES
-        ('33344455566', 'Ana Souza', 'ana@example.com', '$2a$10$59xAE8sQDBgVO1FxC58kX.HsHzmC9EZbulGCMb34QXZQEvFTO5dli', '(55) 5555-3333', true, 3, 3, 3, 3);
 
-    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-    VALUES
-        ('44455566677', 'Carlos Santos', 'carlos@example.com', '$2a$10$KrBn7PSMNWKkOVM6nnCn2Ox.VXb53vBVF4S/Aj5EvqHLQMX9qr226', '(55) 5555-4444', false, null, 4, null, 4);
-
-    INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-    VALUES
-        ('55566677788', 'Mariana Lima', 'mariana@example.com', '$2a$10$wTdV1/83.HYZcl3.PL5NSe0/t4uVEksQisP6EIvAJJfVFU5lCY.DS', '(55) 5555-5555', true, 5, 5, 5, 5);
 
 -- Atualizando o serviço do usuário com ID 1 para o novo serviço adicionado
 UPDATE Usuario SET fk_Servico = 1 WHERE id_Usuario = 1;
 
-
--- Inserir 2 serviços
-INSERT INTO Servico (nome_Servico, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
-VALUES
-    ('Pezinho', 'Descrição do Serviço A', 70.00, '01:30:00', 6, 5),
-    ('Barba', 'Descrição do Serviço B', 80.00, '02:00:00', 7, 5);
-
-    -- Inserir 9 serviços adicionais
-    INSERT INTO Servico (nome_Servico, categoria, descricao, preco, qtd_Tempo_Servico, fk_Agenda, fk_Empresa)
-    VALUES
-        ('Restauração','Cabelo', 'Restaura a raiz do cabelo', 55.00, '01:10:00', 8, 6),
-        ('Botox','Cabelo', 'Relaxamento de cabelo', 65.00, '01:25:00', 9, 6),
-        ('Luzes','Tintura', 'Tingir o cabelo com tinta a sua escolha', 75.00, '01:40:00', 10, 5),
-        ('Escova','Cabelo', 'Escovamento de cabelo', 85.00, '01:55:00', 11, 6),
-        ('Sobracelha','Tintura', 'Limpeza facial na região dos olhos', 95.00, '02:10:00', 12, 6),
-        ('Progressiva','Cabelo', 'Alisamento de cabelo', 105.00, '02:25:00', 13, 6),
-        ('Lavagem','Barba', 'Lavagem com produtos profissionais', 115.00, '02:40:00', 14, 6),
-        ('Aplique','Barba', 'Adição e disfarce de cabelos', 125.00, '02:55:00', 15, 6),
-        ('Trança','Barba', 'Penteado de cabelos curtos e longos com trança', 135.00, '03:10:00', 16, 6);
-
--- Inserir 2 funcionários com a senha cryptografada senha123
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233303', 'Leo Jacinto', 'lJacinto@gmail.com', '$2a$10$zoY4yM3Cv3POiS8xblYzW.ugNjCoCbl929sIUlySNA8/CF1upPPMW', '(55) 5555-1113', false, null, null, null, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233304', 'Julia Da Viste', 'juVista@gmail.com', '$2a$10$0y4AVQZFIwotLc54.9f0A.3Dwecr.dR7Dmjwme.Pi1Id86zvV/hmq', '(55) 5555-1114', false, null, null, null, null);
-
-
-
--- Inserir 9 funcionários com a senha cryptografada senha123
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('44122233303', 'Gabriel Bebel', 'bebel@gmail.com', '$2a$10$Pjfmw8.nxs8NIh.Qqg5Kf.bSHC/GQ5kuic.6teiCCZYl8PCvuG/56', '(55) 5555-1113', true, 8, 6, 6, 6);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('33122233304', 'Wesley Carvalho', 'wsCarvalho@gmail.com', '$2a$10$CixShkZdu94JMSvMcCeyqe02hc6iSQc32f8p98hmQDAoNhgagn6Ki', '(55) 5555-1114', true, 9, 7, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('22122233305', 'Claudinete da Rosa', 'clauRosa@gmail.com', '$2a$10$SAaOLJDFy85KhDNdJAW8p.N/E85SfW/cJ2FAPvaZH4ZSkmZTU2X3K', '(55) 5555-1115', true, 10, 8, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233306', 'João Vitor', 'joVitor@gmail.com', '$2a$10$Ix2GXk2KjIu.bB7UaiCdd.GWeCVd2G9IrBMFUGFK/5tvnaH5GoE/.', '(55) 5555-1116', true, 11, 9, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('00122233307', 'Andrew Silva', 'aSival@gmail.com', '$2a$10$hhmYnB8WySQWp902ER/29uL3QqcNGcyCYC6AFei5fbhf9t91/5.ta', '(55) 5555-1117', true, 12, 10, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('77122233308', 'Anderson Souza', 'anSouza@gamil.com', '$2a$10$bKEcXc2NMLUPZOxqf2h8D.fP7uQg4FKHYqXz4RBFSiM70/B5ulXAe', '(55) 5555-1118', true, 13, 11, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('88122233309', 'Cleitim do Santos', 'cleiSantos@gmail.com', '$2a$10$wL1HKN7HEkKbGUeOhk2Xj.IK6dLZvKFi9iEI3/9JHDnzDtC6dhOBm', '(55) 5555-1119', true, 14, 12, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('99122233310', 'Flavim de Queira', 'fQueira@gmail.com', '$2a$10$eplEgYyNG.dGp13edOZyv.7eB1Cx.2TdCh7ei8uwBF91hAqETmv7C', '(55) 5555-1120', true, 15, 13, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('55122233311', 'Fabinho Melo', 'fMelo@gmail.com', '$2a$10$8cCjOX/CwaQzDuIWSxJJd.H0wIvQ4fhpjR28ZRlfXYIjA.1nNqzIq', '(55) 5555-1121', true, 16, 14, 6, null);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233301', 'Alice Oliveira', 'alice@gmail.com', '$2a$10$a1LQnmiQTv3rO4WSh0.cjeamF5fV8SU7U/ipV1.TxqWy5kt3MWPSO', '(55) 5555-1111', true, null, null, 7, 7);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('22233344402', 'Bruno Silva', 'bruno@gmail.com', '$2a$10$B.qAoH3eiN.EEwwL8NwI0.D5BfqcAmvp4CDqSutO4vIaLqUH8oZ.W', '(55) 5555-2222', true, null, null, 8, 8);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('33344455503', 'Clara Souza', 'clara@gmail.com', '$2a$10$OJXtChxys0rL6FBi5o8FRethK3P7YEw6ky47rUIQm38cOPANrEtQy', '(55) 5555-3333', true, null, null, 9, 9);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('44455566604', 'Daniel Santos', 'daniel@gmail.com', '$2a$10$uHp4YgfRykZpOAaRi8zdLerM0bMr/3zIYXPDSYW/CRyXI7NgWP8/u', '(55) 5555-4444', true, null, null, 10, 10);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('55566677705', 'Eva Lima', 'eva@gmail.com', '$2a$10$ypSyOB3HxNDpqgsgRQEo4OKTHEDNRf0WOB8qz77wFMtNi8mO3dxIq', '(55) 5555-5555', true, null, null, 11, 11);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('66677788806', 'Felipe Oliveira', 'felipe@gmail.com', '$2a$10$a/ALn.P/sZMe2Aw3z2ZDYubALOeQjusAiTCqD.CCSlJkcqAEInpcG', '(55) 5555-6666', true, null, null, 12, 12);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('77788899907', 'Gabriela Silva', 'gabriela@gmail.com', '$2a$10$gVhUrOASFLECIEtqW0WZUeXuZv8pSU0CS0zmbUmyn8Lqkj3lmNkh.', '(55) 5555-7777', true, null, null, 13, 13);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('88899900008', 'Henrique Souza', 'henrique@gmail.com', '$2a$10$31.N0iGJCnmvf41UADlKbeCY9NVadczuqKAN.x2S7vLXnLOJLL7XK', '(55) 5555-8888', true, null, null, 14, 14);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('99900011109', 'Isabela Santos', 'isabela@gmail.com', '$2a$10$Aa1rw8Q7fkBJ6r4T1ktnWeek0Y7lgHifpMyeTveO4j3kE.i40VoUy', '(55) 5555-9999', true, null, null, 15, 15);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233310', 'João Lima', 'joao@gmail.com', '$2a$10$UZmsuAOJaP4GuUGB0QuwX.Cr.nZij3v9dD9GTY6HiBOqrf08C5mNa', '(55) 5555-1010', true, null, null, 16, 16);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('22233344411', 'Karen Oliveira', 'karen@gmail.com', '$2a$10$LMKq2XI6vg.fCh.XCfHGXOKCr2ASP53whbrBCzvnI/DmG8hbpMH.O', '(55) 5555-1111', true, null, null, 17, 17);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('33344455512', 'Lucas Silva', 'lucas@gmail.com', '$2a$10$Dp40G5/WM29fSpPsTw/YD.gvQpwIWHowp/im3DSBsbywMy.OE8.06', '(55) 5555-1212', true, null, null, 18, 18);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('44455566613', 'Mariana Souza', 'mariana@gmail.com', '$2a$10$476iMljF7S50J2LV4cGgNuj/FdqH5ii6PcTU8pBiW4SFCzNFoHH3q', '(55) 5555-1313', true, null, null, 19, 19);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('55566677714', 'Nathan Santos', 'nathan@gmail.com', '$2a$10$8jm6nqZbyr/8LVeSDrUpQObOWKeLtyhOsaViFNF1V.3ZzzCCtXiiK', '(55) 5555-1414', true, null, null, 20, 20);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('66677788815', 'Olivia Lima', 'olivia@gmail.com', '$2a$10$mfr7lTksY70hTybTW7CmW.HD9WICpFhkEC95cidjHfAeXsgGwCipy', '(55) 5555-1515', true, null, null, 21, 21);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('77788899916', 'Paulo Oliveira', 'paulo@gmail.com', '$2a$10$DXNzXxrD78.8gKejfOrQGu4GZT2hbOq1udc3EG6jg.yVYqoadhKGu', '(55) 5555-1616', true, null, null, 22, 22);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('88899900017', 'Quezia Souza', 'quezia@gmail.com', '$2a$10$bKyC/6Sbnb3NMcpmWajUi.1XTzx1hdD1MWIJcPnH/80UAi11nDAhy', '(55) 5555-1717', true, null, null, 23, 23);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('99900011118', 'Rafael Santos', 'rafael@gmail.com', '$2a$10$wuHDtxLet6/THTrVC26BUesz8PpLeyn5b3kwcjrvT114eNRz3dmLy', '(55) 5555-1818', true, null, null, 24, 24);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('11122233319', 'Sabrina Lima', 'sabrina@gmail.com', '$2a$10$vFHpIFHIKEhP/L2Jya/bxuP7gTU86k.mygjsP9Q/4/f/W2se56gTG', '(55) 5555-1919', true, null, null, 25, 25);
-
-INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
-VALUES
-    ('22233344420', 'Thiago Oliveira', 'thiago@gmail.com', '$2a$10$SZl1Il8T5IjlT7nTvr56E.a2CTQkdhDH9sgr4JVdtx30GCDSCBuzW', '(55) 5555-2020', true, null, null, 26, 26);
-
-
 -- Dados fictícios para a tabela Avaliacao (adicionando algumas avaliações)
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Excelente atendimento! Profissionais muito competentes.', 1, 1);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Poderia melhorar no atendimento ao cliente.', 2, 2);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Adorei o serviço prestado. Voltarei com certeza!', 3, 3);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Ambiente agradável e profissionais dedicados.', 4, 4);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço de alta qualidade. Recomendo a todos.', 5, 5);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (2, 'Não gostei do serviço. Não atendeu às minhas expectativas.', 6, 6);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Atendimento impecável. Empresa altamente recomendada.', 7, 7);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 8, 8);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (3, 'Esperava mais. Não fiquei completamente satisfeito.', 9, 9);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço excelente! Superou minhas expectativas.', 10, 10);
--- Dados fictícios para a tabela Avaliacao (adicionando algumas avaliações)
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Excelente atendimento! Profissionais muito competentes.', 11, 11);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Poderia melhorar no atendimento ao cliente.', 12, 12);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Adorei o serviço prestado. Voltarei com certeza!', 13, 13);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Ambiente agradável e profissionais dedicados.', 14, 15);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço de alta qualidade. Recomendo a todos.', 16, 16);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (2, 'Não gostei do serviço. Não atendeu às minhas expectativas.', 17, 17);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Atendimento impecável. Empresa altamente recomendada.', 18, 18);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 19, 19);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (3, 'Esperava mais. Não fiquei completamente satisfeito.', 20, 20);
-INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) VALUES (5, 'Serviço excelente! Superou minhas expectativas.', 21, 21);
+INSERT INTO Avaliacao (nivel, comentario, fk_Usuario, fk_Empresa) 
+VALUES 
+    (4, 'Excelente atendimento! Profissionais muito competentes.', 1, 1),
+    (5, 'Poderia melhorar no atendimento ao cliente.', 2, 2),
+    (5, 'Adorei o serviço prestado. Voltarei com certeza!', 3, 3),
+    (4, 'Ambiente agradável e profissionais dedicados.', 4, 4),
+    (5, 'Serviço de alta qualidade. Recomendo a todos.', 5, 5),
+    (2, 'Não gostei do serviço. Não atendeu às minhas expectativas.', 6, 6),
+    (5, 'Atendimento impecável. Empresa altamente recomendada.', 7, 7),
+    (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 8, 8),
+    (3, 'Esperava mais. Não fiquei completamente satisfeito.', 9, 9),
+    (5, 'Serviço excelente! Superou minhas expectativas.', 10, 10),
+    (4, 'Excelente atendimento! Profissionais muito competentes.', 11, 11),
+    (5, 'Poderia melhorar no atendimento ao cliente.', 12, 12),
+    (5, 'Adorei o serviço prestado. Voltarei com certeza!', 13, 13),
+    (4, 'Ambiente agradável e profissionais dedicados.', 14, 15),
+    (5, 'Serviço de alta qualidade. Recomendo a todos.', 16, 16),
+    (2, 'Não gostei do serviço. Não atendeu às minhas expectativas.', 17, 17),
+    (5, 'Atendimento impecável. Empresa altamente recomendada.', 18, 18),
+    (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 19, 19),
+    (3, 'Esperava mais. Não fiquei completamente satisfeito.', 20, 20),
+    (5, 'Serviço excelente! Superou minhas expectativas.', 21, 21);

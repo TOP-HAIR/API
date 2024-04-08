@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/empresas")
+@RequestMapping("/api/empresas")
 public class EmpresaController {
 
     @Autowired

@@ -17,7 +17,7 @@ public class MapBoxController {
     private static final String MAPBOX_ACCESS_TOKEN = "pk.eyJ1Ijoic2l0YXZhcmVzIiwiYSI6ImNsbmpjcHJnbTB0OXQyam83MGl5MmFjZGkifQ.1Nm5ZlbXimV_j9Vb4f4FPg"; // Inserir token MapBox
     private static final String GEOCODING_API_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places/";
 
-    @GetMapping("/mapbox/directions")
+    @GetMapping("/api/mapbox/directions")
     public ResponseEntity<String> getDirections(
             @RequestParam double startLongitude, @RequestParam double startLatitude,
             @RequestParam double endLongitude, @RequestParam double endLatitude) {
@@ -34,7 +34,7 @@ public class MapBoxController {
         return ResponseEntity.ok(directionsResponse);
     }
 
-    @GetMapping("/mapbox/geocode")
+    @GetMapping("/api/mapbox/geocode")
     public ResponseEntity<String> geocodeAddress(@RequestParam String address) {
         // Codifique o endereço usando a API de geocodificação do Mapbox
         String geocodeApiUrl = GEOCODING_API_URL + address + ".json?access_token=" + MAPBOX_ACCESS_TOKEN;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/agendas-servicos")
+@RequestMapping("/api/agendas-servicos")
 public class AgendaServicoController {
 
     @Autowired

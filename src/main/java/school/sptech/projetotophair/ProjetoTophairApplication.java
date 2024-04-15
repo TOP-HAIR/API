@@ -9,5 +9,4 @@ ProjetoTophairApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoTophairApplication.class, args);
 	}
-
 }

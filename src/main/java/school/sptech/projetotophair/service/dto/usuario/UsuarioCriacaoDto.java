@@ -22,7 +22,6 @@ public class UsuarioCriacaoDto {
     @NotBlank
     private String nomeCompleto;
     @Getter
-    @Email
     @NotBlank
     private String email;
     @Getter

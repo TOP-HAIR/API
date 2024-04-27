@@ -12,4 +12,5 @@ public class EmpresaAvaliacaoDto {
     private String razaoSocial;
     private EnderecoDto endereco;
     List<AvaliacaoResponseDto> avaliacoes;
+    private Double mediaNivelAvaliacoes;
 }

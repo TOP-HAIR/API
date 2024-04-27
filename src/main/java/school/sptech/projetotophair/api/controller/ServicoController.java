@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/servicos")
+@RequestMapping("/servicos")
 public class ServicoController {
 
     @Autowired

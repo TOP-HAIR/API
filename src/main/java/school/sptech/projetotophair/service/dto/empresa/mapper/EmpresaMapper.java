@@ -25,23 +25,36 @@ public class EmpresaMapper {
         return dto;
     }
 
-    public static EmpresaAvaliacaoDto toEmpresaAvaliacaoDto(Empresa entity){
+    public static EmpresaAvaliacaoDto toEmpresaAvaliacaoDto(Empresa entity) {
         EmpresaAvaliacaoDto dto = new EmpresaAvaliacaoDto();
 
         List<Avaliacao> avaliacoes = entity.getAvaliacoes();
         List<AvaliacaoResponseDto> dtosAvaliacao = new ArrayList<>();
 
-        for (Avaliacao avaliacaoAtual: avaliacoes) {
+        assert avaliacoes != null;
+        for (Avaliacao avaliacaoAtual : avaliacoes) {
             dtosAvaliacao.add(AvaliacaoMapper.toAvaliacaoResponseDto(avaliacaoAtual));
         }
 
         dto.setIdEmpresa(entity.getIdEmpresa());
         dto.setRazaoSocial(entity.getRazaoSocial());
         dto.setAvaliacoes(dtosAvaliacao);
+        assert entity.getEndereco() != null;
         dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
+
+        if (!dtosAvaliacao.isEmpty()) {
+            double media = dtosAvaliacao.stream()
+                    .mapToDouble(AvaliacaoResponseDto::getNivel)
+                    .average()
+                    .orElse(0.0);
+            dto.setMediaNivelAvaliacoes(media);
+        } else {
+            dto.setMediaNivelAvaliacoes(0.0);
+        }
 
         return dto;
     }
+
 
     public static EmpresaEnderecoVinculadoDto toEmpresaEnderecoVinculadoDto(Empresa empresaEntity){
         EmpresaEnderecoVinculadoDto dto = new EmpresaEnderecoVinculadoDto();

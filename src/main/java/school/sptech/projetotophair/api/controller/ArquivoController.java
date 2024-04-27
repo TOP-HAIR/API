@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/arquivos")
+@RequestMapping("/arquivos")
 public class ArquivoController {
 
     @Autowired

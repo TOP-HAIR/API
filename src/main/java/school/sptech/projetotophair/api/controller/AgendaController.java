@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/agendas")
+@RequestMapping("/agendas")
 public class AgendaController {
 
     @Autowired

@@ -9,7 +9,7 @@ import school.sptech.projetotophair.service.HistoricoServicoService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/historicoservico")
+@RequestMapping("/historicoservico")
 public class HistoricoServicoController {
 
     @Autowired

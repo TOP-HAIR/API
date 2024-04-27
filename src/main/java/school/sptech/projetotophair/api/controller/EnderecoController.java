@@ -9,7 +9,7 @@ import school.sptech.projetotophair.service.EnderecoService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/enderecos")
+@RequestMapping("/enderecos")
 public class EnderecoController {
 
     @Autowired

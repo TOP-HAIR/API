@@ -2,13 +2,16 @@ package school.sptech.projetotophair.api.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.service.EmpresaService;
 import school.sptech.projetotophair.service.dto.empresa.*;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
+import school.sptech.projetotophair.domain.empresa.MetricaEmpresa;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -96,5 +99,14 @@ public class EmpresaController {
     public ResponseEntity<Void> deletarEmpresa(@PathVariable Long id) {
         empresaService.deletarEmpresa(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/metricas")
+    public ResponseEntity<MetricaEmpresa> calcularMetricas(
+            @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicio,
+            @RequestParam("dataFim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFim,
+            @RequestParam("empresaId") Long empresaId) {
+        MetricaEmpresa metricas = empresaService.calcularMetricas(dataInicio, dataFim, empresaId);
+        return ResponseEntity.ok(metricas);
     }
 }

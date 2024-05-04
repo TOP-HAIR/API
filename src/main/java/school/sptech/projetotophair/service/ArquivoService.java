@@ -60,9 +60,21 @@ public class ArquivoService {
         Optional<Empresa> empresaById = empresaRepository.findById(idEmpresa);
         if (empresaById.isPresent() && arquivoById.isPresent()) {
             arquivoById.get().setEmpresa(empresaById.get());
-            return arquivoById.get();
+            Arquivo ArquivoSalvo = arquivoRepository.save(arquivoById.get());
+            return ArquivoSalvo;
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empresa ou arquivo não encontrados");
+    }
+
+    public Arquivo vincularUsuario(Integer idArquivo, Long idUsuario){
+        Optional<Arquivo> arquivoById = arquivoRepository.findById(idArquivo);
+        Optional<Usuario> usuarioById = usuarioRepository.findById(idUsuario);
+        if (usuarioById.isPresent() && arquivoById.isPresent()) {
+            arquivoById.get().setUsuario(usuarioById.get());
+            Arquivo arquivoSalvo = arquivoRepository.save(arquivoById.get());
+            return arquivoSalvo;
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario ou arquivo não encontrados");
     }
 
     public Arquivo uploadArquivo(MultipartFile file) {

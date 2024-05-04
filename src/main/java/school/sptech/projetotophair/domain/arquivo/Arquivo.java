@@ -4,7 +4,6 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 

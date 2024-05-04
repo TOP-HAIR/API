@@ -121,4 +121,18 @@ public class UsuarioMapper {
 
         return dto;
     }
+
+    public static UsuarioDto toUsuarioDto (Usuario entity){
+        UsuarioDto dto = new UsuarioDto();
+
+        dto.setCpf(entity.getCpf());
+        dto.setSenha(entity.getSenha());
+        dto.setIsProfissional(entity.getProfissional());
+        dto.setNomeCompleto(entity.getNomeCompleto());
+        dto.setEmail(entity.getEmail());
+        dto.setTelefone(entity.getTelefone());
+        dto.setIdUsuario(entity.getIdUsuario());
+
+        return dto;
+    }
 }

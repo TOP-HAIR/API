@@ -11,8 +11,8 @@ import school.sptech.projetotophair.domain.arquivo.repository.ArquivoRepository;
 import school.sptech.projetotophair.service.ArquivoService;
 import school.sptech.projetotophair.service.dto.arquivo.ArquivoDto;
 import school.sptech.projetotophair.service.dto.arquivo.ArquivoEmpresaVinculadaDto;
+import school.sptech.projetotophair.service.dto.arquivo.ArquivoUsuarioVinculadoDto;
 import school.sptech.projetotophair.service.dto.arquivo.mapper.ArquivoMapper;
-
 import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -69,6 +69,13 @@ public class ArquivoController {
         Arquivo arquivo = arquivoService.vincularEmpresa(idArquivo, idEmpresa);
         ArquivoEmpresaVinculadaDto arquivoEmpresaVinculadaDto = ArquivoMapper.toArquivoEmpresaVinculadaDto(arquivo);
         return ResponseEntity.ok(arquivoEmpresaVinculadaDto);
+    }
+
+    @PutMapping("/vincular-usuario/{idArquivo}/{idUsuario}")
+    public ResponseEntity<ArquivoUsuarioVinculadoDto> vincularUsuario(@PathVariable Integer idArquivo, @PathVariable Long idUsuario){
+        Arquivo arquivo = arquivoService.vincularUsuario(idArquivo, idUsuario);
+        ArquivoUsuarioVinculadoDto arquivoUsuarioVinculadoDto = ArquivoMapper.toArquivoUsuarioVinculadoDto(arquivo);
+        return ResponseEntity.ok(arquivoUsuarioVinculadoDto);
     }
 
     @GetMapping("/empresa/{idEmpresa}")

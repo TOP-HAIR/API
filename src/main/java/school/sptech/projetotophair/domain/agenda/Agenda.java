@@ -14,6 +14,7 @@ import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,10 @@ public class Agenda {
     @FutureOrPresent
     @Nullable
     private LocalDate data;
+    @Nullable
+    private LocalDateTime dataInicio;
+    @Nullable
+    private LocalDateTime dataFim;
     @Nullable
     private String hora;
     @NotBlank
@@ -44,7 +49,7 @@ public class Agenda {
         this.empresa = empresa;
     }
 
-    public Agenda(){
+    public Agenda() {
 
     }
 
@@ -56,19 +61,39 @@ public class Agenda {
         this.idAgenda = idAgenda;
     }
 
+    @Nullable
     public LocalDate getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(@Nullable LocalDate data) {
         this.data = data;
     }
 
+    @Nullable
+    public LocalDateTime getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(@Nullable LocalDateTime dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    @Nullable
+    public LocalDateTime getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(@Nullable LocalDateTime dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    @Nullable
     public String getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(@Nullable String hora) {
         this.hora = hora;
     }
 

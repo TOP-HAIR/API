@@ -1,8 +1,10 @@
 package school.sptech.projetotophair.service.dto.agenda.mapper;
 
 import school.sptech.projetotophair.domain.agenda.Agenda;
+import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
+import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaDto;
 import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaVinculadaDto;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
@@ -51,4 +53,40 @@ public class AgendaMapper {
 
         return dto;
     }
+
+    public static AgendaEmpresaDto toAgendaEmpresaDto(Agenda entity) {
+        AgendaEmpresaDto dto = new AgendaEmpresaDto();
+
+        // Define data de início e fim diretamente
+        dto.setDataInicio(entity.getDataInicio());
+        dto.setDataFim(entity.getDataFim());
+
+        // Configura a cor do status baseado no status da entidade
+        if (entity.getStatus() != null) {
+            if ("Cancelado".equalsIgnoreCase(entity.getStatus())) {
+                dto.setStatus("#DC3545"); // Cor para cancelado
+            } else if ("Agendado".equalsIgnoreCase(entity.getStatus())) {
+                dto.setStatus("#28A745"); // Cor para agendado
+            }
+        }
+
+        // Verifica se a lista de usuários não é nula e não está vazia
+        if (entity.getUsuarios() != null && !entity.getUsuarios().isEmpty()) {
+            Usuario usuario = entity.getUsuarios().get(0); // Pegando o primeiro usuário como exemplo
+
+            // Verifica se o usuário não é nulo e possui um serviço associado não nulo
+            if (usuario != null && usuario.getServico() != null && usuario.getNomeCompleto() != null) {
+                Servico servico = usuario.getServico();
+
+                // Verifica se a descrição do serviço e o nome do usuário não são nulos
+                if (servico.getDescricao() != null) {
+                    String servicoCliente = servico.getDescricao() + " - " + usuario.getNomeCompleto();
+                    dto.setServicoCliente(servicoCliente);
+                }
+            }
+        }
+
+        return dto;
+    }
+
 }

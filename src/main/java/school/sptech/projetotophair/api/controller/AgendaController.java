@@ -3,6 +3,7 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaDto;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
@@ -85,11 +86,11 @@ public class AgendaController {
     }
 
     @GetMapping("/empresa/{idEmpresa}")
-    public ResponseEntity<List<AgendaDto>> listarPorEmpresa(@PathVariable Long idEmpresa){
+    public ResponseEntity<List<AgendaEmpresaDto>> listarPorEmpresa(@PathVariable Long idEmpresa){
         List<Agenda> agendas = agendaService.listarAgendasPorEmpresa(idEmpresa);
-        List<AgendaDto> dtos = new ArrayList<>();
+        List<AgendaEmpresaDto> dtos = new ArrayList<>();
         for (Agenda agendaDaVez: agendas) {
-            dtos.add(AgendaMapper.toAgendaDto(agendaDaVez));
+            dtos.add(AgendaMapper.toAgendaEmpresaDto(agendaDaVez));
         }
         return ResponseEntity.ok(dtos);
     }

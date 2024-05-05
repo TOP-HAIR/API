@@ -3,6 +3,7 @@ package school.sptech.projetotophair.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
 import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaDto;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
@@ -164,5 +165,11 @@ public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVar
     public ResponseEntity<Void> deletarAgenda(@PathVariable Long id) {
         agendaService.deletarAgenda(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/periodos/{id}")
+    public ResponseEntity<List<RelatorioAgenda>> buscarPeriodos(@PathVariable Long id) {
+        List<RelatorioAgenda> periodos = agendaService.buscarPeriodos(id);
+        return ResponseEntity.ok(periodos);
     }
 }

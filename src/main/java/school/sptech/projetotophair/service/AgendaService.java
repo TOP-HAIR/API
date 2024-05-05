@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
+import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
@@ -19,6 +20,7 @@ import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 @Service
@@ -134,28 +136,6 @@ public class AgendaService {
         agendaRepository.deleteById(id);
     }
 
-//    public PilhaObj<Agenda> getUltimosAgendamentos(Long idEmpresa) {
-//        int quantidadeDesejada = 10;
-//
-//        PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
-//
-//        // Popula a pilha com os últimos agendamentos do banco de dados
-//        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
-//
-//        // Sort the agendas by date in descending order
-//        todosAgendamentos.sort(Comparator.comparing(Agenda::getData).reversed());
-//
-//        // Add the last 10 agendas to the stack
-//        for (int i = 0; i < Math.min(quantidadeDesejada, todosAgendamentos.size()); i++) {
-//            ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
-//        }
-//
-//        // Retorna a pilha invertida (if needed)
-//        // inverterOrdemPilha(ultimosAgendamentosPilha);
-//
-//        return ultimosAgendamentosPilha;
-//    }
-
 
     public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long idEmpresa) {
         int quantidadeDesejada = 10;
@@ -225,10 +205,27 @@ public class AgendaService {
             pilha.push(temp);
         }
 
-}
+    }
 
 
+    public List<RelatorioAgenda> buscarPeriodos(Long id) {
+        List<Object[]> resultados = agendaRepository.buscarPeriodosPorEmpresa(id);
+        List<RelatorioAgenda> periodos = new ArrayList<>();
 
+        for (Object[] resultado : resultados) {
+            int ano = (int) resultado[0];
+            int mes = (int) resultado[1];
+            String dataInicio = (String) resultado[2];
+            String dataFinal = (String) resultado[3];
+            BigDecimal precoTotal = (BigDecimal) resultado[4];
+
+            // Criar o objeto AgendaPeriodoDTO e adicioná-lo à lista de periodos
+            RelatorioAgenda periodo = new RelatorioAgenda(ano, mes, dataInicio, dataFinal, precoTotal);
+            periodos.add(periodo);
+        }
+
+        return periodos;
+    }
 
 
 }

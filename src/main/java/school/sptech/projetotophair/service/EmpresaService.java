@@ -14,6 +14,8 @@ import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.endereco.repository.EnderecoRepository;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
+import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
+import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -86,16 +88,27 @@ public class EmpresaService {
 //        return empresas;
 //    }
 
-    public List<Empresa> listarEmpresasTop5AvaliacoesPorEstado(String estado) {
-        List<Empresa> empresas = empresaRepository.findTopEmpresasMelhorAvaliadasPorEstado(estado);
-        if (empresas.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma avaliação de empresa encontrada no estado: " + estado);
+    public List<EmpresaAvaliacaoDto> listarEmpresasTop5AvaliacoesPorFiltros(String estado, String nomeServico, String nomeEmpresa, Long usuarioId) {
+        estado = (estado != null) ? "%" + estado + "%" : null;
+        nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null; // Handle nomeServico
+        nomeEmpresa = (nomeEmpresa != null) ? "%" + nomeEmpresa + "%" : null;
+
+        List<Object[]> results = empresaRepository.findEmpresasByFiltros(estado, nomeServico, nomeEmpresa, usuarioId);
+        if (results.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma empresa encontrada com os filtros fornecidos.");
         }
 
-        // Retorne apenas os primeiros 5 resultados
-        return empresas.stream().limit(5).collect(Collectors.toList());
+        return results.stream()
+                .map(result -> {
+                    Empresa empresa = (Empresa) result[0];
+                    Double avgNivel = (Double) result[1];
+                    EmpresaAvaliacaoDto dto = EmpresaMapper.toEmpresaAvaliacaoDto(empresa);
+                    dto.setMediaNivelAvaliacoes(avgNivel);
+                    return dto;
+                })
+                .limit(5)
+                .collect(Collectors.toList());
     }
-
 
 
 

@@ -68,17 +68,18 @@ public class EmpresaController {
         return ResponseEntity.ok(empresaDto);
     }
 
-    @GetMapping("/top5-avaliadas-por-estado")
-    public ResponseEntity<List<EmpresaAvaliacaoDto>> findTop5EmpresasMelhorAvaliadasPorEstado(@RequestParam String estado) {
-        List<Empresa> empresas = empresaService.listarEmpresasTop5AvaliacoesPorEstado(estado);
-        if (empresas.isEmpty()) {
+    @GetMapping(value = {"/top5-avaliadas", "/top5-avaliadas/{id}"})
+    public ResponseEntity<List<EmpresaAvaliacaoDto>> findTop5EmpresasMelhorAvaliadas(
+            @PathVariable(name = "id", required = false) Optional<Long> id,
+            @RequestParam(required = false) String estado,
+            @RequestParam(required = false) String nomeServico, // Added nomeServico
+            @RequestParam(required = false) String nomeEmpresa) {
+
+        List<EmpresaAvaliacaoDto> dtos = empresaService.listarEmpresasTop5AvaliacoesPorFiltros(
+                estado, nomeServico, nomeEmpresa, id.orElse(null));
+
+        if (dtos.isEmpty()) {
             return ResponseEntity.notFound().build();
-        }
-
-        List<EmpresaAvaliacaoDto> dtos = new ArrayList<>();
-
-        for (Empresa empresaDaVez: empresas) {
-            dtos.add(EmpresaMapper.toEmpresaAvaliacaoDto(empresaDaVez));
         }
 
         return ResponseEntity.ok(dtos);

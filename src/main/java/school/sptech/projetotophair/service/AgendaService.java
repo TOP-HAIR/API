@@ -20,6 +20,9 @@ import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -211,21 +214,22 @@ public class AgendaService {
     public List<RelatorioAgenda> buscarPeriodos(Long id) {
         List<Object[]> resultados = agendaRepository.buscarPeriodosPorEmpresa(id);
         List<RelatorioAgenda> periodos = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Escolha o formato que você precisa
 
         for (Object[] resultado : resultados) {
-            int ano = (int) resultado[0];
-            int mes = (int) resultado[1];
-            String dataInicio = (String) resultado[2];
-            String dataFinal = (String) resultado[3];
-            BigDecimal precoTotal = (BigDecimal) resultado[4];
+            String dataInicio = resultado[2] != null ? sdf.format((Timestamp) resultado[2]) : null;
+            String dataFinal = resultado[3] != null ? sdf.format((Timestamp) resultado[3]) : null;
+            BigDecimal precoTotalBD = (BigDecimal) resultado[4];
+            Double precoTotal = precoTotalBD != null ? precoTotalBD.doubleValue() : null;
 
-            // Criar o objeto AgendaPeriodoDTO e adicioná-lo à lista de periodos
-            RelatorioAgenda periodo = new RelatorioAgenda(ano, mes, dataInicio, dataFinal, precoTotal);
+            // Criar o objeto RelatorioAgenda e adicioná-lo à lista de periodos
+            RelatorioAgenda periodo = new RelatorioAgenda(dataInicio, dataFinal, precoTotal);
             periodos.add(periodo);
         }
 
         return periodos;
     }
+
 
 
 }

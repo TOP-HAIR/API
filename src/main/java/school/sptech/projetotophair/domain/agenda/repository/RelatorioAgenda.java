@@ -1,17 +1,16 @@
 package school.sptech.projetotophair.domain.agenda.repository;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RelatorioAgenda {
-    private int ano;
-    private int mes;
     private String dataInicio;
     private String dataFinal;
-    private BigDecimal precoTotal;
-
-    public RelatorioAgenda(int ano, int mes, String dataInicio, String dataFinal, BigDecimal precoTotal) {
-    }
+    private Double precoTotal;
 }

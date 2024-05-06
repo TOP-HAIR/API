@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 
 @Data
 public class AgendaEmpresaDto {
-    private LocalDateTime dataInicio;
-    private LocalDateTime dataFim;
+    private LocalDateTime start;
+    private LocalDateTime end;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String servicoCliente;
-    private String status;
+    private String title;
+    private String background;
 }

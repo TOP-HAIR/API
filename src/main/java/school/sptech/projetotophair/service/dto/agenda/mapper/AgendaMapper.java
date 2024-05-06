@@ -58,15 +58,15 @@ public class AgendaMapper {
         AgendaEmpresaDto dto = new AgendaEmpresaDto();
 
         // Define data de início e fim diretamente
-        dto.setDataInicio(entity.getDataInicio());
-        dto.setDataFim(entity.getDataFim());
+        dto.setStart(entity.getDataInicio());
+        dto.setEnd(entity.getDataFim());
 
         // Configura a cor do status baseado no status da entidade
         if (entity.getStatus() != null) {
             if ("Cancelado".equalsIgnoreCase(entity.getStatus())) {
-                dto.setStatus("#DC3545"); // Cor para cancelado
+                dto.setBackground("#DC3545"); // Cor para cancelado
             } else if ("Agendado".equalsIgnoreCase(entity.getStatus())) {
-                dto.setStatus("#28A745"); // Cor para agendado
+                dto.setBackground("#28A745"); // Cor para agendado
             }
         }
 
@@ -81,7 +81,7 @@ public class AgendaMapper {
                 // Verifica se a descrição do serviço e o nome do usuário não são nulos
                 if (servico.getDescricao() != null) {
                     String servicoCliente = servico.getDescricao() + " - " + usuario.getNomeCompleto();
-                    dto.setServicoCliente(servicoCliente);
+                    dto.setTitle(servicoCliente);
                 }
             }
         }

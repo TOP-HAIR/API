@@ -41,20 +41,24 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
 //            @Param("nomeServico") String nomeServico,
 //            @Param("nomeEmpresa") String nomeEmpresa,
 //            @Param("usuarioId") Long usuarioId);
-@Query("SELECT DISTINCT s.empresa, AVG(a.nivel) as avgNivel FROM Servico s " +
-        "LEFT JOIN s.empresa e " +
+@Query("SELECT e " +
+        "FROM Empresa e " +
         "LEFT JOIN e.avaliacoes a " +
         "LEFT JOIN e.endereco endereco " +
+        "LEFT JOIN Servico s ON s.empresa = e " +
         "WHERE (:estado IS NULL OR endereco.estado LIKE %:estado%) " +
         "AND (:nomeServico IS NULL OR s.nomeServico LIKE %:nomeServico%) " +
         "AND (:nomeEmpresa IS NULL OR e.razaoSocial LIKE %:nomeEmpresa%) " +
-        "AND (:usuarioId IS NULL OR EXISTS (SELECT u FROM e.usuarios u WHERE u.id = :usuarioId)) " +
-        "ORDER BY avgNivel DESC")
+        "AND (:usuarioId IS NULL OR EXISTS (SELECT u FROM e.usuarios u WHERE u.idUsuario = :usuarioId)) " +
+        "GROUP BY e")
 List<Object[]> findEmpresasByFiltros(
         @Param("estado") String estado,
         @Param("nomeServico") String nomeServico,
         @Param("nomeEmpresa") String nomeEmpresa,
         @Param("usuarioId") Long usuarioId);
+
+
+
 
 
 

@@ -116,7 +116,7 @@ public class EmpresaService {
         nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null; // Handle nomeServico
         nomeEmpresa = (nomeEmpresa != null) ? "%" + nomeEmpresa + "%" : null;
 
-        List<Object[]> results = empresaRepository.findEmpresasByFiltros(estado, nomeServico, nomeEmpresa, usuarioId);
+        List<Object[]> results = empresaRepository.findEmpresasTop5ByFiltros(estado, nomeServico, nomeEmpresa, usuarioId);
         if (results.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma empresa encontrada com os filtros fornecidos.");
         }
@@ -132,6 +132,7 @@ public class EmpresaService {
                 .limit(5)
                 .collect(Collectors.toList());
     }
+
 
     public Optional<Empresa> findEmpresaByUsuarioId(Long idUsuario) {
         if (usuarioRepository.existsById(idUsuario)) {

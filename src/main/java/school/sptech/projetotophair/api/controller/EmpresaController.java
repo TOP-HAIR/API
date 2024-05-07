@@ -85,9 +85,9 @@ public class EmpresaController {
         return ResponseEntity.ok(dtos);
     }
 
-    @GetMapping("/filtro-empresas/{id}")
+    @GetMapping("/filtro-empresas")
     public ResponseEntity<List<EmpresaAvaliacaoDto>> findEmpresasFiltro(
-            @PathVariable(name = "id", required = false) Optional<Long> id,
+            @RequestParam(name = "id", required = false) Optional<Long> id,
             @RequestParam(required = false) String estado,
             @RequestParam(required = false) String nomeServico, // Added nomeServico
             @RequestParam(required = false) String nomeEmpresa) {

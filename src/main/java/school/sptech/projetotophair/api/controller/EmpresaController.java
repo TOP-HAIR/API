@@ -11,6 +11,7 @@ import school.sptech.projetotophair.service.dto.empresa.*;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 import school.sptech.projetotophair.domain.empresa.MetricaEmpresa;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,12 +120,12 @@ public class EmpresaController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/metricas")
+    @GetMapping("/metricas/{id}")
     public ResponseEntity<MetricaEmpresa> calcularMetricas(
-            @RequestParam("dataInicio") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicio,
-            @RequestParam("dataFim") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataFim,
-            @RequestParam("empresaId") Long empresaId) {
-        MetricaEmpresa metricas = empresaService.calcularMetricas(dataInicio, dataFim, empresaId);
+            @PathVariable Long id,
+            @RequestParam("dataInicio") LocalDate dataInicio,
+            @RequestParam("dataFim") LocalDate dataFim) {
+        MetricaEmpresa metricas = empresaService.calcularMetricas(dataInicio, dataFim, id);
         return ResponseEntity.ok(metricas);
     }
 }

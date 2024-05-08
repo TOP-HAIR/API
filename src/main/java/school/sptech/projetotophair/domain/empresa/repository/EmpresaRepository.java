@@ -2,11 +2,14 @@ package school.sptech.projetotophair.domain.empresa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.empresa.Empresa;
+import school.sptech.projetotophair.domain.empresa.MetricaEmpresa;
 
 import java.awt.print.Pageable;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,4 +82,9 @@ List<Object[]> findEmpresasByFiltros(
             @Param("usuarioId") Long usuarioId);
 
 
+    @Procedure(name = "calcularInformacoes")
+    MetricaEmpresa callMetricas(
+            @Param("data_inicio") LocalDate dataInicio,
+            @Param("data_fim") LocalDate dataFim,
+            @Param("empresa_id") Long empresaId);
 }

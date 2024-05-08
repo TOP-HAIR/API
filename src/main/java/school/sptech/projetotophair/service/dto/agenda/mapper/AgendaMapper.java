@@ -3,10 +3,7 @@ package school.sptech.projetotophair.service.dto.agenda.mapper;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
-import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
-import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaDto;
-import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaVinculadaDto;
-import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
+import school.sptech.projetotophair.service.dto.agenda.*;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 public class AgendaMapper {
@@ -39,6 +36,18 @@ public class AgendaMapper {
         dto.setHora(entity.getHora());
         dto.setStatus(entity.getStatus());
         dto.setEmpresa(EmpresaMapper.toEmpresaDto(entity.getEmpresa()));
+
+        return dto;
+    }
+
+    public static AgendaComEmpresaDto toAgendaComEmpresaDto(Agenda entity){
+        AgendaComEmpresaDto dto = new AgendaComEmpresaDto();
+
+        dto.setEmpresaDto(EmpresaMapper.toEmpresaDto(entity.getEmpresa()));
+        dto.setIdAgenda(entity.getIdAgenda());
+        dto.setStatus(entity.getStatus());
+        dto.setHora(entity.getHora());
+        dto.setData(entity.getData());
 
         return dto;
     }

@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
-import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaDto;
+import school.sptech.projetotophair.service.dto.agenda.*;
+import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 import school.sptech.projetotophair.domain.agenda.Agenda;
@@ -12,9 +13,6 @@ import school.sptech.projetotophair.domain.agendaservico.AgendaServico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.AgendaService;
-import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
-import school.sptech.projetotophair.service.dto.agenda.AgendaEmpresaVinculadaDto;
-import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
 import school.sptech.projetotophair.service.dto.agendaservico.AgendaServicoDto;
 import school.sptech.projetotophair.service.dto.agendaservico.mapper.AgendaServicoMapper;
@@ -77,11 +75,11 @@ public class AgendaController {
     }
 
     @GetMapping("/usuario/{idUsuario}")
-    public ResponseEntity<List<AgendaDto>> listarPorUsuario(@PathVariable Long idUsuario){
+    public ResponseEntity<List<AgendaComEmpresaDto>> listarPorUsuario(@PathVariable Long idUsuario){
         List<Agenda> agendas = agendaService.listarAgendasPorUsuario(idUsuario);
-        List<AgendaDto> dtos = new ArrayList<>();
+        List<AgendaComEmpresaDto> dtos = new ArrayList<>();
         for (Agenda agendaDaVez: agendas) {
-            dtos.add(AgendaMapper.toAgendaDto(agendaDaVez));
+            dtos.add(AgendaMapper.toAgendaComEmpresaDto(agendaDaVez));
         }
         return ResponseEntity.ok(dtos);
     }
@@ -167,7 +165,7 @@ public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVar
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/periodos/{id}")
+    @GetMapping("/periodos-lista/{id}")
     public ResponseEntity<List<RelatorioAgenda>> buscarPeriodos(@PathVariable Long id) {
         List<RelatorioAgenda> periodos = agendaService.buscarPeriodos(id);
         return ResponseEntity.ok(periodos);

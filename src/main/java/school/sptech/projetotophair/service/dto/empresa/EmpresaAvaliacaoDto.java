@@ -1,6 +1,7 @@
 package school.sptech.projetotophair.service.dto.empresa;
 
 import lombok.Data;
+import school.sptech.projetotophair.service.dto.arquivo.ArquivoDto;
 import school.sptech.projetotophair.service.dto.avaliacao.AvaliacaoResponseDto;
 import school.sptech.projetotophair.service.dto.endereco.EnderecoDto;
 
@@ -13,4 +14,5 @@ public class EmpresaAvaliacaoDto {
     private EnderecoDto endereco;
     List<AvaliacaoResponseDto> avaliacoes;
     private Double mediaNivelAvaliacoes;
+    List<ArquivoDto> arquivoDtos;
 }

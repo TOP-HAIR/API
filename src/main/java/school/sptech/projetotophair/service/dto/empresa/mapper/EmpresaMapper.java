@@ -38,9 +38,8 @@ public class EmpresaMapper {
 
         dto.setIdEmpresa(entity.getIdEmpresa());
         dto.setRazaoSocial(entity.getRazaoSocial());
-        dto.setAvaliacoes(dtosAvaliacao);
-        assert entity.getEndereco() != null;
         dto.setEndereco(EnderecoMapper.toEnderecoDto(entity.getEndereco()));
+        dto.setAvaliacoes(dtosAvaliacao);
 
         if (!dtosAvaliacao.isEmpty()) {
             double media = dtosAvaliacao.stream()
@@ -51,6 +50,14 @@ public class EmpresaMapper {
         } else {
             dto.setMediaNivelAvaliacoes(0.0);
         }
+
+        List<ArquivoDto> arquivoDtos = new ArrayList<>();
+        if (entity.getArquivos() != null) {
+            for (Arquivo arquivo : entity.getArquivos()) {
+                arquivoDtos.add(ArquivoMapper.toArquivoDto(arquivo));
+            }
+        }
+        dto.setArquivoDtos(arquivoDtos);
 
         return dto;
     }

@@ -146,6 +146,7 @@ public class ArquivoController {
 
             // Define o cabeçalho para o nome do arquivo
             HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_TYPE, "image/jpeg");
             headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + arquivoBanco.getNomeArquivoOriginal());
 
             // Retorna o recurso com os cabeçalhos apropriados

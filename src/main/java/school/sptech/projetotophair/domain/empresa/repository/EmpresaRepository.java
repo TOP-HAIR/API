@@ -52,13 +52,11 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
         "WHERE (:estado IS NULL OR endereco.estado LIKE %:estado%) " +
         "AND (:nomeServico IS NULL OR s.nomeServico LIKE %:nomeServico%) " +
         "AND (:nomeEmpresa IS NULL OR e.razaoSocial LIKE %:nomeEmpresa%) " +
-        "AND (:usuarioId IS NULL OR EXISTS (SELECT u FROM e.usuarios u WHERE u.idUsuario = :usuarioId)) " +
         "GROUP BY e")
 List<Object[]> findEmpresasByFiltros(
         @Param("estado") String estado,
         @Param("nomeServico") String nomeServico,
-        @Param("nomeEmpresa") String nomeEmpresa,
-        @Param("usuarioId") Long usuarioId);
+        @Param("nomeEmpresa") String nomeEmpresa);
 
 
 
@@ -72,14 +70,12 @@ List<Object[]> findEmpresasByFiltros(
             "WHERE (:estado IS NULL OR endereco.estado LIKE %:estado%) " +
             "AND (:nomeServico IS NULL OR s.nomeServico LIKE %:nomeServico%) " +
             "AND (:nomeEmpresa IS NULL OR e.razaoSocial LIKE %:nomeEmpresa%) " +
-            "AND (:usuarioId IS NULL OR EXISTS (SELECT u FROM e.usuarios u WHERE u.id = :usuarioId)) " +
             "GROUP BY e " +
             "ORDER BY avgNivel DESC")
     List<Object[]> findEmpresasTop5ByFiltros(
             @Param("estado") String estado,
             @Param("nomeServico") String nomeServico,
-            @Param("nomeEmpresa") String nomeEmpresa,
-            @Param("usuarioId") Long usuarioId);
+            @Param("nomeEmpresa") String nomeEmpresa);
 
 
     @Procedure(name = "calcularInformacoes")

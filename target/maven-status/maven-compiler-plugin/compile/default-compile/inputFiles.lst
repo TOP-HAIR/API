@@ -1,86 +1,94 @@
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\HistoricoServicoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agendaservico\mapper\AgendaServicoMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\mapper\EmpresaMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaEmpresaVinculadaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\ProjetoTophairApplication.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\ArquivoEmpresaVinculadaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agenda\repository\AgendaRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\UsuarioService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\mapper\ArquivoMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\historicoservico\repository\HistoricoServicoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\csv\ArquivoCsv.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\EnderecoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\endereco\Endereco.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\endereco\repository\EnderecoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\EnderecoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agendaservico\AgendaServico.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoProvider.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\ArquivoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioDetalhesDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AgendaServicoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\AutenticacaoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\ArquivoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\importacao\Importacao.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\avaliacao\mapper\AvaliacaoMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agenda\Agenda.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioEnderecoVinculadoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\endereco\EnderecoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\MapBoxController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\UltimosAgendamentosDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaEnderecoVinculadoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\SecurityConfiguracao.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AgendaController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoEnderecoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaComImagensDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\jwt\GerenciadorTokenJwt.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioAgendaResponseDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioAvaliacaoResponseDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agendaservico\repository\AgendaServicoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\ServicoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AvaliacaoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\BCryptHashGenerator\PasswordHashGenerator.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\EmpresaService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\usuario\repository\UsuarioRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\exportacao\Exportacao.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\endereco\mapper\EnderecoMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\HistoricoServicoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\fila\Fila.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AgendaService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaAvaliacaoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\Empresa.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioTokenDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\arquivo\Arquivo.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\avaliacao\repository\AvaliacaoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\mapper\AgendaMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaPorEstadoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\ListaObj.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioEmpresaVinculadaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\ArquivoCsv.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoFilter.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\EmpresaController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoEntryPoint.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\UsuarioController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoEmpresaVinculadaDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AgendaServicoService.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\mapper\UsuarioMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioResponseDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\avaliacao\Avaliacao.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\usuario\Usuario.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\mapper\ServicoMapper.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\historicoservico\HistoricoServico.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\pilha\PilhaObj.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agendaservico\AgendaServicoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AvaliacaoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\arquivo\repository\ArquivoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\avaliacao\AvaliacaoResponseDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\repository\ServicoRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\Servico.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioLoginDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioCriacaoDto.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\repository\EmpresaRepository.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\ArquivoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\ServicoController.java
-C:\Users\noteb\Downloads\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioComArquivoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\ArquivoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\ProjetoTophairApplication.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\repository\MetricaEmpresaRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\usuario\repository\UsuarioRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\ArquivoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\ArquivoEmpresaVinculadaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\EmpresaController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AgendaServicoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\exportacao\Exportacao.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\arquivo\repository\ArquivoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\arquivo\Arquivo.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\ArquivoUsuarioVinculadoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\BCryptHashGenerator\PasswordHashGenerator.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AgendaServicoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioLoginDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\ArquivoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agendaservico\repository\AgendaServicoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\mapper\AgendaMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\repository\EmpresaRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\repository\ServicoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\fila\Fila.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\avaliacao\mapper\AvaliacaoMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\Empresa.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoEntryPoint.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\endereco\EnderecoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\empresa\MetricaEmpresa.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\importacao\Importacao.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\UsuarioController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioTokenDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\endereco\mapper\EnderecoMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\SecurityConfiguracao.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agendaservico\AgendaServico.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\doc\SwaggerConfig.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoProvider.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agenda\repository\RelatorioAgenda.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\endereco\Endereco.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\HistoricoServicoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\jwt\GerenciadorTokenJwt.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\AutenticacaoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\ServicoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioEnderecoVinculadoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AgendaController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\MapBoxController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\EnderecoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agenda\Agenda.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\HistoricoServicoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\configuration\security\AutenticacaoFilter.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\agenda\repository\AgendaRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\arquivo\mapper\ArquivoMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\csv\ArquivoCsv.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaComEmpresaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaEmpresaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\usuario\Usuario.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AvaliacaoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agendaservico\AgendaServicoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoEnderecoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioComArquivoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agendaservico\mapper\AgendaServicoMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioAvaliacaoResponseDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\EnderecoService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaPorEstadoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaAvaliacaoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\ListaObj.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\mapper\EmpresaMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaComImagensDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\mapper\ServicoMapper.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\historicoservico\HistoricoServico.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\AgendaEmpresaVinculadaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\integraveis\pilha\PilhaObj.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\avaliacao\Avaliacao.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioEmpresaVinculadaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\Servico.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\autenticacao\dto\UsuarioDetalhesDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioAgendaResponseDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioCriacaoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\servico\ServicoEmpresaVinculadaDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\UsuarioService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\EmpresaService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\empresa\EmpresaEnderecoVinculadoDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\ServicoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\endereco\repository\EnderecoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\avaliacao\repository\AvaliacaoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\agenda\UltimosAgendamentosDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\UsuarioResponseDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\AgendaService.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\historicoservico\repository\HistoricoServicoRepository.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\api\controller\AvaliacaoController.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\domain\servico\ArquivoCsv.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\avaliacao\AvaliacaoResponseDto.java
+C:\Users\Gabriel Kohatu\Documents\Dev\Grupo-Pi\BE_userAPI\src\main\java\school\sptech\projetotophair\service\dto\usuario\mapper\UsuarioMapper.java

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.empresa.MetricaEmpresa;
 import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
+import school.sptech.projetotophair.domain.empresa.repository.MetricaEmpresaRepository;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.endereco.repository.EnderecoRepository;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
@@ -19,7 +20,9 @@ import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
+import java.sql.CallableStatement;
 import java.sql.Types;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +34,8 @@ public class EmpresaService {
 
     @Autowired
     private EmpresaRepository empresaRepository;
+    @Autowired
+    private MetricaEmpresaRepository metricaEmpresaRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -163,7 +168,12 @@ public class EmpresaService {
 
 
 
-    public MetricaEmpresa calcularMetricas(LocalDateTime dataInicio, LocalDateTime dataFim, Long empresaId) {
+    @Transactional
+    public MetricaEmpresa calcularMetricas(LocalDate dataInicio, LocalDate dataFim, Long empresaId) {
+        return metricaEmpresaRepository.callMetricas(dataInicio, dataFim, empresaId);
+    }
+
+    public MetricaEmpresa calcularMetricas1(LocalDate dataInicio, LocalDate dataFim, Long empresaId) {
         // Chamar a procedure calcularInformacoes
         String procedureCall = "EXEC calcularInformacoes ?, ?, ?";
 
@@ -190,21 +200,21 @@ public class EmpresaService {
         int qtdAgendamentoSabado = (int) resultMap.get("qtd_agendamento_sabado");
 
         // Preenche o objeto MetricaEmpresa com os resultados
-        MetricaEmpresa metricas = new MetricaEmpresa();
-        metricas.setTotalSemanal(totalSemanal);
-        metricas.setQuantidadeAgendamentos(qtdAgendamentos);
-        metricas.setServicoMaisPedido(servicoMaisPedido);
-        metricas.setServicoMenosPedido(servicoMenosPedido);
-        metricas.setFaturamentoMinimo(faturamentoMinimo);
-        metricas.setFaturamentoMaximo(faturamentoMaximo);
-        metricas.setQtdAgendamentoDomingo(qtdAgendamentoDomingo);
-        metricas.setQtdAgendamentoSegunda(qtdAgendamentoSegunda);
-        metricas.setQtdAgendamentoTerca(qtdAgendamentoTerca);
-        metricas.setQtdAgendamentoQuarta(qtdAgendamentoQuarta);
-        metricas.setQtdAgendamentoQuinta(qtdAgendamentoQuinta);
-        metricas.setQtdAgendamentoSexta(qtdAgendamentoSexta);
-        metricas.setQtdAgendamentoSabado(qtdAgendamentoSabado);
+        //MetricaEmpresa metricas = new MetricaEmpresa();
+        //metricas.setTotalSemanal(totalSemanal);
+        //metricas.setQuantidadeAgendamentos(qtdAgendamentos);
+        //metricas.setServicoMaisPedido(servicoMaisPedido);
+        //metricas.setServicoMenosPedido(servicoMenosPedido);
+        //metricas.setFaturamentoMinimo(faturamentoMinimo);
+        //metricas.setFaturamentoMaximo(faturamentoMaximo);
+        //metricas.setQtdAgendaDomingo(qtdAgendamentoDomingo);
+        //metricas.setQtdAgendaSegunda(qtdAgendamentoSegunda);
+        //metricas.setQtdAgendaTerca(qtdAgendamentoTerca);
+        //metricas.setQtdAgendaQuarta(qtdAgendamentoQuarta);
+        //metricas.setQtdAgendaQuinta(qtdAgendamentoQuinta);
+        //metricas.setQtdAgendaSexta(qtdAgendamentoSexta);
+        //metricas.setQtdAgendaSabado(qtdAgendamentoSabado);
 
-        return metricas;
+        return null;
     }
 }

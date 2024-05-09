@@ -21,7 +21,7 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
             + "MAX(a.data_Fim) dataFinal, "
             + "SUM(s.preco) precoTotal "
             + "FROM agenda a "
-            + "JOIN Servico s ON a.id_Agenda = s.fk_agenda "
+            + "JOIN servico s ON a.id_Agenda = s.fk_agenda "
             + "WHERE a.fk_empresa = :idEmpresa "
             + "GROUP BY YEAR(a.data_Inicio), MONTH(a.data_Inicio) "
             + "ORDER BY YEAR(a.data_Inicio), MONTH(a.data_Inicio)",

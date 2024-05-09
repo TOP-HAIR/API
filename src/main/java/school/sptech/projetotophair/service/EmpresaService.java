@@ -14,6 +14,7 @@ import school.sptech.projetotophair.domain.empresa.repository.EmpresaRepository;
 import school.sptech.projetotophair.domain.empresa.repository.MetricaEmpresaRepository;
 import school.sptech.projetotophair.domain.endereco.Endereco;
 import school.sptech.projetotophair.domain.endereco.repository.EnderecoRepository;
+import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.dto.empresa.EmpresaAvaliacaoDto;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
@@ -94,14 +95,22 @@ public class EmpresaService {
 //    }
 
     public List<EmpresaAvaliacaoDto> listarEmpresasTop5AvaliacoesPorFiltros(String estado, String nomeServico, String nomeEmpresa, Long usuarioId) {
+
+        if(estado != null && estado.isBlank() && usuarioRepository.existsById(usuarioId)) {
+            Optional<Usuario> user = usuarioRepository.findById(usuarioId);
+            estado = user.get().getEndereco().getEstado();
+        }
+
         estado = (estado != null) ? "%" + estado + "%" : null;
-        nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null; // Handle nomeServico
+        nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null;
         nomeEmpresa = (nomeEmpresa != null) ? "%" + nomeEmpresa + "%" : null;
 
-        List<Object[]> results = empresaRepository.findEmpresasTop5ByFiltros(estado, nomeServico, nomeEmpresa, usuarioId);
+
+        List<Object[]> results = empresaRepository.findEmpresasTop5ByFiltros(estado, nomeServico, nomeEmpresa);
         if (results.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma empresa encontrada com os filtros fornecidos.");
         }
+
 
         return results.stream()
                 .map(result -> {
@@ -117,11 +126,20 @@ public class EmpresaService {
 
 
     public List<EmpresaAvaliacaoDto> listarEmpresasFiltros(String estado, String nomeServico, String nomeEmpresa, Long usuarioId) {
+        if(estado == null) {
+            estado = "";
+        }
+        if(estado.isBlank() && usuarioRepository.existsById(usuarioId)) {
+            Optional<Usuario> user = usuarioRepository.findById(usuarioId);
+            estado = user.get().getEndereco().getEstado();
+        }
+
         estado = (estado != null) ? "%" + estado + "%" : null;
-        nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null; // Handle nomeServico
+        nomeServico = (nomeServico != null) ? "%" + nomeServico + "%" : null;
         nomeEmpresa = (nomeEmpresa != null) ? "%" + nomeEmpresa + "%" : null;
 
-        List<Object[]> results = empresaRepository.findEmpresasTop5ByFiltros(estado, nomeServico, nomeEmpresa, usuarioId);
+
+        List<Object[]> results = empresaRepository.findEmpresasTop5ByFiltros(estado, nomeServico, nomeEmpresa);
         if (results.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Nenhuma empresa encontrada com os filtros fornecidos.");
         }

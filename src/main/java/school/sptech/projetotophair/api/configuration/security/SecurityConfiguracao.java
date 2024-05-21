@@ -20,10 +20,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import school.sptech.projetotophair.api.configuration.security.jwt.GerenciadorTokenJwt;
-import school.sptech.projetotophair.service.usuario.autenticacao.AutenticacaoService;
+import school.sptech.projetotophair.service.autenticacao.AutenticacaoService;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -51,6 +50,25 @@ public class SecurityConfiguracao {
             new AntPathRequestMatcher("/v3/api-docs/**"),
             new AntPathRequestMatcher("/actuator/*"),
             new AntPathRequestMatcher("/usuarios/login/**"),
+            new AntPathRequestMatcher("/**"),
+            new AntPathRequestMatcher("/usuarios/cadastrar/**"),
+            new AntPathRequestMatcher("/servicos/agenda/**"),
+            new AntPathRequestMatcher("/servicos/vincular-empresa/**"),
+            new AntPathRequestMatcher("/agendas/vincular-servico/**"),
+            new AntPathRequestMatcher("/servicos/**"),
+            new AntPathRequestMatcher("/servicos/exportar-csv/**"),
+            new AntPathRequestMatcher("/usuarios/vincular-empresa/**"),
+            new AntPathRequestMatcher("/usuarios/vincular-endereco/**"),
+            new AntPathRequestMatcher("/empresas/cadastrar/**"),
+            new AntPathRequestMatcher("/avaliacoes/empresa/**"),
+            new AntPathRequestMatcher("/empresas/top5-avaliadas-por-estado/**"),
+            new AntPathRequestMatcher("/empresas/estado/**"),
+            new AntPathRequestMatcher("/empresas/vincular-endereco/**"),
+            new AntPathRequestMatcher("/empresas/vincular/**"),
+            new AntPathRequestMatcher("/enderecos/cadastrar/**"),
+            new AntPathRequestMatcher("/enderecos/listar-por-id//**"),
+            new AntPathRequestMatcher("/agendas/vincular-empresa/**"),
+            new AntPathRequestMatcher("/agendas/vincular-usuario/**"),
             new AntPathRequestMatcher("/h2-console/**"),
             new AntPathRequestMatcher("/error/**")
     };

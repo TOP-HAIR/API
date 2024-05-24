@@ -1,12 +1,9 @@
 package school.sptech.projetotophair.domain.endereco;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import school.sptech.projetotophair.domain.empresa.Empresa;
-import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Endereco {

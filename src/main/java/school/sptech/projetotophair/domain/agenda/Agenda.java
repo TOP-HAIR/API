@@ -4,13 +4,9 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import school.sptech.projetotophair.domain.avaliacao.Avaliacao;
 import school.sptech.projetotophair.domain.empresa.Empresa;
-import school.sptech.projetotophair.domain.historicoservico.HistoricoServico;
-import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.time.LocalDate;

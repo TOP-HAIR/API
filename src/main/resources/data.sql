@@ -503,15 +503,6 @@ VALUES
     ('Lavagem e Modelagem de Barba', 'Lavagem e modelagem profissional da barba', 'barba', 25.00, '00:30:00', 185, 3, 1),
     ('Massagem Relaxante de Ombros', 'Massagem relaxante para alívio da tensão nos ombros', 'massagem', 35.00, '00:40:00', 186, 4, 3);
 
--- Dados fictícios para a tabela Historico_Servico (adicionando mais alguns registros)
-INSERT INTO Historico_Servico (ano, mes, semana, faturamento, fk_Agenda)
-VALUES
-    (2023, 5, 11, 1200.00, 1),
-    (2023, 5, 12, 1500.00, 2),
-    (2023, 5, 13, 1000.00, 3),
-    (2023, 6, 14, 1300.00, 4),
-    (2023, 6, 15, 1600.00, 5);
-
 -- Dados fictícios para a tabela Usuario com a senha cryptografada senha123
 INSERT INTO Usuario (cpf, nome_Completo, email, senha, telefone, is_Profissional, fk_Servico, fk_Agenda, fk_Empresa, fk_Endereco)
 VALUES

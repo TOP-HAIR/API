@@ -4,6 +4,7 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import school.sptech.projetotophair.domain.empresa.Empresa;
@@ -14,34 +15,36 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "agenda")
 public class Agenda {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgenda;
-    @FutureOrPresent
     @Nullable
-    private LocalDate data;
+    private LocalDateTime start;
     @Nullable
-    private LocalDateTime dataInicio;
+    private LocalDateTime end;
+
     @Nullable
-    private LocalDateTime dataFim;
-    @Nullable
-    private String hora;
+    private String background;
+    @Getter
     @NotBlank
-    private String status;
+    private String title;
+    @Getter
     @OneToMany(mappedBy = "agenda")
     List<Usuario> usuarios;
+    @Getter
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
     private Empresa empresa;
 
-    public Agenda(Long idAgenda, LocalDate data, String hora, String status, List<Usuario> usuarios, Empresa empresa) {
+    public Agenda(Long idAgenda, @Nullable LocalDateTime start, @Nullable LocalDateTime end, @Nullable String background, String title, List<Usuario> usuarios, Empresa empresa) {
         this.idAgenda = idAgenda;
-        this.data = data;
-        this.hora = hora;
-        this.status = status;
+        this.start = start;
+        this.end = end;
+        this.background = background;
+        this.title = title;
         this.usuarios = usuarios;
         this.empresa = empresa;
     }
@@ -50,68 +53,43 @@ public class Agenda {
 
     }
 
-    public Long getIdAgenda() {
-        return idAgenda;
-    }
-
     public void setIdAgenda(Long idAgenda) {
         this.idAgenda = idAgenda;
     }
 
     @Nullable
-    public LocalDate getData() {
-        return data;
+    public LocalDateTime getStart() {
+        return start;
     }
 
-    public void setData(@Nullable LocalDate data) {
-        this.data = data;
-    }
-
-    @Nullable
-    public LocalDateTime getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(@Nullable LocalDateTime dataInicio) {
-        this.dataInicio = dataInicio;
+    public void setStart(@Nullable LocalDateTime start) {
+        this.start = start;
     }
 
     @Nullable
-    public LocalDateTime getDataFim() {
-        return dataFim;
+    public LocalDateTime getEnd() {
+        return end;
     }
 
-    public void setDataFim(@Nullable LocalDateTime dataFim) {
-        this.dataFim = dataFim;
+    public void setEnd(@Nullable LocalDateTime end) {
+        this.end = end;
     }
 
     @Nullable
-    public String getHora() {
-        return hora;
+    public String getBackground() {
+        return background;
     }
 
-    public void setHora(@Nullable String hora) {
-        this.hora = hora;
+    public void setBackground(@Nullable String background) {
+        this.background = background;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
     }
 
     public void setEmpresa(Empresa empresa) {

@@ -66,8 +66,8 @@ public class AgendaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<AgendaDto>> listar(@PathVariable Long id) {
-        Optional<AgendaDto> agenda = agendaService.buscarAgendaPorId(id);
+    public ResponseEntity<Optional<Agenda>> listar(@PathVariable Long id) {
+        Optional<Agenda> agenda = agendaService.buscarAgendaPorId(id);
         return ResponseEntity.ok(agenda);
     }
 

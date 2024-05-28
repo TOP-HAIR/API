@@ -39,9 +39,6 @@ public class AgendaController {
 
     @PostMapping
     public ResponseEntity<AgendaDto> cadastrar(@RequestBody Agenda agenda) {
-        agenda.setData(LocalDate.now());
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
-        agenda.setHora(LocalTime.now().format(formato));
         Agenda agendaCadastrada = agendaService.cadastrarAgenda(agenda);
         AgendaDto agendaDto = AgendaMapper.toAgendaDto(agendaCadastrada);
         return ResponseEntity.ok(agendaDto);

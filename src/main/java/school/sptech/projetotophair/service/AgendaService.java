@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
+import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
@@ -63,10 +64,16 @@ public class AgendaService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou serço não encontrados");
     }
 
-    public Optional<Agenda> buscarAgendaPorId(Long id) {
+    public Optional<AgendaDto> buscarAgendaPorId(Long id) {
         Optional<Agenda> agendaOptional = agendaRepository.findById(id);
         if (agendaOptional.isPresent()) {
-            return agendaOptional;
+            Agenda agenda = agendaOptional.get();
+            AgendaDto dto = new AgendaDto();
+            dto.setIdAgenda(agenda.getIdAgenda());
+            dto.setStart(agenda.getStartTime());
+            dto.setEnd(agenda.getEndTime());
+            dto.setTitle(agenda.getTitle());
+            return Optional.of(dto);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda não encontrada com o ID: " + id);
         }

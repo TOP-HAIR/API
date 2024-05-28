@@ -21,8 +21,8 @@ public class AgendaMapper {
         dto.setIdAgenda(agenda.getIdAgenda());
         dto.setIdUsuario(primeiroUsuario.getIdUsuario());
         dto.setNomeUsuario(primeiroUsuario.getNomeCompleto());
-        dto.setStart(agenda.getStart());
-        dto.setEnd(agenda.getEnd());
+        dto.setStart(agenda.getStartTime());
+        dto.setEnd(agenda.getEndTime());
         dto.setTitle(agenda.getTitle());
 
         return dto;
@@ -32,8 +32,8 @@ public class AgendaMapper {
         AgendaEmpresaVinculadaDto dto = new AgendaEmpresaVinculadaDto();
 
         dto.setIdAgenda(entity.getIdAgenda());
-        dto.setStart(entity.getStart());
-        dto.setEnd(entity.getEnd());
+        dto.setStart(entity.getStartTime());
+        dto.setEnd(entity.getEndTime());
         dto.setTitle(entity.getTitle());
         dto.setEmpresa(EmpresaMapper.toEmpresaDto(entity.getEmpresa()));
 
@@ -46,8 +46,8 @@ public class AgendaMapper {
         dto.setEmpresaDto(EmpresaMapper.toEmpresaDto(entity.getEmpresa()));
         dto.setIdAgenda(entity.getIdAgenda());
         dto.setTitle(entity.getTitle());
-        dto.setStart(entity.getStart());
-        dto.setEnd(entity.getEnd());
+        dto.setStart(entity.getStartTime());
+        dto.setEnd(entity.getEndTime());
 
         return dto;
     }
@@ -56,8 +56,8 @@ public class AgendaMapper {
         AgendaDto dto = new AgendaDto();
 
         dto.setIdAgenda(entity.getIdAgenda());
-        dto.setStart(entity.getStart());
-        dto.setEnd(entity.getEnd());
+        dto.setStart(entity.getStartTime());
+        dto.setEnd(entity.getEndTime());
         dto.setTitle(entity.getTitle());
 
         return dto;
@@ -67,8 +67,8 @@ public class AgendaMapper {
         AgendaEmpresaDto dto = new AgendaEmpresaDto();
 
         // Define data de início e fim diretamente
-        dto.setStart(entity.getStart());
-        dto.setEnd(entity.getEnd());
+        dto.setStart(entity.getStartTime());
+        dto.setEnd(entity.getEndTime());
 
         // Configura a cor do status baseado no status da entidade
         if (entity.getTitle() != null) {

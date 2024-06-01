@@ -28,6 +28,13 @@ public class AgendaMapper {
         return dto;
     }
 
+    public static CancelaAgendamentoDto toCancelaAgendamentoDto(Agenda agenda) {
+        CancelaAgendamentoDto dto = new CancelaAgendamentoDto();
+        dto.setIdAgenda(agenda.getIdAgenda());
+        dto.setTitle(agenda.getTitle());
+        return dto;
+    }
+
     public static AgendaEmpresaVinculadaDto toAgendaEmpresaVinculadaDto(Agenda entity){
         AgendaEmpresaVinculadaDto dto = new AgendaEmpresaVinculadaDto();
 

@@ -6,6 +6,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
 import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
+import school.sptech.projetotophair.service.dto.agenda.CancelaAgendamentoDto;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
 import school.sptech.projetotophair.service.dto.agenda.mapper.AgendaMapper;
 import school.sptech.projetotophair.service.integraveis.fila.Fila;
@@ -50,6 +51,20 @@ public class AgendaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A agenda não pode ser nula.");
         }
         return agendaRepository.save(agenda);
+    }
+
+    public CancelaAgendamentoDto cancelarAgendamento(Long idAgenda) {
+        Optional<Agenda> optionalAgenda = agendaRepository.findById(idAgenda);
+
+        if (!optionalAgenda.isPresent()) {
+            return null;
+        }
+
+        Agenda agenda = optionalAgenda.get();
+        agenda.setTitle("Cancelado");
+        agendaRepository.save(agenda);
+
+        return AgendaMapper.toCancelaAgendamentoDto(agenda);
     }
 
     public AgendaServico vincularServico(Long idAgenda, Long idServico){

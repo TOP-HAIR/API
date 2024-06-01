@@ -1,6 +1,7 @@
 package school.sptech.projetotophair.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
@@ -42,6 +43,17 @@ public class AgendaController {
         Agenda agendaCadastrada = agendaService.cadastrarAgenda(agenda);
         AgendaDto agendaDto = AgendaMapper.toAgendaDto(agendaCadastrada);
         return ResponseEntity.ok(agendaDto);
+    }
+
+    @PutMapping("/cancelar-agendamento/{idAgenda}")
+    public ResponseEntity<CancelaAgendamentoDto> cancelarAgendamento(@PathVariable Long idAgenda) {
+        CancelaAgendamentoDto cancelaAgendamentoDto = agendaService.cancelarAgendamento(idAgenda);
+
+        if (cancelaAgendamentoDto == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Retorna 404 se não encontrar o agendamento
+        }
+
+        return ResponseEntity.ok(cancelaAgendamentoDto);
     }
 
     @PutMapping("/vincular-empresa/{idAgenda}/{idEmpresa}")

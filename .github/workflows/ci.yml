@@ -1,4 +1,4 @@
-name: Exemplo de CI # Nome da ação
+name: Deploy Docker Hub # Nome da ação
 
 on:
   push: # Evento que irá disparar a ação

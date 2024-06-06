@@ -9,13 +9,13 @@ jobs:
     runs-on: self-hosted # Aqui indicamos que será executado em um agente próprio EC2
     steps:
       - name: Pull Docker image # Aqui estamos puxando a imagem do Docker Hub
-        run: docker pull sitavares/back-end-tophair:latest
+        run: sudo docker pull sitavares/back-end-tophair:latest
 
       - name: Stop Docker container # Aqui estamos parando o container, caso ele esteja rodando
-        run: docker stop ci-example || true
+        run: sudo docker stop ci-example || true
 
       - name: Remove Docker container # Aqui estamos removendo o container, caso ele exista
-        run: docker rm ci-example || true
+        run: sudo docker rm ci-example || true
 
       - name: Run Docker container # Aqui estamos rodando o container
-        run: docker run --name ci-example -d -p 8080:8080 dbritto/ci-example:latest
+        run: sudo docker run --name ci-example -d -p 8080:8080 dbritto/ci-example:latest

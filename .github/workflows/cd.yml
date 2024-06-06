@@ -2,8 +2,7 @@ name: "Deploy docker image EC2"
 
 on:
   push: # Nesse caso, vou considerar que o deploy será feito quando um push for feito na branch main
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:

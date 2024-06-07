@@ -14,18 +14,18 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
     List<Agenda> findAllByEmpresaIdEmpresa(Long idEmpresa);
 
-    @Query(value = "SELECT "
-            + "YEAR(a.data_Inicio) ano, "
-            + "MONTH(a.data_Inicio) mes, "
-            + "MIN(a.data_Inicio) dataInicio, "
-            + "MAX(a.data_Fim) dataFinal, "
-            + "SUM(s.preco) precoTotal "
-            + "FROM agenda a "
-            + "JOIN servico s ON a.id_Agenda = s.fk_agenda "
-            + "WHERE a.fk_empresa = :idEmpresa "
-            + "GROUP BY YEAR(a.data_Inicio), MONTH(a.data_Inicio) "
-            + "ORDER BY YEAR(a.data_Inicio), MONTH(a.data_Inicio)",
-            nativeQuery = true)
-    List<Object[]> buscarPeriodosPorEmpresa(@Param("idEmpresa") Long idEmpresa);
+//    @Query(value = "SELECT "
+//            + "YEAR(a.data_Inicio) ano, "
+//            + "MONTH(a.data_Inicio) mes, "
+//            + "MIN(a.data_Inicio) dataInicio, "
+//            + "MAX(a.data_Fim) dataFinal, "
+//            + "SUM(s.preco) precoTotal "
+//            + "FROM agenda a "
+//            + "JOIN servico s ON a.id_Agenda = s.fk_agenda "
+//            + "WHERE a.fk_empresa = :idEmpresa "
+//            + "GROUP BY YEAR(a.data_Inicio), MONTH(a.data_Inicio) "
+//            + "ORDER BY YEAR(a.data_Inicio), MONTH(a.data_Inicio)",
+//            nativeQuery = true)
+//    List<Object[]> buscarPeriodosPorEmpresa(@Param("idEmpresa") Long idEmpresa);
 
 }

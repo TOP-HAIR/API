@@ -174,9 +174,9 @@ public ResponseEntity<List<UltimosAgendamentosDto>> ultimosAgendamentos(@PathVar
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/periodos-lista/{id}")
-    public ResponseEntity<List<RelatorioAgenda>> buscarPeriodos(@PathVariable Long id) {
-        List<RelatorioAgenda> periodos = agendaService.buscarPeriodos(id);
-        return ResponseEntity.ok(periodos);
-    }
+//    @GetMapping("/periodos-lista/{id}")
+//    public ResponseEntity<List<RelatorioAgenda>> buscarPeriodos(@PathVariable Long id) {
+//        List<RelatorioAgenda> periodos = agendaService.buscarPeriodos(id);
+//        return ResponseEntity.ok(periodos);
+//    }
 }

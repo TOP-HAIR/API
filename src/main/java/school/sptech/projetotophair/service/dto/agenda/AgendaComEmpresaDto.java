@@ -11,6 +11,6 @@ public class AgendaComEmpresaDto {
     private Long idAgenda;
     private LocalDateTime start;
     private LocalDateTime end;
-    private String title;
+    private String status;
     private EmpresaDto empresaDto;
 }

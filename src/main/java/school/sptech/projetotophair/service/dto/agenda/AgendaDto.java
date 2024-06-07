@@ -10,5 +10,5 @@ public class AgendaDto {
     private Long idAgenda;
     private LocalDateTime start;
     private LocalDateTime end;
-    private String title;
+    private String status;
 }

@@ -52,7 +52,7 @@ public class AgendaMapper {
 
         dto.setEmpresaDto(EmpresaMapper.toEmpresaDto(entity.getEmpresa()));
         dto.setIdAgenda(entity.getIdAgenda());
-        dto.setTitle(entity.getTitle());
+        dto.setStatus(entity.getTitle());
         dto.setStart(entity.getStartTime());
         dto.setEnd(entity.getEndTime());
 
@@ -65,7 +65,7 @@ public class AgendaMapper {
         dto.setIdAgenda(entity.getIdAgenda());
         dto.setStart(entity.getStartTime());
         dto.setEnd(entity.getEndTime());
-        dto.setTitle(entity.getTitle());
+        dto.setStatus(entity.getTitle());
 
         return dto;
     }

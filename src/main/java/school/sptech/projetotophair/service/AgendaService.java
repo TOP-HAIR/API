@@ -87,7 +87,7 @@ public class AgendaService {
             dto.setIdAgenda(agenda.getIdAgenda());
             dto.setStart(agenda.getStartTime());
             dto.setEnd(agenda.getEndTime());
-            dto.setTitle(agenda.getTitle());
+            dto.setStatus(agenda.getTitle());
             return Optional.of(dto);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda não encontrada com o ID: " + id);
@@ -233,24 +233,24 @@ public class AgendaService {
     }
 
 
-    public List<RelatorioAgenda> buscarPeriodos(Long id) {
-        List<Object[]> resultados = agendaRepository.buscarPeriodosPorEmpresa(id);
-        List<RelatorioAgenda> periodos = new ArrayList<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Escolha o formato que você precisa
-
-        for (Object[] resultado : resultados) {
-            String dataInicio = resultado[2] != null ? sdf.format((Timestamp) resultado[2]) : null;
-            String dataFinal = resultado[3] != null ? sdf.format((Timestamp) resultado[3]) : null;
-            BigDecimal precoTotalBD = (BigDecimal) resultado[4];
-            Double precoTotal = precoTotalBD != null ? precoTotalBD.doubleValue() : null;
-
-            // Criar o objeto RelatorioAgenda e adicioná-lo à lista de periodos
-            RelatorioAgenda periodo = new RelatorioAgenda(dataInicio, dataFinal, precoTotal);
-            periodos.add(periodo);
-        }
-
-        return periodos;
-    }
+//    public List<RelatorioAgenda> buscarPeriodos(Long id) {
+//        List<Object[]> resultados = agendaRepository.buscarPeriodosPorEmpresa(id);
+//        List<RelatorioAgenda> periodos = new ArrayList<>();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Escolha o formato que você precisa
+//
+//        for (Object[] resultado : resultados) {
+//            String dataInicio = resultado[2] != null ? sdf.format((Timestamp) resultado[2]) : null;
+//            String dataFinal = resultado[3] != null ? sdf.format((Timestamp) resultado[3]) : null;
+//            BigDecimal precoTotalBD = (BigDecimal) resultado[4];
+//            Double precoTotal = precoTotalBD != null ? precoTotalBD.doubleValue() : null;
+//
+//            // Criar o objeto RelatorioAgenda e adicioná-lo à lista de periodos
+//            RelatorioAgenda periodo = new RelatorioAgenda(dataInicio, dataFinal, precoTotal);
+//            periodos.add(periodo);
+//        }
+//
+//        return periodos;
+//    }
 
 
 

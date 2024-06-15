@@ -98,8 +98,8 @@ public class EmpresaService {
 
         String estado = "";
         if(estado != null && estado.isBlank() && usuarioRepository.existsById(usuarioId)) {
-            Optional<Usuario> user = usuarioRepository.findById(usuarioId);
-            estado = user.get().getEndereco().getEstado();
+            Optional<Endereco> enderecoByUsuarioId = usuarioRepository.findEnderecoByUsuarioId(usuarioId);
+            estado = enderecoByUsuarioId.get().getEstado();
         }
 
         estado = (estado != null) ? "%" + estado + "%" : null;
@@ -128,8 +128,8 @@ public class EmpresaService {
             estado = "";
         }
         if(estado.isBlank() && usuarioRepository.existsById(usuarioId)) {
-            Optional<Usuario> user = usuarioRepository.findById(usuarioId);
-            estado = user.get().getEndereco().getEstado();
+            Optional<Endereco> enderecoByUsuarioId = usuarioRepository.findEnderecoByUsuarioId(usuarioId);
+            estado = enderecoByUsuarioId.get().getEstado();
         }
 
         estado = (estado != null) ? "%" + estado + "%" : null;

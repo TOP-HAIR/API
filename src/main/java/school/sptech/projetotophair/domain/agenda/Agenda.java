@@ -9,7 +9,6 @@ import school.sptech.projetotophair.domain.empresa.Empresa;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 public class Agenda {
@@ -29,25 +28,34 @@ public class Agenda {
     @NotBlank
     private String title;
 
-    @OneToMany(mappedBy = "agenda")
-    private List<Usuario> usuarios;
+//    @OneToMany(mappedBy = "agenda")
+//    private List<Usuario> usuarios;
+//
+//    @ManyToOne
+//    @OnDelete(action = OnDeleteAction.SET_NULL)
+//    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
+//    private Empresa empresa;
+@ManyToOne
+@OnDelete(action = OnDeleteAction.SET_NULL)
+@JoinColumn(name = "fk_empresa", referencedColumnName = "idEmpresa")
+private Empresa empresa;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
-    @JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
-    private Empresa empresa;
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "idUsuario")
+    private Usuario usuario;
 
     public Agenda() {
     }
 
-    public Agenda(Long idAgenda, @Nullable LocalDateTime startTime, @Nullable LocalDateTime endTime, @Nullable String background, String title, List<Usuario> usuarios, Empresa empresa) {
+    public Agenda(Long idAgenda, @Nullable LocalDateTime startTime, @Nullable LocalDateTime endTime, @Nullable String background, String title, Empresa empresa, Usuario usuario) {
         this.idAgenda = idAgenda;
         this.startTime = startTime;
         this.endTime = endTime;
         this.background = background;
         this.title = title;
-        this.usuarios = usuarios;
         this.empresa = empresa;
+        this.usuario = usuario;
     }
 
     public Long getIdAgenda() {
@@ -93,19 +101,19 @@ public class Agenda {
         this.title = title;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
     public Empresa getEmpresa() {
         return empresa;
     }
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

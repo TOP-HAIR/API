@@ -136,7 +136,7 @@ public class ArquivoCsv<T> {
                 100.50, "1 hora", new Agenda(1L, LocalDateTime.now(), null,"1", "sim", null, null),
                 new Empresa(2L, "Carmens Cabelo & Vida.", "12.356.444.0001/45" ,
                         new Endereco(3L,"rua dois", 5, "São Paulo",
-                                "A", "São Paulo", "12345-089")
+                                "A", "São Paulo", "12345-089", "Tatuape")
                 )));
 
        gravaArquivoCsv(lista, "Servico");

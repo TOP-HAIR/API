@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class AgendaService {
@@ -99,7 +100,7 @@ public class AgendaService {
         if (usuarioById.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario não encontrado");
         }
-        List<Agenda> allByUsuariosIdUsuario = agendaRepository.findAllByUsuariosIdUsuario(idUsuario);
+        List<Agenda> allByUsuariosIdUsuario = agendaRepository.findAllByUsuarioIdUsuario(idUsuario);
         if (allByUsuariosIdUsuario.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Este usuario não tem agendamentos");
         }
@@ -160,32 +161,67 @@ public class AgendaService {
         }
         agendaRepository.deleteById(id);
     }
-
-
-    public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long idEmpresa) {
+    public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long fkEmpresa) {
         int quantidadeDesejada = 10;
         PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
 
-        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresaIdEmpresa(idEmpresa);
+        // Obter os últimos agendamentos pela empresa
+        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresa_IdEmpresa(fkEmpresa);
 
-        // Adicionar os últimos 10 agendamentos à pilha
+        // Adicionar os últimos agendamentos à pilha
         int startIndex = Math.max(0, todosAgendamentos.size() - quantidadeDesejada);
         for (int i = startIndex; i < todosAgendamentos.size(); i++) {
             ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
         }
 
-        // Obter os itens da pilha na ordem correta
+        // Criar a lista de DTOs para os últimos agendamentos
         List<UltimosAgendamentosDto> dtos = new ArrayList<>();
         while (!ultimosAgendamentosPilha.isEmpty()) {
             Agenda agenda = ultimosAgendamentosPilha.pop();
             if (agenda != null) {
                 UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
-                dtos.add(dto);
+                if (dto != null) {
+                    dtos.add(dto);
+                }
             }
         }
 
         return dtos;
     }
+
+
+
+//    public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long fkEmpresa) {
+//        int quantidadeDesejada = 10;
+//        PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
+//
+//        // Verificar se a lista retornada do repositório não é nula e não contém nulos
+//        List<Agenda> todosAgendamentos = agendaRepository.findAllByFkEmpresa(fkEmpresa)
+//                .stream()
+//                .filter(Objects::nonNull)
+//                .collect(Collectors.toList());
+//
+//        // Adicionar os últimos 10 agendamentos à pilha
+//        int startIndex = Math.max(0, todosAgendamentos.size() - quantidadeDesejada);
+//        for (int i = startIndex; i < todosAgendamentos.size(); i++) {
+//            ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
+//        }
+//
+//        // Obter os itens da pilha na ordem correta
+//        List<UltimosAgendamentosDto> dtos = new ArrayList<>();
+//        while (!ultimosAgendamentosPilha.isEmpty()) {
+//            Agenda agenda = ultimosAgendamentosPilha.pop();
+//            if (agenda != null) {
+//                UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
+//                if (dto != null) {
+//                    dtos.add(dto);
+//                }
+//            }
+//        }
+//
+//        return dtos;
+//    }
+
 
     public Fila mesesOrdenados() {
         Fila mesesOrdenados = new Fila(12);

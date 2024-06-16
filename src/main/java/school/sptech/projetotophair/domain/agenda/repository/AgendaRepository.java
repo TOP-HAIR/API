@@ -10,15 +10,9 @@ import java.util.List;
 
 @Repository
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
-    List<Agenda> findAllByUsuarioIdUsuario(Long idUsuario);
-
+    List<Agenda> findAllByUsuariosIdUsuario(Long idUsuario);
 
     List<Agenda> findAllByEmpresaIdEmpresa(Long idEmpresa);
-
-
-    @Query("SELECT a FROM Agenda a WHERE a.empresa.idEmpresa = :idEmpresa")
-    List<Agenda> findAllByEmpresa_IdEmpresa(Long idEmpresa);
-
 
 //    @Query(value = "SELECT "
 //            + "YEAR(a.data_Inicio) ano, "

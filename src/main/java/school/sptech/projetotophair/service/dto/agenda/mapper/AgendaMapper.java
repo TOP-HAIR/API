@@ -5,45 +5,28 @@ import school.sptech.projetotophair.domain.servico.Servico;
 import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.service.dto.agenda.*;
 import school.sptech.projetotophair.service.dto.empresa.mapper.EmpresaMapper;
-import school.sptech.projetotophair.service.dto.usuario.mapper.UsuarioMapper;
 
 public class AgendaMapper {
 
-//    public static UltimosAgendamentosDto toDto(Agenda agenda) {
-//        if (agenda == null || agenda.getUsuarios() == null || agenda.getUsuarios().isEmpty()) {
-//            return null;
-//        }
-//
-//        // Assuming you want the first user in the list
-//        // You might want to adjust this based on your specific logic
-//        Usuario primeiroUsuario = agenda.getUsuarios().get(0);
-//
-//        UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
-//        dto.setIdAgenda(agenda.getIdAgenda());
-//        dto.setIdUsuario(primeiroUsuario.getIdUsuario());
-//        dto.setNomeUsuario(primeiroUsuario.getNomeCompleto());
-//        dto.setStart(agenda.getStartTime());
-//        dto.setEnd(agenda.getEndTime());
-//        dto.setTitle(agenda.getTitle());
-//
-//        return dto;
-//    }
-
     public static UltimosAgendamentosDto toDto(Agenda agenda) {
-        if (agenda == null || agenda.getUsuario() == null || agenda.getUsuario() == null) {
+        if (agenda == null || agenda.getUsuarios() == null || agenda.getUsuarios().isEmpty()) {
             return null;
         }
 
+        // Assuming you want the first user in the list
+        // You might want to adjust this based on your specific logic
+        Usuario primeiroUsuario = agenda.getUsuarios().get(0);
+
         UltimosAgendamentosDto dto = new UltimosAgendamentosDto();
         dto.setIdAgenda(agenda.getIdAgenda());
-        dto.setNomeUsuario(agenda.getUsuario().getNomeCompleto());
-        dto.setIdUsuario(agenda.getUsuario().getIdUsuario());
+        dto.setIdUsuario(primeiroUsuario.getIdUsuario());
+        dto.setNomeUsuario(primeiroUsuario.getNomeCompleto());
         dto.setStart(agenda.getStartTime());
         dto.setEnd(agenda.getEndTime());
         dto.setTitle(agenda.getTitle());
+
         return dto;
     }
-
 
     public static CancelaAgendamentoDto toCancelaAgendamentoDto(Agenda agenda) {
         CancelaAgendamentoDto dto = new CancelaAgendamentoDto();
@@ -104,8 +87,8 @@ public class AgendaMapper {
         }
 
         // Verifica se a lista de usuários não é nula e não está vazia
-        if (entity.getUsuario() != null) {
-            Usuario usuario = entity.getUsuario(); // Pegando o primeiro usuário como exemplo
+        if (entity.getUsuarios() != null && !entity.getUsuarios().isEmpty()) {
+            Usuario usuario = entity.getUsuarios().get(0); // Pegando o primeiro usuário como exemplo
 
             // Verifica se o usuário não é nulo e possui um serviço associado não nulo
             if (usuario != null && usuario.getServico() != null && usuario.getNomeCompleto() != null) {

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
-import school.sptech.projetotophair.domain.agenda.repository.RelatorioAgenda;
 import school.sptech.projetotophair.service.dto.agenda.AgendaDto;
 import school.sptech.projetotophair.service.dto.agenda.CancelaAgendamentoDto;
 import school.sptech.projetotophair.service.dto.agenda.UltimosAgendamentosDto;
@@ -22,12 +21,7 @@ import school.sptech.projetotophair.domain.usuario.Usuario;
 import school.sptech.projetotophair.domain.usuario.repository.UsuarioRepository;
 import school.sptech.projetotophair.service.integraveis.pilha.PilhaObj;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
-import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class AgendaService {
@@ -162,30 +156,17 @@ public class AgendaService {
         agendaRepository.deleteById(id);
     }
     public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long fkEmpresa) {
-        int quantidadeDesejada = 10;
-        PilhaObj<Agenda> ultimosAgendamentosPilha = new PilhaObj<>(quantidadeDesejada);
-
         // Obter os últimos agendamentos pela empresa
-        List<Agenda> todosAgendamentos = agendaRepository.findAllByEmpresa_IdEmpresa(fkEmpresa);
-
-        // Adicionar os últimos agendamentos à pilha
-        int startIndex = Math.max(0, todosAgendamentos.size() - quantidadeDesejada);
-        for (int i = startIndex; i < todosAgendamentos.size(); i++) {
-            ultimosAgendamentosPilha.push(todosAgendamentos.get(i));
-        }
-
-        // Criar a lista de DTOs para os últimos agendamentos
+        List<Agenda> todosAgendamentos = agendaRepository.findTop10ByEmpresaIdEmpresaOrderByEmpresaIdEmpresaDesc(fkEmpresa);
         List<UltimosAgendamentosDto> dtos = new ArrayList<>();
-        while (!ultimosAgendamentosPilha.isEmpty()) {
-            Agenda agenda = ultimosAgendamentosPilha.pop();
-            if (agenda != null) {
-                UltimosAgendamentosDto dto = AgendaMapper.toDto(agenda);
+        for (Agenda a: todosAgendamentos) {
+            if (a != null) {
+                UltimosAgendamentosDto dto = AgendaMapper.toDto(a);
                 if (dto != null) {
                     dtos.add(dto);
                 }
             }
         }
-
         return dtos;
     }
 

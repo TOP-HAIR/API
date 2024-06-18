@@ -37,12 +37,12 @@ public class Agenda {
 //    private Empresa empresa;
 @ManyToOne
 @OnDelete(action = OnDeleteAction.SET_NULL)
-@JoinColumn(name = "fk_empresa", referencedColumnName = "idEmpresa")
+@JoinColumn(name = "fkEmpresa", referencedColumnName = "idEmpresa")
 private Empresa empresa;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
-    @JoinColumn(name = "fk_usuario", referencedColumnName = "idUsuario")
+    @JoinColumn(name = "fkUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
 
     public Agenda() {

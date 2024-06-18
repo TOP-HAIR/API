@@ -2,7 +2,6 @@ package school.sptech.projetotophair.domain.agenda.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import school.sptech.projetotophair.domain.agenda.Agenda;
 
@@ -15,9 +14,11 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
 
     List<Agenda> findAllByEmpresaIdEmpresa(Long idEmpresa);
 
+    List<Agenda> findTop10ByEmpresaIdEmpresaOrderByEmpresaIdEmpresaDesc(Long idEmpresa);
 
-    @Query("SELECT a FROM Agenda a WHERE a.empresa.idEmpresa = :idEmpresa")
-    List<Agenda> findAllByEmpresa_IdEmpresa(Long idEmpresa);
+
+//    @Query("SELECT a FROM Agenda a WHERE a.empresa.idEmpresa = :idEmpresa")
+//    List<Agenda> findAllByEmpresa_IdEmpresa(Long idEmpresa);
 
 
 //    @Query(value = "SELECT "

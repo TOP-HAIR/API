@@ -613,3 +613,5 @@ VALUES
     (4, 'Bom serviço, mas o preço poderia ser mais acessível.', 19, 19),
     (3, 'Esperava mais. Não fiquei completamente satisfeito.', 20, 20),
     (5, 'Serviço excelente! Superou minhas expectativas.', 21, 21);
+
+UPDATE Agenda SET fk_Usuario = 1 WHERE fk_Empresa = 6;

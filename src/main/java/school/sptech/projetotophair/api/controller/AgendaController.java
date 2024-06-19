@@ -39,9 +39,12 @@ public class AgendaController {
     private AgendaService agendaService;
 
     @PostMapping
-    public ResponseEntity<AgendaDto> cadastrar(@RequestBody Agenda agenda) {
+    public ResponseEntity<AgendaDto> cadastrar(@RequestBody Agenda agenda, @RequestParam Long idEmpresa, @RequestParam Long idUsuario, @RequestParam Long idServico) {
         Agenda agendaCadastrada = agendaService.cadastrarAgenda(agenda);
         AgendaDto agendaDto = AgendaMapper.toAgendaDto(agendaCadastrada);
+        vincularEmpresa(agendaDto.getIdAgenda(), idEmpresa);
+        vincularUsuario(agendaDto.getIdAgenda(), idUsuario);
+        vincularServico(agendaDto.getIdAgenda(), idServico);
         return ResponseEntity.ok(agendaDto);
     }
 
@@ -56,25 +59,16 @@ public class AgendaController {
         return ResponseEntity.ok(cancelaAgendamentoDto);
     }
 
-    @PutMapping("/vincular-empresa/{idAgenda}/{idEmpresa}")
-    public ResponseEntity<AgendaEmpresaVinculadaDto> vincularEmpresa(@PathVariable Long idAgenda, @PathVariable Long idEmpresa){
+    public void vincularEmpresa(Long idAgenda, Long idEmpresa){
         Agenda agenda = agendaService.vincularEmpresa(idAgenda, idEmpresa);
-        AgendaEmpresaVinculadaDto agendaEmpresaVinculadaDto = AgendaMapper.toAgendaEmpresaVinculadaDto(agenda);
-        return ResponseEntity.ok(agendaEmpresaVinculadaDto);
     }
 
-    @PutMapping("/vincular-usuario/{idAgenda}/{idUsuario}")
-    public ResponseEntity<UsuarioAgendaResponseDto> vincularUsuario(@PathVariable Long idAgenda, @PathVariable Long idUsuario){
+    public void vincularUsuario(Long idAgenda, Long idUsuario){
         Usuario usuario = agendaService.vincularUsuario(idAgenda, idUsuario);
-        UsuarioAgendaResponseDto usuarioAgendaResponseDto = UsuarioMapper.toUsuarioAgendaResponseDto(usuario);
-        return ResponseEntity.ok(usuarioAgendaResponseDto);
     }
 
-    @PutMapping("/vincular-servico/{idAgenda}/{idServico}")
-    public ResponseEntity<AgendaServicoDto> vincularServico(@PathVariable Long idAgenda, @PathVariable Long idServico){
+    public void vincularServico(Long idAgenda, Long idServico){
         AgendaServico agendaServico = agendaService.vincularServico(idAgenda, idServico);
-        AgendaServicoDto agendaServicoDto = AgendaServicoMapper.toAgendaServicoDto(agendaServico);
-        return ResponseEntity.ok(agendaServicoDto);
     }
 
     @GetMapping("/{id}")

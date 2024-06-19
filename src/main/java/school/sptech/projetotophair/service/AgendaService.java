@@ -131,7 +131,10 @@ public class AgendaService {
 
         if (agendaById.isPresent() && usuarioById.isPresent()) {
             usuarioById.get().setAgenda(agendaById.get());
-            return usuarioRepository.save(usuarioById.get());
+            Usuario usuario = usuarioRepository.save(usuarioById.get());
+            agendaById.get().setUsuario(usuario);
+            agendaRepository.save(agendaById.get());
+            return usuario;
         }
 
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Agenda ou usuario não encontrados");
@@ -157,7 +160,7 @@ public class AgendaService {
     }
     public List<UltimosAgendamentosDto> getUltimosAgendamentosDto(Long fkEmpresa) {
         // Obter os últimos agendamentos pela empresa
-        List<Agenda> todosAgendamentos = agendaRepository.findTop10ByEmpresaIdEmpresaOrderByEmpresaIdEmpresaDesc(fkEmpresa);
+        List<Agenda> todosAgendamentos = agendaRepository.findTop10ByEmpresaIdEmpresaOrderByIdAgendaDesc(fkEmpresa);
         List<UltimosAgendamentosDto> dtos = new ArrayList<>();
         for (Agenda a: todosAgendamentos) {
             if (a != null) {
@@ -246,6 +249,10 @@ public class AgendaService {
             pilha.push(pilha.pop());
             pilha.push(temp);
         }
+
+    }
+
+    public void vincularEmpresa(Long idEmpresa) {
 
     }
 
